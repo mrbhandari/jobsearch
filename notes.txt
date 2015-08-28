@@ -1,0 +1,20 @@
+#start the environement
+virtualenv virt_env/django_starter
+source /virt_env/django_starter/bin/activate
+
+git clone https://github.com/DrkSephy/django-hackathon-starter.git
+cd django-hackathon-starter
+
+# Install the requirements
+pip install -r requirements.txt
+
+# Install bower
+sudo brew install node
+brew update
+brew upgrade node
+npm install -g bower
+bower install
+
+# Perform database migrations
+$ python manage.py makemigrations
+$ python manage.py migrate
