@@ -1,3 +1,7 @@
+#LOG INTO SERVER
+ssh -i ~/Downloads/rahulkey.pem ubuntu@ec2-54-163-228-237.compute-1.amazonaws.com
+
+
 #start the environement
 virtualenv virt_env/django_starter
 source /virt_env/django_starter/bin/activate
@@ -35,3 +39,14 @@ python manage.py migrate
 #setting up godaddy
 DNS Zone File
 @ 54.198.19.77
+
+
+#SERVER set up conf
+cd /etc/apache2/sites-enabled/
+
+#SERVER set up pointer to mod wsgi which should already exists
+#SERVER set up ports.conf
+
+
+ 
+ 

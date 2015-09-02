@@ -1,5 +1,5 @@
 """
-WSGI config for hackathon_starter project.
+WSGI config for mysite project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -12,3 +12,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hackathon_starter.settings")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+
