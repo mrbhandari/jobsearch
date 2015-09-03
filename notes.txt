@@ -29,8 +29,8 @@ sudo apt-get install npm
 
 #Common
 npm install -g bower
+sudo bower install --allow-root
 
-bower install
 
 # Perform database migrations
 python manage.py makemigrations

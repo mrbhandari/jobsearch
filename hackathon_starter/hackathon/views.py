@@ -314,6 +314,11 @@ def index(request):
     return render(request, 'hackathon/index.html', context)
 
 
+
+
+def skills_api(request):
+    return JsonResponse({ 'data': 'blue' })
+
 ##################
 #  API Examples  #
 ##################
