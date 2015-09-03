@@ -9,20 +9,25 @@
         	<h1>Api Example</h1>
         	<strong>{{ boldmessage }}</strong><br />
         {% else %}
-        	<h1> Find Skills </h1>
+        	<h1> Find Skills for a Job</h1>
         {% endif %}
     	<br>
 		<div class="row">
 		    <div class="col-sm-6 col-md-6">
-			<form id="jobform" action="skills_api">
+			<form id="jobform" action="skills_api" method="post">
 			<div class="form-group">
-			    <label for="comment">Paste in your job description</label>
-			    <textarea class="form-control" rows="10" id="comment" name=job_desc></textarea>
+			    <label for="comment">Paste in a job description ... </label>
+			    <textarea class="form-control" rows="10" id="job_desc" name=job_desc></textarea>
 			</div>
 			<button class="btn btn-primary btn-lg">Find skills for this job</button>
 			</form>
 		    </div>
-		    
+			<div class="col-sm-6 col-md-6">
+			<label for="comment">... see what skills required</label>
+			<div id="result">
+			    
+			</div>
+			</div>		    
 		    
 		    
 		    
@@ -30,12 +35,11 @@
 		</div>
 		<br>
 		<div class="row">
+			
 			<div class="col-sm-6 col-md-6">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam felis nunc, finibus eu condimentum porttitor, vehicula vitae dui. Cras lacinia augue vel sem ultricies, vel tempor orci sagittis. Suspendisse mattis purus a auctor semper. In tincidunt tincidunt enim, vel aliquet est congue sed. Vestibulum eget lacus in ligula fringilla faucibus quis eu enim. Cras lacinia blandit est, vitae sollicitudin enim venenatis malesuada. Cras egestas eget nibh at volutpat. Ut at consequat urna. Ut pretium felis vitae molestie vestibulum.
+				Please send feedback here.
 			</div>
-			<div class="col-sm-6 col-md-6">
-				Vestibulum sed metus sed tortor rutrum pharetra vel non erat. Aliquam vitae lectus sapien. Fusce volutpat pharetra enim, at mattis mauris porttitor pharetra. Morbi et dolor dapibus, consequat sem non, mollis risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus auctor eros id elit consectetur, ut sollicitudin felis condimentum. Mauris porta, nulla quis malesuada sagittis, orci lectus luctus tellus, sit amet mollis arcu lectus id sapien. Pellentesque a dignissim ligula. Vestibulum eu semper nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi nisl justo, fermentum eget dignissim at, fermentum ut nisl.
-			</div>
+
 		</div>
 	</div>
     </body>
@@ -44,11 +48,53 @@
 	$(document).ready(function(){
 	    console.log("test");
 	    $("#jobform").submit(
-				 function () {
-						alert("Form submitted")
-				 }
-				 );
-	 });
+				 function (e) {
+						console.log("Form submitted")
+						e.preventDefault();
+						var job_desc =  $( '#job_desc' ).val();
+						
+						$.ajax({
+						    type:"POST",
+						    url: "skills_api",
+						    dataType : 'string',
+						    data: 'job_desc='+job_desc,
+						    success: function(data){
+							console.log("SUCCESS")
+							console.log(data)
+						     },
+						     error: function(data){
+							console.log("FAILURE")
+							console.log(jQuery.parseJSON(data.responseText))
+							console.log(jQuery.parseJSON(data.responseText).data)
+							obj = jQuery.parseJSON(data.responseText).data
+							outputHTML = ""
+							
+							
+							
+							
+							var temp = []; //create array
+							for(var k in obj) temp.push({key: k, value: obj[k]});
+							var sorted = temp.sort(function(a,b){ return b.value - a.value; });  //sort array
+							
+							$.each(sorted, function(skill) {
+							    console.log(sorted[skill])
+							    console.log(sorted[skill].key)
+							    outputHTML += '<button class="btn btn-default" type="button">'+ sorted[skill].key +' <span class="badge">'+ sorted[skill].value.toString() + '</span></button><br><br>'
+							}); 
+							$("#result").html(outputHTML)
+							console.log(sorted);  //display array
+							
+							
+							
+							
+							
+							
+						     }
+						})
+					    }
+					    
+				 )
+	    });
     </script>
     
 </html>

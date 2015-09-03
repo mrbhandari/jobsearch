@@ -31,6 +31,8 @@ from scripts.facebook import *
 from scripts.googlePlus import *
 from scripts.dropbox import *
 from scripts.foursquare import *
+from scripts.skill_search import *
+
 
 # Python
 import oauth2 as oauth
@@ -315,9 +317,13 @@ def index(request):
 
 
 
-
+@csrf_exempt
 def skills_api(request):
-    return JsonResponse({ 'data': 'blue' })
+    if request.method == 'POST':
+        job_text = request.POST.get('job_desc')
+    skills_file = 'skill_data.json'
+    return JsonResponse({ 'data': find_matching_skills(job_text, skills_file),
+                        })
 
 ##################
 #  API Examples  #

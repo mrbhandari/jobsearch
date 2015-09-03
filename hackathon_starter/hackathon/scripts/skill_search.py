@@ -8,13 +8,14 @@ from nltk import PorterStemmer
 from  more_itertools import unique_everseen
 from collections import Counter
 import re
+import os
 
 #global vars
 STEMMING_ON = True
 STEMMING_LIMIT =6
 request_string = 'https://www.linkedin.com/ta/skill?query='
-skills_path = 'skill_data.json'
-job_path = 'employment.txt'
+#skills_path = 'skill_data.json'
+#job_path = 'employment.txt'
 
 
 def ngrams(input_string, n):
@@ -56,20 +57,23 @@ def fetch_skill_api():
     with open(skills_path, 'w') as fp:
         json.dump(c, fp)
 
-def generate_candidates(job_path):
+def generate_candidates(job_text):
     ngrams = []
-    with open(job_path, 'r') as f:
-        for line in f:
-            words = re.split('\s+|/', line.strip())
-            ngrams += words + join_ngram(words, 2) + join_ngram(words, 3)
+    #with open(job_path, 'r') as f:
+    #for line in job_text:
+    words = re.split('\s+|/|\n+', job_text.strip()) #TODO: test if this works
+    ngrams += words + join_ngram(words, 2) + join_ngram(words, 3)
     return ngrams
     
-def find_matching_skills(job_path, skills_path):
+def find_matching_skills(job_text, skills_path):
     matched_skills_linkedin, all_skills= [], []
     
-    all_candidates = generate_candidates(job_path)        
-    
-    with open(skills_path, 'r') as fp:
+    all_candidates = generate_candidates(job_text)
+    print all_candidates
+    print "The current working directory is", os.getcwd()
+    skills_path_join = os.path.join(os.getcwd(), "hackathon", "static", "data", skills_path)
+    print skills_path_join
+    with open(skills_path_join, 'r') as fp:
         for line in fp:
             all_skills.append(line.lower().strip())
     
@@ -85,8 +89,9 @@ def find_matching_skills(job_path, skills_path):
             pass
    
     c= Counter(matched_skills_linkedin)
+    
     print c
     return c
 
 #execute
-find_matching_skills(job_path, skills_path)
+#find_matching_skills(job_path, skills_path)
