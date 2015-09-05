@@ -70,8 +70,7 @@ def find_matching_skills(job_text, skills_path):
     
     all_candidates = generate_candidates(job_text)
     print all_candidates
-    print "The current working directory is", os.getcwd()
-    skills_path_join = os.path.join(os.getcwd(), "hackathon", "static", "data", skills_path)
+    skills_path_join = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "static", "data", skills_path)
     print skills_path_join
     with open(skills_path_join, 'r') as fp:
         for line in fp:
