@@ -21,8 +21,12 @@ sys.path.append('/data/jobsearch/hackathon_starter/hackathon')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'hackathon_starter.settings'
 
 # Activate your virtual env
-activate_env=os.path.expanduser("/data/virt_env/django_starter/bin/activate_this.py")
-execfile(activate_env, dict(__file__=activate_env))
+try:
+    activate_env=os.path.expanduser("/data/virt_env/django_starter/bin/activate_this.py")
+    execfile(activate_env, dict(__file__=activate_env))
+except IOError:
+    print "File /data/virt_env/django_starter/bin/activate_this.py not found"
+    pass
 
 #import django.core.handlers.wsgi
 #application = django.core.handlers.wsgi.WSGIHandler()

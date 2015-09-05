@@ -319,9 +319,13 @@ def index(request):
 
 @csrf_exempt
 def skills_api(request):
-    if request.method == 'POST':
-        job_text = request.POST.get('job_desc')
+    print "started"
+    if request.method == 'GET':
+        job_text = request.GET['job_desc']
+        print job_text
+    print "started2"
     skills_file = 'skill_data.json'
+    print "started3"
     return JsonResponse({ 'data': find_matching_skills(job_text, skills_file),
                         })
 
