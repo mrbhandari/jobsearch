@@ -54,7 +54,7 @@
 						var job_desc =  $( '#job_desc' ).val();
 						
 						$.ajax({
-						    type:"GET",
+						    type:"POST",
 						    url: "skills_api",
 						    dataType : 'string',
 						    data: 'job_desc='+job_desc,
