@@ -320,8 +320,8 @@ def index(request):
 @csrf_exempt
 def skills_api(request):
     print "started"
-    if request.method == 'POST':
-        job_text = request.POST.get['job_desc']
+    if request.method == 'GET':
+        job_text = request.GET['job_desc']
         print job_text
     print "started2"
     skills_file = 'skill_data.json'
