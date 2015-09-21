@@ -316,12 +316,12 @@ def index(request):
     return render(request, 'hackathon/index.html', context)
 
 
-
+#TODO: this could use the Django REst framework
 @csrf_exempt
 def skills_api(request):
     print "started"
-    if request.method == 'GET':
-        job_text = request.GET['job_desc']
+    if request.method == 'POST':
+        job_text = request.POST['job_desc']
         #print job_text
     print "started2"
     skills_file = 'skill_data.json'

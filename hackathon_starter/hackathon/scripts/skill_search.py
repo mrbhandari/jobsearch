@@ -69,28 +69,28 @@ def find_matching_skills(job_text, skills_path):
     matched_skills_linkedin, all_skills= [], []
     
     all_candidates = generate_candidates(job_text)
-    print all_candidates
+    
     skills_path_join = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "static", "data", skills_path)
-    print skills_path_join
+    
     with open(skills_path_join, 'r') as fp:
         for line in fp:
             all_skills.append(line.lower().strip())
-    
     all_skills_stemmed = [stemmed_word(i) for i in all_skills]
     
     for f in all_candidates:
-        try:
-            if all_skills_stemmed.index(stemmed_word(f.lower())):
-                relevant_skill = all_skills[all_skills_stemmed.index(stemmed_word(f.lower()))]
-                matched_skills_linkedin.append(relevant_skill)
-        
-        except ValueError, e:
-            pass
-   
+      try:
+          if all_skills_stemmed.index(stemmed_word(f.lower())):
+              relevant_skill = all_skills[all_skills_stemmed.index(stemmed_word(f.lower()))]
+              matched_skills_linkedin.append(relevant_skill)
+      
+      except ValueError, e:
+          pass
+ 
     c= Counter(matched_skills_linkedin)
     
-    print c
+    
     return c
 
 #execute
+#fetch_skill_api()
 #find_matching_skills(job_path, skills_path)
