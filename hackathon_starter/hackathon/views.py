@@ -39,6 +39,7 @@ import oauth2 as oauth
 import simplejson as json
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
+import urllib2
 
 # Models
 from hackathon.models import Snippet, Profile, InstagramProfile, TwitterProfile, MeetupToken, GithubProfile, LinkedinProfile, FacebookProfile, TumblrProfile, GoogleProfile, DropboxProfile, FoursquareProfile
@@ -322,8 +323,7 @@ def skills_api(request):
     print "started"
     if request.method == 'POST':
         job_text = request.POST['job_desc']
-        #print job_text
-    print "started2"
+        job_text =  urllib2.unquote(job_text)
     skills_file = 'skill_data.json'
     print "started3"
     return JsonResponse({ 'data': find_matching_skills(job_text, skills_file),

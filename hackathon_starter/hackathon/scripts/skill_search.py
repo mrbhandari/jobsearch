@@ -70,6 +70,8 @@ def find_matching_skills(job_text, skills_path):
     
     all_candidates = generate_candidates(job_text)
     
+    
+    
     skills_path_join = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "static", "data", skills_path)
     
     with open(skills_path_join, 'r') as fp:

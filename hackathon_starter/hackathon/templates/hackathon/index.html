@@ -57,7 +57,7 @@
 						    type:"POST",
 						    url: "skills_api",
 						    dataType : 'string',
-						    data: 'job_desc='+job_desc,
+						    data: 'job_desc='+encodeURIComponent(job_desc),
 						    success: function(data){
 							console.log("SUCCESS")
 							console.log(data)
