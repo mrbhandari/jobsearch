@@ -712,6 +712,7 @@ def linkedin(request):
         global profile_track
         profile_track = 'linkedin'
         linkedin_url = getLinkedIn.get_authorize_url()
+        print linkedin_url
         return HttpResponseRedirect(linkedin_url)
 
     context = {'title': 'linkedin example', 'content': content}
@@ -789,9 +790,9 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/hackathon/')
+                return HttpResponseRedirect('/')
             else:
-                return HttpResponse("Your Django Hackathon account is disabled.")
+                return HttpResponse("Your Job Search account is disabled.")
         else:
             print "Invalid login details: {0}, {1}".format(username, password)
             return HttpResponse("Invalid login details supplied.")
@@ -801,7 +802,7 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect('/hackathon/')
+    return HttpResponseRedirect('/')
 
 
 def instagram_login(request):

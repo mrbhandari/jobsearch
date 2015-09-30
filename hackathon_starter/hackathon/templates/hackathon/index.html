@@ -6,10 +6,10 @@
     <body>
     <div class="container">
     	{% if user.is_authenticated %}
-        	<h1>Api Example</h1>
-        	<strong>{{ boldmessage }}</strong><br />
+        	<h1>Prepare for your interview</h1>
+        	<strong>{{ boldmessage }}</strong><br/>
         {% else %}
-        	<h1> Find Skills for a Job</h1>
+        	<h1>Prepare for your interview</h1>
         {% endif %}
     	<br>
 		<div class="row">
@@ -37,7 +37,7 @@
 		<div class="row">
 			
 			<div class="col-sm-6 col-md-6">
-				Please send feedback here.
+				Please send feedback <a target="blank" href="mailto:mr.bhandari@gmail.com?subject=Job Search Feedback">here</a>.
 			</div>
 
 		</div>
@@ -47,6 +47,21 @@
     <script type="text/javascript">
 	$(document).ready(function(){
 	    console.log("test");
+	    
+	//    var step_3 = function() {
+	//	c.finish();
+	//    };
+	//    
+	//    var step_2 = function(c, b) {
+	//	ajax(c(b.somedata), step_3);
+	//    };
+	//    
+	//    var step_1 = function(b, a) {
+	//      ajax(b(a.somedata), step_2);
+	//    };
+	//    
+	//    ajax(a, step_1);
+	//    
 	    $("#jobform").submit(
 				 function (e) {
 						console.log("Form submitted")
@@ -69,9 +84,6 @@
 							obj = jQuery.parseJSON(data.responseText).data
 							outputHTML = ""
 							
-							
-							
-							
 							var temp = []; //create array
 							for(var k in obj) temp.push({key: k, value: obj[k]});
 							var sorted = temp.sort(function(a,b){ return b.value - a.value; });  //sort array
@@ -79,16 +91,13 @@
 							$.each(sorted, function(skill) {
 							    console.log(sorted[skill])
 							    console.log(sorted[skill].key)
-							    outputHTML += '<button class="btn btn-default" type="button">'+ sorted[skill].key +' <span class="badge">'+ sorted[skill].value.toString() + '</span></button><br><br>'
+							    outputHTML += '<div class="col-lg-6">'+ sorted[skill].key +' <span class="badge">'+ sorted[skill].value.toString() + '</span><br><br></div>'
 							}); 
 							$("#result").html(outputHTML)
 							console.log(sorted);  //display array
 							
 							
-							
-							
-							
-							
+
 						     }
 						})
 					    }

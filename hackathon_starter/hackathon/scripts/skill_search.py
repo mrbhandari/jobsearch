@@ -57,18 +57,24 @@ def fetch_skill_api():
     with open(skills_path, 'w') as fp:
         json.dump(c, fp)
 
-def generate_candidates(job_text):
-    ngrams = []
+def generate_candidates(job_text, term_lenght):
+    ngrams = {}
     #with open(job_path, 'r') as f:
     #for line in job_text:
     words = re.split('\s+|/|\n+', job_text.strip()) #TODO: test if this works
-    ngrams += words + join_ngram(words, 2) + join_ngram(words, 3)
+    
+    if term_lenght == 1:
+      return words
+    else:
+      return join_ngram(words, term_lenght)
+    
     return ngrams
     
 def find_matching_skills(job_text, skills_path):
+    job_text = job_text.lower()
     matched_skills_linkedin, all_skills= [], []
     
-    all_candidates = generate_candidates(job_text)
+    
     
     
     
@@ -79,16 +85,32 @@ def find_matching_skills(job_text, skills_path):
             all_skills.append(line.lower().strip())
     all_skills_stemmed = [stemmed_word(i) for i in all_skills]
     
-    for f in all_candidates:
-      try:
-          if all_skills_stemmed.index(stemmed_word(f.lower())):
-              relevant_skill = all_skills[all_skills_stemmed.index(stemmed_word(f.lower()))]
-              matched_skills_linkedin.append(relevant_skill)
+    
+    max_num_terms = 3
+    
+    while max_num_terms > 0:
+      print ["starting", max_num_terms]
+      all_candidates = generate_candidates(job_text, max_num_terms)
       
-      except ValueError, e:
-          pass
- 
-    c= Counter(matched_skills_linkedin)
+      for f in all_candidates:
+        try:
+            if all_skills_stemmed.index(stemmed_word(f)):
+                relevant_skill = all_skills[all_skills_stemmed.index(stemmed_word(f))]
+                matched_skills_linkedin.append(relevant_skill)
+                job_text = re.sub(f, '', job_text)
+        
+        
+        except ValueError, e:
+            pass
+      
+      max_num_terms = max_num_terms -1
+      print job_text
+      c= Counter(matched_skills_linkedin)
+      
+      if max_num_terms == 0:
+        break
+    
+
     
     
     return c
