@@ -324,7 +324,7 @@ def skills_api(request):
     if request.method == 'POST':
         job_text = request.POST['job_desc']
         job_text =  urllib2.unquote(job_text)
-    skills_file = 'skill_data.json'
+    skills_file = 'all_uniq.txtout' #'skill_data.json'
     print "started3"
     return JsonResponse({ 'data': find_matching_skills(job_text, skills_file),
                         })
