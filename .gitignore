@@ -2,6 +2,7 @@
 db.sqlite3
 *.pyc
 hackathon_starter/hackathon/static/bower_components/
+hackathon_starter/hackathon/static/data/Download/
 migrations/
 Thumbs.db
 */vendor

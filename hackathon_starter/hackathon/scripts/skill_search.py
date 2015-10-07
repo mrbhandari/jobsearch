@@ -33,8 +33,8 @@ def stemmed_word(word):
     if STEMMING_ON == True and len(word)>STEMMING_LIMIT:
       st = RegexpStemmer('ing$|s$|e$|able$', min=STEMMING_LIMIT)
       try:
-        result = PorterStemmer().stem_word(word.lower())
-        return st.stem(word)
+        return PorterStemmer().stem_word(word.lower())
+        #return st.stem(word)
       except:
         pass
     else:
