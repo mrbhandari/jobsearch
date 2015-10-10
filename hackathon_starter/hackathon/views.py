@@ -34,6 +34,7 @@ from scripts.foursquare import *
 from scripts.skill_search import *
 
 
+
 # Python
 import oauth2 as oauth
 import simplejson as json
@@ -317,6 +318,20 @@ def index(request):
     return render(request, 'hackathon/index.html', context)
 
 
+
+from django.template import loader, Context
+
+def view_1(request):
+    # ...
+    t = loader.get_template('template1.html')
+    c = Context({
+        'app': 'My app',
+        'user': request.user,
+        'ip_address': request.META['REMOTE_ADDR'],
+        'message': 'I am view 1.'
+    })
+    return t.render(c)
+
 #TODO: this could use the Django REst framework
 @csrf_exempt
 def skills_api(request):
@@ -326,8 +341,14 @@ def skills_api(request):
         job_text =  urllib2.unquote(job_text)
     skills_file = 'all_uniq.txtout' #'skill_data.json'
     print "started3"
-    return JsonResponse({ 'data': find_matching_skills(job_text, skills_file),
-                        })
+    skills_counter = find_matching_skills(job_text, skills_file)
+    sorted_data = rank_skills(skills_counter)
+    print sorted_data
+
+    return JsonResponse(sorted_data)
+
+
+
 
 ##################
 #  API Examples  #

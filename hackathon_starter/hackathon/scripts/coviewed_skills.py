@@ -6,6 +6,7 @@ import os
 import urllib
 import hashlib
 
+
 def get_url_data(url):
     opener = urllib2.build_opener()
     opener.addheaders = [('User-agent', 'Googlebot'), ('Cookie', 'bcookie="v=2&a4dbb96f-4c7b-4d2a-88b2-32cc9abdf6d4"')]
@@ -32,24 +33,30 @@ def create_hash_string(url):
     m.update(url)
     return str(m.hexdigest())
 
-path = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon_starter", "hackathon", "static", "data", 'download_slug_list.txt')
-print path
-with open(path,'r') as f:
-    for i in f.readlines():
-        encodelist = []
-        for x in i.strip().split(" "):
-            encodelist.append(urllib.quote_plus(x))
-        slug = '-'.join(encodelist)
-        url = 'https://www.linkedin.com/topic/' + slug
-        print url
-        fn = create_hash_string(url) + '.html'
-        path = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon_starter", "hackathon", "static", "data", 'download', fn)
-        with open(path, 'w') as f:
-            try:
-                f.write(get_url_data_with_retries(url, 3))
-            except TypeError as e:
-                print e 
-                print "failed\t " + i
-            except Exception as e:
-                print e
-                print "failed\t " + i
+
+def create_linkedin_skills_url(skill):
+    encodelist = []
+    for x in skill.strip().split(" "):
+        encodelist.append(urllib.quote_plus(x))
+    slug = '-'.join(encodelist)
+    url = 'https://www.linkedin.com/topic/' + slug
+    return url
+
+def execute():
+    path = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon_starter", "hackathon", "static", "data", 'download_slug_list.txt')
+    print path
+    with open(path,'r') as f:
+        for i in f.readlines():
+            url = create_linkedin_skills_url(i)
+            print url
+            fn = create_hash_string(url) + '.html'
+            path = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon_starter", "hackathon", "static", "data", 'download', fn)
+            with open(path, 'w') as f:
+                try:
+                    f.write(get_url_data_with_retries(url, 3))
+                except TypeError as e:
+                    print e 
+                    print "failed\t " + i
+                except Exception as e:
+                    print e
+                    print "failed\t " + i

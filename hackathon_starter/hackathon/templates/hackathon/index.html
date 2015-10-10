@@ -79,22 +79,31 @@
 						     },
 						     error: function(data){
 							console.log("FAILURE")
-							console.log(jQuery.parseJSON(data.responseText))
-							console.log(jQuery.parseJSON(data.responseText).data)
-							obj = jQuery.parseJSON(data.responseText).data
+							console.log(data)
+
+							response = jQuery.parseJSON(data.responseText)
+							console.log(response)
 							outputHTML = ""
 							
-							var temp = []; //create array
-							for(var k in obj) temp.push({key: k, value: obj[k]});
-							var sorted = temp.sort(function(a,b){ return b.value - a.value; });  //sort array
 							
-							$.each(sorted, function(skill) {
-							    console.log(sorted[skill])
-							    console.log(sorted[skill].key)
-							    outputHTML += '<div class="col-lg-6">'+ sorted[skill].key +' <span class="badge">'+ sorted[skill].value.toString() + '</span><br><br></div>'
+							$.each(response.important, function(i) {
+							    console.log(response.important[i])
+							    x = response.important[i]
+							    outputHTML += '<div class="col-lg-6"><a href="'+ x.website +'" target="blank">'+ x.name +'</a> <span class="badge">'+ x.frequency.toString() + '</span><br><br></div>'
 							}); 
-							$("#result").html(outputHTML)
-							console.log(sorted);  //display array
+							$('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Key skills needed</h3></div><div class="panel-body" id="important_skills"></div></div>')
+							$("#important_skills").html(outputHTML)
+							
+							outputHTML = ""
+							$.each(response.not_important, function(i) {
+							    console.log(response.not_important[i])
+							    x = response.not_important[i]
+							    outputHTML += '<div class="col-lg-6"><a href="'+ x.website +'" target="blank">'+ x.name +'</a> <span class="badge">'+ x.frequency.toString() + '</span><br><br></div>'
+							}); 
+							$('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Other skills needed</h3></div><div class="panel-body" id="not_important_skills"></div></div>')
+							$("#not_important_skills").html(outputHTML)
+							
+							//console.log(sorted);  //display array
 							
 							
 

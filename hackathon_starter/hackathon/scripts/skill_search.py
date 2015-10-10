@@ -10,6 +10,7 @@ from  more_itertools import unique_everseen
 from collections import Counter
 import re
 import os
+from coviewed_skills import create_linkedin_skills_url
 
 #global vars
 STEMMING_ON = True
@@ -31,7 +32,7 @@ def join_ngram(input_string, n):
 def stemmed_word(word):
    
     if STEMMING_ON == True and len(word)>STEMMING_LIMIT:
-      st = RegexpStemmer('ing$|s$|e$|able$', min=STEMMING_LIMIT)
+      #st = RegexpStemmer('ing$|s$|e$|able$', min=STEMMING_LIMIT)
       try:
         return PorterStemmer().stem_word(word.lower())
         #return st.stem(word)
@@ -63,7 +64,7 @@ def fetch_skill_api():
       i_path_join = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "static", "data", i)
       with open(i_path_join, 'r') as fp:
         contents = fp.readlines()
-        print contents
+        #print contents
         for line in contents:
           print line
           master_skills_list.extend(autosuggest_api(line))
@@ -95,20 +96,27 @@ def generate_candidates(job_text, term_lenght):
     
 def find_matching_skills(job_text, skills_path):
     job_text = job_text.lower()
-    matched_skills_linkedin, all_skills= [], []
-    
-    
-    
-    
+    matched_skills_linkedin, all_skills, blacklist_skills = [], [], []
     
     skills_path_join = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "static", "data", skills_path)
+    blacklist_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "static", "data", "blacklist.txt")
+    
+    with open(blacklist_path, 'r') as fp:
+        for line in fp:
+            blacklist_skills.append(line.lower().strip())
     
     with open(skills_path_join, 'r') as fp:
         for line in fp:
             all_skills.append(line.lower().strip())
+            
+    for x in blacklist_skills:
+      all_skills.remove(x)
+    
     all_skills_stemmed = [stemmed_word(i) for i in all_skills]
     
     
+ 
+  
     max_num_terms = 3
     
     while max_num_terms > 0:
@@ -128,15 +136,36 @@ def find_matching_skills(job_text, skills_path):
       
       max_num_terms = max_num_terms -1
       #print job_text.encode('utf-8')
-      c= Counter(matched_skills_linkedin)
-      
+      skills_counter= Counter(matched_skills_linkedin)
+      print skills_counter
       if max_num_terms == 0:
         break
     
 
     
     
-    return c
+    return skills_counter
+  
+  
+def rank_skills(data):
+  #takes a skills counter and sorts it with two terms or greater at top, rest below sub sorted by frequency
+  output_list_end = list()
+  output_list_beg = list()
+  
+  for key in data:
+      terms = len(key.split())
+      if terms < 2:
+        output_list_end.append({'name': key, 'terms': terms, 'frequency': int(data[key]), 'website': create_linkedin_skills_url(key)})
+  output_list_end = sorted(output_list_end, key=lambda output_list_end: output_list_end['frequency'], reverse=True)
+  
+  for key in data:
+      terms = len(key.split())
+      if terms >= 2:
+          output_list_beg.append({'name': key, 'terms': terms, 'frequency': int(data[key]), 'website': create_linkedin_skills_url(key)})
+  output_list_beg = sorted(output_list_beg, key=lambda output_list_beg: output_list_beg['frequency'], reverse=True)
+  
+  return {'important': output_list_beg, 'not_important': output_list_end}
+  
 
 #execute
 #fetch_skill_api()
