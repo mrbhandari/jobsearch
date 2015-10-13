@@ -1,0 +1,1293 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'ijavascript' ]
+2 info using npm@2.12.1
+3 info using node@v0.12.7
+4 verbose node symlink /usr/local/bin/node
+5 verbose install initial load of /usr/local/lib/package.json
+6 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+7 silly cache add args [ 'ijavascript', null ]
+8 verbose cache add spec ijavascript
+9 silly cache add parsed spec { raw: 'ijavascript',
+9 silly cache add   scope: null,
+9 silly cache add   name: 'ijavascript',
+9 silly cache add   rawSpec: '',
+9 silly cache add   spec: '*',
+9 silly cache add   type: 'range' }
+10 silly addNamed ijavascript@*
+11 verbose addNamed "*" is a valid semver range for ijavascript
+12 silly addNameRange { name: 'ijavascript', range: '*', hasData: false }
+13 silly mapToRegistry name ijavascript
+14 silly mapToRegistry using default registry
+15 silly mapToRegistry registry https://registry.npmjs.org/
+16 silly mapToRegistry uri https://registry.npmjs.org/ijavascript
+17 verbose addNameRange registry:https://registry.npmjs.org/ijavascript not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/ijavascript
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 22:32:03
+21 verbose request id 0ca99607e37be322
+22 verbose etag "E1270H2ZKWM2ODCRQSPJZWHC3"
+23 http request GET https://registry.npmjs.org/ijavascript
+24 http 304 https://registry.npmjs.org/ijavascript
+25 silly get cb [ 304,
+25 silly get   { date: 'Thu, 08 Oct 2015 05:32:02 GMT',
+25 silly get     via: '1.1 varnish',
+25 silly get     'cache-control': 'max-age=60',
+25 silly get     etag: '"E1270H2ZKWM2ODCRQSPJZWHC3"',
+25 silly get     age: '25',
+25 silly get     connection: 'keep-alive',
+25 silly get     'x-served-by': 'cache-sjc3128-SJC',
+25 silly get     'x-cache': 'HIT',
+25 silly get     'x-cache-hits': '1',
+25 silly get     'x-timer': 'S1444282322.680744,VS0,VE0',
+25 silly get     vary: 'Accept' } ]
+26 verbose etag https://registry.npmjs.org/ijavascript from cache
+27 verbose get saving ijavascript to /var/root/.npm/registry.npmjs.org/ijavascript/.cache.json
+28 silly addNameRange number 2 { name: 'ijavascript', range: '*', hasData: true }
+29 silly addNameRange versions [ 'ijavascript',
+29 silly addNameRange   [ '4.1.0',
+29 silly addNameRange     '4.1.1',
+29 silly addNameRange     '4.1.2',
+29 silly addNameRange     '4.1.3',
+29 silly addNameRange     '4.1.4',
+29 silly addNameRange     '4.1.5',
+29 silly addNameRange     '4.1.6',
+29 silly addNameRange     '5.0.0',
+29 silly addNameRange     '5.0.1',
+29 silly addNameRange     '5.0.2',
+29 silly addNameRange     '5.0.3',
+29 silly addNameRange     '5.0.4',
+29 silly addNameRange     '5.0.5',
+29 silly addNameRange     '5.0.6' ] ]
+30 silly addNamed ijavascript@5.0.6
+31 verbose addNamed "5.0.6" is a plain semver version for ijavascript
+32 silly cache afterAdd ijavascript@5.0.6
+33 verbose afterAdd /var/root/.npm/ijavascript/5.0.6/package/package.json not in flight; writing
+34 verbose afterAdd /var/root/.npm/ijavascript/5.0.6/package/package.json written
+35 silly install resolved [ { name: 'ijavascript',
+35 silly install resolved     version: '5.0.6',
+35 silly install resolved     description: 'IJavascript is a javascript kernel for IPython\'s graphical notebook',
+35 silly install resolved     keywords: [ 'javascript', 'kernel', 'ipython', 'jupyter' ],
+35 silly install resolved     homepage: 'https://n-riesco.github.io/ijavascript',
+35 silly install resolved     bugs: { url: 'https://github.com/n-riesco/ijavascript/issues' },
+35 silly install resolved     license: 'BSD-3-Clause',
+35 silly install resolved     author:
+35 silly install resolved      { email: 'enquiries@nicolasriesco.net',
+35 silly install resolved        url: 'http://www.nicolasriesco.net/' },
+35 silly install resolved     repository:
+35 silly install resolved      { type: 'git',
+35 silly install resolved        url: 'git+https://github.com/n-riesco/ijavascript.git' },
+35 silly install resolved     bin: { ijs: 'bin/ijavascript.js' },
+35 silly install resolved     dependencies: { jmp: '0.2.x', nel: '0.1.x', 'node-uuid': '^1.4.2' },
+35 silly install resolved     devDependencies: { jsdoc: 'latest', jshint: 'latest' },
+35 silly install resolved     scripts:
+35 silly install resolved      { doc: 'python scripts/doc-build.py',
+35 silly install resolved        'doc:publish': 'node scripts/doc-publish.js gh-pages https://github.com/n-riesco/ijavascript',
+35 silly install resolved        lint: 'jshint bin lib',
+35 silly install resolved        test: 'node test/index.js',
+35 silly install resolved        'test:4': 'node test/index.js --protocol=4.1',
+35 silly install resolved        'test:5': 'node test/index.js --protocol=5.0' },
+35 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+35 silly install resolved     gitHead: 'a80c90d0c4112cdcec7ee27665407af5c08132ae',
+35 silly install resolved     _id: 'ijavascript@5.0.6',
+35 silly install resolved     _shasum: '49b48e035ca65c640d22a5aff11cc0c08d92aeab',
+35 silly install resolved     _from: 'ijavascript@*',
+35 silly install resolved     _npmVersion: '1.4.21',
+35 silly install resolved     _npmUser: { name: 'n-riesco', email: 'enquiries@nicolasriesco.net' },
+35 silly install resolved     maintainers: [ [Object] ],
+35 silly install resolved     dist:
+35 silly install resolved      { shasum: '49b48e035ca65c640d22a5aff11cc0c08d92aeab',
+35 silly install resolved        tarball: 'http://registry.npmjs.org/ijavascript/-/ijavascript-5.0.6.tgz' },
+35 silly install resolved     directories: {},
+35 silly install resolved     _resolved: 'https://registry.npmjs.org/ijavascript/-/ijavascript-5.0.6.tgz',
+35 silly install resolved     readme: 'ERROR: No README data found!' } ]
+36 info install ijavascript@5.0.6 into /usr/local/lib
+37 info installOne ijavascript@5.0.6
+38 verbose installOne of ijavascript to /usr/local/lib not in flight; installing
+39 verbose lock using /var/root/.npm/_locks/ijavascript-78c9ad2e25a7cf1f.lock for /usr/local/lib/node_modules/ijavascript
+40 silly install write writing ijavascript 5.0.6 to /usr/local/lib/node_modules/ijavascript
+41 verbose unbuild lib/node_modules/ijavascript
+42 info preuninstall ijavascript@5.0.6
+43 info uninstall ijavascript@5.0.6
+44 verbose unbuild rmStuff ijavascript@5.0.6 from /usr/local/lib/node_modules
+45 silly gentlyRm /usr/local/bin/ijs is being gently removed
+46 silly gentlyRm verifying /usr/local is an npm working directory
+47 silly gentlyRm containing path /usr/local is under npm's control, in /usr/local
+48 silly gentlyRm deletion target /usr/local/bin/ijs is under /usr/local
+49 verbose gentlyRm vacuuming from /usr/local/bin/ijs up to /usr/local
+50 info postuninstall ijavascript@5.0.6
+51 silly gentlyRm /usr/local/lib/node_modules/ijavascript is being purged from base /usr/local
+52 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript
+53 silly vacuum-fs purging /usr/local/lib/node_modules/ijavascript
+54 silly vacuum-fs quitting because other entries in /usr/local/lib/node_modules
+55 verbose tar unpack /var/root/.npm/ijavascript/5.0.6/package.tgz
+56 verbose tar unpacking to /usr/local/lib/node_modules/ijavascript
+57 silly gentlyRm /usr/local/lib/node_modules/ijavascript is being purged
+58 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript
+59 silly gunzTarPerm modes [ '755', '644' ]
+60 silly gunzTarPerm extractEntry package.json
+61 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+62 silly gunzTarPerm extractEntry .npmignore
+63 silly gunzTarPerm modified mode [ '.npmignore', 436, 420 ]
+64 silly gunzTarPerm extractEntry README.md
+65 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+66 silly gunzTarPerm extractEntry LICENSE
+67 silly gunzTarPerm modified mode [ 'LICENSE', 436, 420 ]
+68 silly gunzTarPerm extractEntry CONTRIBUTING.md
+69 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 436, 420 ]
+70 silly gunzTarPerm extractEntry bin/ijavascript.js
+71 silly gunzTarPerm modified mode [ 'bin/ijavascript.js', 509, 493 ]
+72 silly gunzTarPerm extractEntry AUTHORS
+73 silly gunzTarPerm modified mode [ 'AUTHORS', 436, 420 ]
+74 silly gunzTarPerm extractEntry jsdoc/README.md
+75 silly gunzTarPerm modified mode [ 'jsdoc/README.md', 436, 420 ]
+76 silly gunzTarPerm extractEntry jsdoc/conf.json
+77 silly gunzTarPerm modified mode [ 'jsdoc/conf.json', 436, 420 ]
+78 silly gunzTarPerm extractEntry lib/handlers_v4.js
+79 silly gunzTarPerm modified mode [ 'lib/handlers_v4.js', 509, 493 ]
+80 silly gunzTarPerm extractEntry lib/handlers_v5.js
+81 silly gunzTarPerm modified mode [ 'lib/handlers_v5.js', 509, 493 ]
+82 silly gunzTarPerm extractEntry lib/kernel.js
+83 silly gunzTarPerm modified mode [ 'lib/kernel.js', 509, 493 ]
+84 silly gunzTarPerm extractEntry test/index.js
+85 silly gunzTarPerm modified mode [ 'test/index.js', 509, 493 ]
+86 silly gunzTarPerm extractEntry test/ijavascript-iojs-latest/Dockerfile
+87 silly gunzTarPerm modified mode [ 'test/ijavascript-iojs-latest/Dockerfile', 436, 420 ]
+88 silly gunzTarPerm extractEntry test/ijavascript-node-0.10/Dockerfile
+89 silly gunzTarPerm modified mode [ 'test/ijavascript-node-0.10/Dockerfile', 436, 420 ]
+90 silly gunzTarPerm extractEntry test/ijavascript-node-0.12/Dockerfile
+91 silly gunzTarPerm modified mode [ 'test/ijavascript-node-0.12/Dockerfile', 436, 420 ]
+92 silly gunzTarPerm extractEntry test/ijavascript-node-latest/Dockerfile
+93 silly gunzTarPerm modified mode [ 'test/ijavascript-node-latest/Dockerfile', 436, 420 ]
+94 silly gunzTarPerm extractEntry test/messages.json
+95 silly gunzTarPerm modified mode [ 'test/messages.json', 436, 420 ]
+96 silly gunzTarPerm extractEntry test/messages_v4.json
+97 silly gunzTarPerm modified mode [ 'test/messages_v4.json', 436, 420 ]
+98 silly gunzTarPerm extractEntry test/messages_v5.json
+99 silly gunzTarPerm modified mode [ 'test/messages_v5.json', 436, 420 ]
+100 silly gunzTarPerm extractEntry scripts/doc-publish.js
+101 silly gunzTarPerm modified mode [ 'scripts/doc-publish.js', 509, 493 ]
+102 silly gunzTarPerm extractEntry scripts/.ropeproject/config.py
+103 silly gunzTarPerm modified mode [ 'scripts/.ropeproject/config.py', 436, 420 ]
+104 silly gunzTarPerm extractEntry scripts/.ropeproject/globalnames
+105 silly gunzTarPerm modified mode [ 'scripts/.ropeproject/globalnames', 436, 420 ]
+106 silly gunzTarPerm extractEntry scripts/.ropeproject/history
+107 silly gunzTarPerm modified mode [ 'scripts/.ropeproject/history', 436, 420 ]
+108 silly gunzTarPerm extractEntry scripts/.ropeproject/objectdb
+109 silly gunzTarPerm modified mode [ 'scripts/.ropeproject/objectdb', 436, 420 ]
+110 silly gunzTarPerm extractEntry scripts/doc-build.py
+111 silly gunzTarPerm modified mode [ 'scripts/doc-build.py', 509, 493 ]
+112 silly gunzTarPerm extractEntry spec/javascript/logo-32x32.png
+113 silly gunzTarPerm modified mode [ 'spec/javascript/logo-32x32.png', 436, 420 ]
+114 silly gunzTarPerm extractEntry spec/javascript/logo-64x64.png
+115 silly gunzTarPerm modified mode [ 'spec/javascript/logo-64x64.png', 436, 420 ]
+116 silly gunzTarPerm extractEntry images/screenshot-notebook-complete-bracket.png
+117 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-complete-bracket.png', 436, 420 ]
+118 silly gunzTarPerm extractEntry images/favicon.ico
+119 silly gunzTarPerm modified mode [ 'images/favicon.ico', 436, 420 ]
+120 silly gunzTarPerm extractEntry images/logo-128x128.png
+121 silly gunzTarPerm modified mode [ 'images/logo-128x128.png', 436, 420 ]
+122 silly gunzTarPerm extractEntry images/logo-16x16.png
+123 silly gunzTarPerm modified mode [ 'images/logo-16x16.png', 436, 420 ]
+124 silly gunzTarPerm extractEntry images/logo-32x32.png
+125 silly gunzTarPerm modified mode [ 'images/logo-32x32.png', 436, 420 ]
+126 silly gunzTarPerm extractEntry images/logo-50x50.png
+127 silly gunzTarPerm modified mode [ 'images/logo-50x50.png', 436, 420 ]
+128 silly gunzTarPerm extractEntry images/logo-64x64.png
+129 silly gunzTarPerm modified mode [ 'images/logo-64x64.png', 436, 420 ]
+130 silly gunzTarPerm extractEntry images/logo.inkscape.svg
+131 silly gunzTarPerm modified mode [ 'images/logo.inkscape.svg', 436, 420 ]
+132 silly gunzTarPerm extractEntry images/logo.svg
+133 silly gunzTarPerm modified mode [ 'images/logo.svg', 436, 420 ]
+134 silly gunzTarPerm extractEntry images/screenshot-dashboard-dir.png
+135 silly gunzTarPerm modified mode [ 'images/screenshot-dashboard-dir.png', 436, 420 ]
+136 silly gunzTarPerm extractEntry images/screenshot-dashboard-home.png
+137 silly gunzTarPerm modified mode [ 'images/screenshot-dashboard-home.png', 436, 420 ]
+138 silly gunzTarPerm extractEntry images/logo-128x128.jpg
+139 silly gunzTarPerm modified mode [ 'images/logo-128x128.jpg', 436, 420 ]
+140 silly gunzTarPerm extractEntry images/screenshot-notebook-complete-dot.png
+141 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-complete-dot.png', 436, 420 ]
+142 silly gunzTarPerm extractEntry images/screenshot-notebook-complete-keyword.png
+143 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-complete-keyword.png', 436, 420 ]
+144 silly gunzTarPerm extractEntry images/screenshot-notebook-dir.png
+145 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-dir.png', 436, 420 ]
+146 silly gunzTarPerm extractEntry images/screenshot-notebook-hello.png
+147 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-hello.png', 436, 420 ]
+148 silly gunzTarPerm extractEntry images/screenshot-notebook-html.png
+149 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-html.png', 436, 420 ]
+150 silly gunzTarPerm extractEntry images/screenshot-notebook-inspect-doc.png
+151 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-inspect-doc.png', 436, 420 ]
+152 silly gunzTarPerm extractEntry images/screenshot-notebook-inspect-value.png
+153 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-inspect-value.png', 436, 420 ]
+154 silly gunzTarPerm extractEntry images/screenshot-notebook-jpeg.png
+155 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-jpeg.png', 436, 420 ]
+156 silly gunzTarPerm extractEntry images/screenshot-notebook-mime.png
+157 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-mime.png', 436, 420 ]
+158 silly gunzTarPerm extractEntry images/screenshot-notebook-png.png
+159 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-png.png', 436, 420 ]
+160 silly gunzTarPerm extractEntry images/screenshot-notebook-svg.png
+161 silly gunzTarPerm modified mode [ 'images/screenshot-notebook-svg.png', 436, 420 ]
+162 verbose write writing to /usr/local/lib/node_modules/ijavascript/package.json
+163 info preinstall ijavascript@5.0.6
+164 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/package.json
+165 silly prepareForInstallMany adding jmp@0.2.x from ijavascript dependencies
+166 silly prepareForInstallMany adding nel@0.1.x from ijavascript dependencies
+167 silly prepareForInstallMany adding node-uuid@^1.4.2 from ijavascript dependencies
+168 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/package.json
+169 silly cache add args [ 'node-uuid@^1.4.2', null ]
+170 verbose cache add spec node-uuid@^1.4.2
+171 silly cache add parsed spec { raw: 'node-uuid@^1.4.2',
+171 silly cache add   scope: null,
+171 silly cache add   name: 'node-uuid',
+171 silly cache add   rawSpec: '^1.4.2',
+171 silly cache add   spec: '>=1.4.2 <2.0.0',
+171 silly cache add   type: 'range' }
+172 silly addNamed node-uuid@>=1.4.2 <2.0.0
+173 verbose addNamed ">=1.4.2 <2.0.0" is a valid semver range for node-uuid
+174 silly addNameRange { name: 'node-uuid', range: '>=1.4.2 <2.0.0', hasData: false }
+175 silly mapToRegistry name node-uuid
+176 silly mapToRegistry using default registry
+177 silly mapToRegistry registry https://registry.npmjs.org/
+178 silly mapToRegistry uri https://registry.npmjs.org/node-uuid
+179 verbose addNameRange registry:https://registry.npmjs.org/node-uuid not in flight; fetching
+180 silly cache add args [ 'jmp@0.2.x', null ]
+181 verbose cache add spec jmp@0.2.x
+182 silly cache add parsed spec { raw: 'jmp@0.2.x',
+182 silly cache add   scope: null,
+182 silly cache add   name: 'jmp',
+182 silly cache add   rawSpec: '0.2.x',
+182 silly cache add   spec: '>=0.2.0 <0.3.0',
+182 silly cache add   type: 'range' }
+183 silly addNamed jmp@>=0.2.0 <0.3.0
+184 verbose addNamed ">=0.2.0 <0.3.0" is a valid semver range for jmp
+185 silly addNameRange { name: 'jmp', range: '>=0.2.0 <0.3.0', hasData: false }
+186 silly mapToRegistry name jmp
+187 silly mapToRegistry using default registry
+188 silly mapToRegistry registry https://registry.npmjs.org/
+189 silly mapToRegistry uri https://registry.npmjs.org/jmp
+190 verbose addNameRange registry:https://registry.npmjs.org/jmp not in flight; fetching
+191 silly cache add args [ 'nel@0.1.x', null ]
+192 verbose cache add spec nel@0.1.x
+193 silly cache add parsed spec { raw: 'nel@0.1.x',
+193 silly cache add   scope: null,
+193 silly cache add   name: 'nel',
+193 silly cache add   rawSpec: '0.1.x',
+193 silly cache add   spec: '>=0.1.0 <0.2.0',
+193 silly cache add   type: 'range' }
+194 silly addNamed nel@>=0.1.0 <0.2.0
+195 verbose addNamed ">=0.1.0 <0.2.0" is a valid semver range for nel
+196 silly addNameRange { name: 'nel', range: '>=0.1.0 <0.2.0', hasData: false }
+197 silly mapToRegistry name nel
+198 silly mapToRegistry using default registry
+199 silly mapToRegistry registry https://registry.npmjs.org/
+200 silly mapToRegistry uri https://registry.npmjs.org/nel
+201 verbose addNameRange registry:https://registry.npmjs.org/nel not in flight; fetching
+202 verbose request uri https://registry.npmjs.org/nel
+203 verbose request no auth needed
+204 info attempt registry request try #1 at 22:32:39
+205 verbose etag "97DLEN1Q7CE5GP3512JLXJJ9U"
+206 http request GET https://registry.npmjs.org/nel
+207 verbose request uri https://registry.npmjs.org/node-uuid
+208 verbose request no auth needed
+209 info attempt registry request try #1 at 22:32:39
+210 verbose etag "LIG2ZE70I5UXTQB86NYACIJ0"
+211 http request GET https://registry.npmjs.org/node-uuid
+212 verbose request uri https://registry.npmjs.org/jmp
+213 verbose request no auth needed
+214 info attempt registry request try #1 at 22:32:39
+215 verbose etag "23VNRQN2RB9RXV8X5TNNCV4B7"
+216 http request GET https://registry.npmjs.org/jmp
+217 http 304 https://registry.npmjs.org/node-uuid
+218 silly get cb [ 304,
+218 silly get   { date: 'Thu, 08 Oct 2015 05:32:38 GMT',
+218 silly get     via: '1.1 varnish',
+218 silly get     'cache-control': 'max-age=60',
+218 silly get     etag: '"LIG2ZE70I5UXTQB86NYACIJ0"',
+218 silly get     age: '17',
+218 silly get     connection: 'keep-alive',
+218 silly get     'x-served-by': 'cache-lax1435-LAX',
+218 silly get     'x-cache': 'HIT',
+218 silly get     'x-cache-hits': '1',
+218 silly get     'x-timer': 'S1444282358.807260,VS0,VE0',
+218 silly get     vary: 'Accept' } ]
+219 verbose etag https://registry.npmjs.org/node-uuid from cache
+220 verbose get saving node-uuid to /var/root/.npm/registry.npmjs.org/node-uuid/.cache.json
+221 silly addNameRange number 2 { name: 'node-uuid', range: '>=1.4.2 <2.0.0', hasData: true }
+222 silly addNameRange versions [ 'node-uuid',
+222 silly addNameRange   [ '1.2.0',
+222 silly addNameRange     '1.3.0',
+222 silly addNameRange     '1.3.1',
+222 silly addNameRange     '1.3.2',
+222 silly addNameRange     '1.1.0',
+222 silly addNameRange     '1.0.0',
+222 silly addNameRange     '1.3.3',
+222 silly addNameRange     '1.4.0',
+222 silly addNameRange     '1.4.1',
+222 silly addNameRange     '1.4.2',
+222 silly addNameRange     '1.4.3' ] ]
+223 silly addNamed node-uuid@1.4.3
+224 verbose addNamed "1.4.3" is a plain semver version for node-uuid
+225 silly cache afterAdd node-uuid@1.4.3
+226 verbose afterAdd /var/root/.npm/node-uuid/1.4.3/package/package.json not in flight; writing
+227 verbose afterAdd /var/root/.npm/node-uuid/1.4.3/package/package.json written
+228 http 304 https://registry.npmjs.org/nel
+229 silly get cb [ 304,
+229 silly get   { date: 'Thu, 08 Oct 2015 05:32:38 GMT',
+229 silly get     via: '1.1 varnish',
+229 silly get     'cache-control': 'max-age=60',
+229 silly get     etag: '"97DLEN1Q7CE5GP3512JLXJJ9U"',
+229 silly get     age: '0',
+229 silly get     connection: 'keep-alive',
+229 silly get     'x-served-by': 'cache-lax1427-LAX',
+229 silly get     'x-cache': 'MISS',
+229 silly get     'x-cache-hits': '0',
+229 silly get     'x-timer': 'S1444282358.812552,VS0,VE243',
+229 silly get     vary: 'Accept' } ]
+230 verbose etag https://registry.npmjs.org/nel from cache
+231 verbose get saving nel to /var/root/.npm/registry.npmjs.org/nel/.cache.json
+232 silly addNameRange number 2 { name: 'nel', range: '>=0.1.0 <0.2.0', hasData: true }
+233 silly addNameRange versions [ 'nel', [ '0.0.3', '0.0.4', '0.0.5', '0.1.0' ] ]
+234 silly addNamed nel@0.1.0
+235 verbose addNamed "0.1.0" is a plain semver version for nel
+236 silly cache afterAdd nel@0.1.0
+237 verbose afterAdd /var/root/.npm/nel/0.1.0/package/package.json not in flight; writing
+238 verbose afterAdd /var/root/.npm/nel/0.1.0/package/package.json written
+239 http 304 https://registry.npmjs.org/jmp
+240 silly get cb [ 304,
+240 silly get   { date: 'Thu, 08 Oct 2015 05:32:38 GMT',
+240 silly get     via: '1.1 varnish',
+240 silly get     'cache-control': 'max-age=60',
+240 silly get     etag: '"23VNRQN2RB9RXV8X5TNNCV4B7"',
+240 silly get     age: '0',
+240 silly get     connection: 'keep-alive',
+240 silly get     'x-served-by': 'cache-lax1424-LAX',
+240 silly get     'x-cache': 'MISS',
+240 silly get     'x-cache-hits': '0',
+240 silly get     'x-timer': 'S1444282358.808186,VS0,VE377',
+240 silly get     vary: 'Accept' } ]
+241 verbose etag https://registry.npmjs.org/jmp from cache
+242 verbose get saving jmp to /var/root/.npm/registry.npmjs.org/jmp/.cache.json
+243 silly addNameRange number 2 { name: 'jmp', range: '>=0.2.0 <0.3.0', hasData: true }
+244 silly addNameRange versions [ 'jmp',
+244 silly addNameRange   [ '0.0.1',
+244 silly addNameRange     '0.0.2',
+244 silly addNameRange     '0.0.3',
+244 silly addNameRange     '0.0.4',
+244 silly addNameRange     '0.0.6',
+244 silly addNameRange     '0.0.7',
+244 silly addNameRange     '0.0.8',
+244 silly addNameRange     '0.1.0',
+244 silly addNameRange     '0.2.0',
+244 silly addNameRange     '0.0.10',
+244 silly addNameRange     '0.1.1',
+244 silly addNameRange     '0.2.1',
+244 silly addNameRange     '0.2.2',
+244 silly addNameRange     '0.1.2',
+244 silly addNameRange     '0.2.3' ] ]
+245 silly addNamed jmp@0.2.3
+246 verbose addNamed "0.2.3" is a plain semver version for jmp
+247 silly cache afterAdd jmp@0.2.3
+248 verbose afterAdd /var/root/.npm/jmp/0.2.3/package/package.json not in flight; writing
+249 verbose afterAdd /var/root/.npm/jmp/0.2.3/package/package.json written
+250 silly install resolved [ { name: 'node-uuid',
+250 silly install resolved     description: 'Rigorous implementation of RFC4122 (v1 and v4) UUIDs.',
+250 silly install resolved     url: 'http://github.com/broofa/node-uuid',
+250 silly install resolved     keywords: [ 'uuid', 'guid', 'rfc4122' ],
+250 silly install resolved     author: { name: 'Robert Kieffer', email: 'robert@broofa.com' },
+250 silly install resolved     contributors: [ [Object] ],
+250 silly install resolved     bin: { uuid: './bin/uuid' },
+250 silly install resolved     scripts: { test: 'node test/test.js' },
+250 silly install resolved     lib: '.',
+250 silly install resolved     main: './uuid.js',
+250 silly install resolved     repository:
+250 silly install resolved      { type: 'git',
+250 silly install resolved        url: 'git+https://github.com/broofa/node-uuid.git' },
+250 silly install resolved     version: '1.4.3',
+250 silly install resolved     licenses: [ [Object] ],
+250 silly install resolved     gitHead: '886463c660a095dfebfa69603921a8d156fdb12c',
+250 silly install resolved     bugs: { url: 'https://github.com/broofa/node-uuid/issues' },
+250 silly install resolved     homepage: 'https://github.com/broofa/node-uuid',
+250 silly install resolved     _id: 'node-uuid@1.4.3',
+250 silly install resolved     _shasum: '319bb7a56e7cb63f00b5c0cd7851cd4b4ddf1df9',
+250 silly install resolved     _from: 'node-uuid@>=1.4.2 <2.0.0',
+250 silly install resolved     _npmVersion: '1.4.28',
+250 silly install resolved     _npmUser: { name: 'broofa', email: 'robert@broofa.com' },
+250 silly install resolved     maintainers: [ [Object] ],
+250 silly install resolved     dist:
+250 silly install resolved      { shasum: '319bb7a56e7cb63f00b5c0cd7851cd4b4ddf1df9',
+250 silly install resolved        tarball: 'http://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz' },
+250 silly install resolved     directories: {},
+250 silly install resolved     _resolved: 'https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz',
+250 silly install resolved     readme: 'ERROR: No README data found!' },
+250 silly install resolved   { name: 'nel',
+250 silly install resolved     version: '0.1.0',
+250 silly install resolved     description: 'Node.js Evaluation Loop (NEL): A Node.js module to implement a Javascript REPL session',
+250 silly install resolved     keywords: [ 'javascript', 'REPL', 'session', 'vm', 'ijavascript' ],
+250 silly install resolved     author:
+250 silly install resolved      { email: 'enquiries@nicolasriesco.net',
+250 silly install resolved        url: 'http://www.nicolasriesco.net/' },
+250 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/n-riesco/nel.git' },
+250 silly install resolved     license: 'BSD-3-Clause',
+250 silly install resolved     devDependencies: { jsdoc: 'latest', jshint: 'latest' },
+250 silly install resolved     scripts:
+250 silly install resolved      { doc: 'jsdoc -R README.md -d doc index.js lib',
+250 silly install resolved        'doc:publish': 'node scripts/doc-publish.js doc https://github.com/n-riesco/nel',
+250 silly install resolved        lint: 'jshint index.js lib',
+250 silly install resolved        test: 'node test/index.js' },
+250 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+250 silly install resolved     gitHead: '5586c7f93dcb864ae94f7b3f46389016669b7b1d',
+250 silly install resolved     bugs: { url: 'https://github.com/n-riesco/nel/issues' },
+250 silly install resolved     _id: 'nel@0.1.0',
+250 silly install resolved     _shasum: '575852ecc443b998eb8bf83a3b8520c035f247c0',
+250 silly install resolved     _from: 'nel@>=0.1.0 <0.2.0',
+250 silly install resolved     _npmVersion: '1.4.21',
+250 silly install resolved     _npmUser: { name: 'n-riesco', email: 'enquiries@nicolasriesco.net' },
+250 silly install resolved     maintainers: [ [Object] ],
+250 silly install resolved     dist:
+250 silly install resolved      { shasum: '575852ecc443b998eb8bf83a3b8520c035f247c0',
+250 silly install resolved        tarball: 'http://registry.npmjs.org/nel/-/nel-0.1.0.tgz' },
+250 silly install resolved     directories: {},
+250 silly install resolved     _resolved: 'https://registry.npmjs.org/nel/-/nel-0.1.0.tgz',
+250 silly install resolved     readme: 'ERROR: No README data found!',
+250 silly install resolved     homepage: 'https://github.com/n-riesco/nel#readme' },
+250 silly install resolved   { name: 'jmp',
+250 silly install resolved     version: '0.2.3',
+250 silly install resolved     description: 'Node.js module for creating, parsing and replying to messages of the Jupyter Messaging Protocol (JMP)',
+250 silly install resolved     keywords: [ 'jupyter', 'messaging', 'protocol', 'ijavascript' ],
+250 silly install resolved     bugs: { url: 'https://github.com/n-riesco/jmp/issues' },
+250 silly install resolved     license: 'BSD-3-Clause',
+250 silly install resolved     author:
+250 silly install resolved      { email: 'enquiries@nicolasriesco.net',
+250 silly install resolved        url: 'http://www.nicolasriesco.net/' },
+250 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/n-riesco/jmp.git' },
+250 silly install resolved     dependencies: { 'node-uuid': '^1.4.2', zmq: '^2.10.0' },
+250 silly install resolved     devDependencies: { jsdoc: 'latest', jshint: 'latest' },
+250 silly install resolved     scripts:
+250 silly install resolved      { doc: 'jsdoc -R README.md -d doc index.js',
+250 silly install resolved        'doc:publish': 'node scripts/doc-publish.js doc https://github.com/n-riesco/jmp',
+250 silly install resolved        lint: 'jshint index.js test/',
+250 silly install resolved        test: 'node test/index.js' },
+250 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+250 silly install resolved     gitHead: '4418bb73b1b7372db3a075182dff038762278fd5',
+250 silly install resolved     _id: 'jmp@0.2.3',
+250 silly install resolved     _shasum: 'c1dd10b9b60b2e9eb74228d6942091b0654a5d96',
+250 silly install resolved     _from: 'jmp@>=0.2.0 <0.3.0',
+250 silly install resolved     _npmVersion: '1.4.21',
+250 silly install resolved     _npmUser: { name: 'n-riesco', email: 'enquiries@nicolasriesco.net' },
+250 silly install resolved     maintainers: [ [Object] ],
+250 silly install resolved     dist:
+250 silly install resolved      { shasum: 'c1dd10b9b60b2e9eb74228d6942091b0654a5d96',
+250 silly install resolved        tarball: 'http://registry.npmjs.org/jmp/-/jmp-0.2.3.tgz' },
+250 silly install resolved     directories: {},
+250 silly install resolved     _resolved: 'https://registry.npmjs.org/jmp/-/jmp-0.2.3.tgz',
+250 silly install resolved     readme: 'ERROR: No README data found!',
+250 silly install resolved     homepage: 'https://github.com/n-riesco/jmp#readme' } ]
+251 info install node-uuid@1.4.3 into /usr/local/lib/node_modules/ijavascript
+252 info install nel@0.1.0 into /usr/local/lib/node_modules/ijavascript
+253 info install jmp@0.2.3 into /usr/local/lib/node_modules/ijavascript
+254 info installOne node-uuid@1.4.3
+255 verbose installOne of node-uuid to /usr/local/lib/node_modules/ijavascript not in flight; installing
+256 info installOne nel@0.1.0
+257 verbose installOne of nel to /usr/local/lib/node_modules/ijavascript not in flight; installing
+258 info installOne jmp@0.2.3
+259 verbose installOne of jmp to /usr/local/lib/node_modules/ijavascript not in flight; installing
+260 verbose lock using /var/root/.npm/_locks/nel-cd39e34873f0ac50.lock for /usr/local/lib/node_modules/ijavascript/node_modules/nel
+261 verbose lock using /var/root/.npm/_locks/node-uuid-3c8333f75c3241e1.lock for /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+262 silly install write writing nel 0.1.0 to /usr/local/lib/node_modules/ijavascript/node_modules/nel
+263 silly install write writing node-uuid 1.4.3 to /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+264 verbose unbuild lib/node_modules/ijavascript/node_modules/nel
+265 verbose unbuild lib/node_modules/ijavascript/node_modules/node-uuid
+266 verbose lock using /var/root/.npm/_locks/jmp-90da7114d796f325.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+267 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/nel is being purged from base /usr/local
+268 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/nel
+269 silly install write writing jmp 0.2.3 to /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+270 verbose tar unpack /var/root/.npm/nel/0.1.0/package.tgz
+271 verbose tar unpacking to /usr/local/lib/node_modules/ijavascript/node_modules/nel
+272 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/nel is being purged
+273 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/nel
+274 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid is being purged from base /usr/local
+275 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+276 silly gunzTarPerm modes [ '755', '644' ]
+277 verbose tar unpack /var/root/.npm/node-uuid/1.4.3/package.tgz
+278 verbose tar unpacking to /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+279 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid is being purged
+280 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+281 silly gunzTarPerm modes [ '755', '644' ]
+282 verbose unbuild lib/node_modules/ijavascript/node_modules/jmp
+283 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp is being purged from base /usr/local
+284 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+285 verbose tar unpack /var/root/.npm/jmp/0.2.3/package.tgz
+286 verbose tar unpacking to /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+287 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp is being purged
+288 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+289 silly gunzTarPerm extractEntry package.json
+290 silly gunzTarPerm modes [ '755', '644' ]
+291 silly gunzTarPerm extractEntry package.json
+292 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+293 silly gunzTarPerm extractEntry .npmignore
+294 silly gunzTarPerm extractEntry README.md
+295 silly gunzTarPerm extractEntry .npmignore
+296 silly gunzTarPerm modified mode [ '.npmignore', 436, 420 ]
+297 silly gunzTarPerm extractEntry README.md
+298 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+299 silly gunzTarPerm extractEntry package.json
+300 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+301 silly gunzTarPerm extractEntry .npmignore
+302 silly gunzTarPerm modified mode [ '.npmignore', 436, 420 ]
+303 silly gunzTarPerm extractEntry README.md
+304 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+305 silly gunzTarPerm extractEntry uuid.js
+306 silly gunzTarPerm extractEntry benchmark/README.md
+307 silly gunzTarPerm extractEntry benchmark/benchmark.js
+308 silly gunzTarPerm extractEntry benchmark/bench.gnu
+309 silly gunzTarPerm extractEntry benchmark/bench.sh
+310 silly gunzTarPerm extractEntry benchmark/benchmark-native.c
+311 silly gunzTarPerm extractEntry bin/uuid
+312 silly gunzTarPerm extractEntry LICENSE.md
+313 silly gunzTarPerm extractEntry component.json
+314 silly gunzTarPerm extractEntry test/compare_v1.js
+315 silly gunzTarPerm extractEntry test/test.js
+316 silly gunzTarPerm extractEntry test/test.html
+317 silly gunzTarPerm extractEntry bower.json
+318 silly gunzTarPerm extractEntry LICENSE
+319 silly gunzTarPerm modified mode [ 'LICENSE', 436, 420 ]
+320 silly gunzTarPerm extractEntry index.js
+321 silly gunzTarPerm modified mode [ 'index.js', 436, 420 ]
+322 silly gunzTarPerm extractEntry LICENSE
+323 silly gunzTarPerm modified mode [ 'LICENSE', 436, 420 ]
+324 silly gunzTarPerm extractEntry index.js
+325 silly gunzTarPerm modified mode [ 'index.js', 509, 493 ]
+326 silly gunzTarPerm extractEntry AUTHORS
+327 silly gunzTarPerm modified mode [ 'AUTHORS', 436, 420 ]
+328 silly gunzTarPerm extractEntry test/index.js
+329 silly gunzTarPerm modified mode [ 'test/index.js', 509, 493 ]
+330 silly gunzTarPerm extractEntry AUTHORS
+331 silly gunzTarPerm modified mode [ 'AUTHORS', 436, 420 ]
+332 silly gunzTarPerm extractEntry lib/mdn.js
+333 silly gunzTarPerm modified mode [ 'lib/mdn.js', 436, 420 ]
+334 silly gunzTarPerm extractEntry test/index.js
+335 silly gunzTarPerm modified mode [ 'test/index.js', 509, 493 ]
+336 silly gunzTarPerm extractEntry scripts/doc-publish.js
+337 silly gunzTarPerm modified mode [ 'scripts/doc-publish.js', 509, 493 ]
+338 silly gunzTarPerm extractEntry lib/nel.js
+339 silly gunzTarPerm modified mode [ 'lib/nel.js', 509, 493 ]
+340 silly gunzTarPerm extractEntry lib/nel_server.js
+341 silly gunzTarPerm modified mode [ 'lib/nel_server.js', 509, 493 ]
+342 silly gunzTarPerm extractEntry CONTRIBUTING.md
+343 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 436, 420 ]
+344 silly gunzTarPerm extractEntry CONTRIBUTING.md
+345 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 436, 420 ]
+346 silly gunzTarPerm extractEntry scripts/doc-publish.js
+347 silly gunzTarPerm modified mode [ 'scripts/doc-publish.js', 509, 493 ]
+348 verbose write writing to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/package.json
+349 info preinstall jmp@0.2.3
+350 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/package.json
+351 silly prepareForInstallMany adding zmq@^2.10.0 from jmp dependencies
+352 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/package.json
+353 silly cache add args [ 'zmq@^2.10.0', null ]
+354 verbose cache add spec zmq@^2.10.0
+355 silly cache add parsed spec { raw: 'zmq@^2.10.0',
+355 silly cache add   scope: null,
+355 silly cache add   name: 'zmq',
+355 silly cache add   rawSpec: '^2.10.0',
+355 silly cache add   spec: '>=2.10.0 <3.0.0',
+355 silly cache add   type: 'range' }
+356 silly addNamed zmq@>=2.10.0 <3.0.0
+357 verbose addNamed ">=2.10.0 <3.0.0" is a valid semver range for zmq
+358 silly addNameRange { name: 'zmq', range: '>=2.10.0 <3.0.0', hasData: false }
+359 silly mapToRegistry name zmq
+360 silly mapToRegistry using default registry
+361 silly mapToRegistry registry https://registry.npmjs.org/
+362 silly mapToRegistry uri https://registry.npmjs.org/zmq
+363 verbose addNameRange registry:https://registry.npmjs.org/zmq not in flight; fetching
+364 verbose request uri https://registry.npmjs.org/zmq
+365 verbose request no auth needed
+366 info attempt registry request try #1 at 22:32:40
+367 verbose etag "CB9JST6WVXOLV7EVT86NZ6WU3"
+368 http request GET https://registry.npmjs.org/zmq
+369 verbose write writing to /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid/package.json
+370 info preinstall node-uuid@1.4.3
+371 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid/package.json
+372 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid/package.json
+373 silly install resolved []
+374 verbose about to build /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+375 info build /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+376 info linkStuff node-uuid@1.4.3
+377 silly linkStuff node-uuid@1.4.3 has /usr/local/lib/node_modules/ijavascript/node_modules as its parent node_modules
+378 silly linkStuff node-uuid@1.4.3 is part of a global install
+379 silly linkStuff node-uuid@1.4.3 is installed into a global node_modules
+380 verbose linkBins node-uuid@1.4.3
+381 verbose link bins [ { uuid: './bin/uuid' },
+381 verbose link bins   '/usr/local/lib/node_modules/ijavascript/node_modules/.bin',
+381 verbose link bins   false ]
+382 verbose linkMans node-uuid@1.4.3
+383 verbose rebuildBundles node-uuid@1.4.3
+384 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/.bin/uuid is being purged
+385 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/.bin/uuid
+386 info install node-uuid@1.4.3
+387 info postinstall node-uuid@1.4.3
+388 verbose unlock done using /var/root/.npm/_locks/node-uuid-3c8333f75c3241e1.lock for /usr/local/lib/node_modules/ijavascript/node_modules/node-uuid
+389 verbose write writing to /usr/local/lib/node_modules/ijavascript/node_modules/nel/package.json
+390 info preinstall nel@0.1.0
+391 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/nel/package.json
+392 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/nel/package.json
+393 silly install resolved []
+394 verbose about to build /usr/local/lib/node_modules/ijavascript/node_modules/nel
+395 info build /usr/local/lib/node_modules/ijavascript/node_modules/nel
+396 info linkStuff nel@0.1.0
+397 silly linkStuff nel@0.1.0 has /usr/local/lib/node_modules/ijavascript/node_modules as its parent node_modules
+398 silly linkStuff nel@0.1.0 is part of a global install
+399 silly linkStuff nel@0.1.0 is installed into a global node_modules
+400 verbose linkBins nel@0.1.0
+401 verbose linkMans nel@0.1.0
+402 verbose rebuildBundles nel@0.1.0
+403 info install nel@0.1.0
+404 info postinstall nel@0.1.0
+405 verbose unlock done using /var/root/.npm/_locks/nel-cd39e34873f0ac50.lock for /usr/local/lib/node_modules/ijavascript/node_modules/nel
+406 http 304 https://registry.npmjs.org/zmq
+407 silly get cb [ 304,
+407 silly get   { date: 'Thu, 08 Oct 2015 05:32:39 GMT',
+407 silly get     via: '1.1 varnish',
+407 silly get     'cache-control': 'max-age=60',
+407 silly get     etag: '"CB9JST6WVXOLV7EVT86NZ6WU3"',
+407 silly get     age: '0',
+407 silly get     connection: 'keep-alive',
+407 silly get     'x-served-by': 'cache-lax1420-LAX',
+407 silly get     'x-cache': 'HIT',
+407 silly get     'x-cache-hits': '1',
+407 silly get     'x-timer': 'S1444282359.411272,VS0,VE179',
+407 silly get     vary: 'Accept' } ]
+408 verbose etag https://registry.npmjs.org/zmq from cache
+409 verbose get saving zmq to /var/root/.npm/registry.npmjs.org/zmq/.cache.json
+410 silly addNameRange number 2 { name: 'zmq', range: '>=2.10.0 <3.0.0', hasData: true }
+411 silly addNameRange versions [ 'zmq',
+411 silly addNameRange   [ '1.0.0',
+411 silly addNameRange     '1.0.1',
+411 silly addNameRange     '1.0.2',
+411 silly addNameRange     '1.0.3',
+411 silly addNameRange     '1.0.4',
+411 silly addNameRange     '2.0.0',
+411 silly addNameRange     '2.0.1',
+411 silly addNameRange     '2.0.2',
+411 silly addNameRange     '2.0.3',
+411 silly addNameRange     '2.1.0',
+411 silly addNameRange     '2.2.0',
+411 silly addNameRange     '2.3.0',
+411 silly addNameRange     '2.4.0',
+411 silly addNameRange     '2.5.0',
+411 silly addNameRange     '2.5.1',
+411 silly addNameRange     '2.6.0',
+411 silly addNameRange     '2.7.0',
+411 silly addNameRange     '2.8.0',
+411 silly addNameRange     '2.9.0',
+411 silly addNameRange     '2.10.0',
+411 silly addNameRange     '2.11.0',
+411 silly addNameRange     '2.11.1',
+411 silly addNameRange     '2.12.0',
+411 silly addNameRange     '2.13.0' ] ]
+412 silly addNamed zmq@2.13.0
+413 verbose addNamed "2.13.0" is a plain semver version for zmq
+414 silly cache afterAdd zmq@2.13.0
+415 verbose afterAdd /var/root/.npm/zmq/2.13.0/package/package.json not in flight; writing
+416 verbose afterAdd /var/root/.npm/zmq/2.13.0/package/package.json written
+417 silly install resolved [ { name: 'zmq',
+417 silly install resolved     version: '2.13.0',
+417 silly install resolved     description: 'Bindings for node.js and io.js to ZeroMQ',
+417 silly install resolved     main: 'index',
+417 silly install resolved     repository:
+417 silly install resolved      { type: 'git',
+417 silly install resolved        url: 'git+ssh://git@github.com/JustinTulloss/zeromq.node.git' },
+417 silly install resolved     dependencies: { nan: '~2.0.0', bindings: '~1.2.1' },
+417 silly install resolved     devDependencies: { should: '2.1.x', semver: '~4.1.1', mocha: '~1.13.0' },
+417 silly install resolved     engines: { node: '>=0.8' },
+417 silly install resolved     scripts:
+417 silly install resolved      { test: 'mocha --expose-gc --slow 2000 --timeout 600000',
+417 silly install resolved        install: 'node-gyp rebuild' },
+417 silly install resolved     keywords:
+417 silly install resolved      [ 'zeromq',
+417 silly install resolved        'zmq',
+417 silly install resolved        '0mq',
+417 silly install resolved        'ømq',
+417 silly install resolved        'libzmq',
+417 silly install resolved        'native',
+417 silly install resolved        'binding',
+417 silly install resolved        'addon' ],
+417 silly install resolved     license: 'MIT',
+417 silly install resolved     author:
+417 silly install resolved      { name: 'Justin Tulloss',
+417 silly install resolved        email: 'justin.tulloss@gmail.com',
+417 silly install resolved        url: 'http://justin.harmonize.fm' },
+417 silly install resolved     contributors:
+417 silly install resolved      [ [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object],
+417 silly install resolved        [Object] ],
+417 silly install resolved     gypfile: true,
+417 silly install resolved     gitHead: 'a83ff5c00bcfda129d6756daf4e5c4077fad1d2f',
+417 silly install resolved     bugs: { url: 'https://github.com/JustinTulloss/zeromq.node/issues' },
+417 silly install resolved     homepage: 'https://github.com/JustinTulloss/zeromq.node#readme',
+417 silly install resolved     _id: 'zmq@2.13.0',
+417 silly install resolved     _shasum: '8168fe7c16314d03c867db74809cf517393f6e93',
+417 silly install resolved     _from: 'zmq@>=2.10.0 <3.0.0',
+417 silly install resolved     _npmVersion: '2.13.3',
+417 silly install resolved     _nodeVersion: '3.2.0',
+417 silly install resolved     _npmUser: { name: 'ronkorving', email: 'ron@ronkorving.nl' },
+417 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+417 silly install resolved     dist:
+417 silly install resolved      { shasum: '8168fe7c16314d03c867db74809cf517393f6e93',
+417 silly install resolved        tarball: 'http://registry.npmjs.org/zmq/-/zmq-2.13.0.tgz' },
+417 silly install resolved     directories: {},
+417 silly install resolved     _resolved: 'https://registry.npmjs.org/zmq/-/zmq-2.13.0.tgz',
+417 silly install resolved     readme: 'ERROR: No README data found!' } ]
+418 info install zmq@2.13.0 into /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+419 info installOne zmq@2.13.0
+420 verbose installOne of zmq to /usr/local/lib/node_modules/ijavascript/node_modules/jmp not in flight; installing
+421 verbose lock using /var/root/.npm/_locks/zmq-414c21793e5a3f73.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+422 silly install write writing zmq 2.13.0 to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+423 verbose unbuild lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+424 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq is being purged from base /usr/local
+425 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+426 verbose tar unpack /var/root/.npm/zmq/2.13.0/package.tgz
+427 verbose tar unpacking to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+428 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq is being purged
+429 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+430 silly gunzTarPerm modes [ '755', '644' ]
+431 silly gunzTarPerm extractEntry package.json
+432 silly gunzTarPerm extractEntry .npmignore
+433 silly gunzTarPerm extractEntry README.md
+434 silly gunzTarPerm extractEntry LICENSE
+435 silly gunzTarPerm extractEntry index.js
+436 silly gunzTarPerm extractEntry History.md
+437 silly gunzTarPerm extractEntry appveyor.yml
+438 silly gunzTarPerm extractEntry binding.cc
+439 silly gunzTarPerm extractEntry .travis.yml
+440 silly gunzTarPerm extractEntry examples/dealer_router.js
+441 silly gunzTarPerm extractEntry examples/pub_sub.js
+442 silly gunzTarPerm extractEntry examples/push_pull.js
+443 silly gunzTarPerm extractEntry examples/rep_req.js
+444 silly gunzTarPerm extractEntry examples/req_rep.js
+445 silly gunzTarPerm extractEntry examples/router_dealer.js
+446 silly gunzTarPerm extractEntry examples/rpc.js
+447 silly gunzTarPerm extractEntry examples/devices/forwarder.js
+448 silly gunzTarPerm extractEntry examples/devices/queue.js
+449 silly gunzTarPerm extractEntry examples/devices/streamer.js
+450 silly gunzTarPerm extractEntry examples/workers/producer.js
+451 silly gunzTarPerm extractEntry examples/workers/worker.js
+452 silly gunzTarPerm extractEntry windows/include/zmq.h
+453 silly gunzTarPerm extractEntry windows/include/zmq_utils.h
+454 silly gunzTarPerm extractEntry windows/lib/x64/libzmq-v100-mt-4_0_4.dll
+455 silly gunzTarPerm extractEntry windows/lib/x64/libzmq-v100-mt-4_0_4.lib
+456 silly gunzTarPerm extractEntry windows/lib/x86/libzmq-v100-mt-4_0_4.dll
+457 silly gunzTarPerm extractEntry windows/lib/x86/libzmq-v100-mt-4_0_4.lib
+458 silly gunzTarPerm extractEntry lib/index.js
+459 silly gunzTarPerm extractEntry Makefile
+460 silly gunzTarPerm extractEntry perf/local_lat.js
+461 silly gunzTarPerm extractEntry perf/local_thr.js
+462 silly gunzTarPerm extractEntry perf/remote_lat.js
+463 silly gunzTarPerm extractEntry perf/remote_thr.js
+464 silly gunzTarPerm extractEntry test/context.js
+465 silly gunzTarPerm extractEntry test/socket.monitor.js
+466 silly gunzTarPerm extractEntry test/socket.pair.js
+467 silly gunzTarPerm extractEntry test/socket.pub-sub.js
+468 silly gunzTarPerm extractEntry test/socket.push-pull.js
+469 silly gunzTarPerm extractEntry test/socket.messages.js
+470 silly gunzTarPerm extractEntry test/socket.router.js
+471 silly gunzTarPerm extractEntry test/socket.stream.js
+472 silly gunzTarPerm extractEntry test/socket.unbind.js
+473 silly gunzTarPerm extractEntry test/socket.xpub-xsub.js
+474 silly gunzTarPerm extractEntry test/socket.zap.js
+475 silly gunzTarPerm extractEntry test/socket.js
+476 silly gunzTarPerm extractEntry test/zap.js
+477 silly gunzTarPerm extractEntry test/socket.events.js
+478 silly gunzTarPerm extractEntry test/zmq_proxy.js
+479 silly gunzTarPerm extractEntry test/zmq_proxy.xpub-xsub.js
+480 silly gunzTarPerm extractEntry test/zmq_proxy.push-pull.js
+481 silly gunzTarPerm extractEntry test/gc.js
+482 silly gunzTarPerm extractEntry test/zmq_proxy.router-dealer.js
+483 silly gunzTarPerm extractEntry test/exports.js
+484 silly gunzTarPerm extractEntry test/zmq_proxy.xrep-xreq.js
+485 silly gunzTarPerm extractEntry test/socket.req-rep.js
+486 silly gunzTarPerm extractEntry test/mocha.opts
+487 silly gunzTarPerm extractEntry binding.gyp
+488 verbose write writing to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/package.json
+489 info preinstall zmq@2.13.0
+490 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/package.json
+491 silly prepareForInstallMany adding nan@~2.0.0 from zmq dependencies
+492 silly prepareForInstallMany adding bindings@~1.2.1 from zmq dependencies
+493 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/package.json
+494 silly cache add args [ 'nan@~2.0.0', null ]
+495 verbose cache add spec nan@~2.0.0
+496 silly cache add args [ 'bindings@~1.2.1', null ]
+497 verbose cache add spec bindings@~1.2.1
+498 silly cache add parsed spec { raw: 'nan@~2.0.0',
+498 silly cache add   scope: null,
+498 silly cache add   name: 'nan',
+498 silly cache add   rawSpec: '~2.0.0',
+498 silly cache add   spec: '>=2.0.0 <2.1.0',
+498 silly cache add   type: 'range' }
+499 silly addNamed nan@>=2.0.0 <2.1.0
+500 verbose addNamed ">=2.0.0 <2.1.0" is a valid semver range for nan
+501 silly addNameRange { name: 'nan', range: '>=2.0.0 <2.1.0', hasData: false }
+502 silly mapToRegistry name nan
+503 silly mapToRegistry using default registry
+504 silly mapToRegistry registry https://registry.npmjs.org/
+505 silly mapToRegistry uri https://registry.npmjs.org/nan
+506 verbose addNameRange registry:https://registry.npmjs.org/nan not in flight; fetching
+507 silly cache add parsed spec { raw: 'bindings@~1.2.1',
+507 silly cache add   scope: null,
+507 silly cache add   name: 'bindings',
+507 silly cache add   rawSpec: '~1.2.1',
+507 silly cache add   spec: '>=1.2.1 <1.3.0',
+507 silly cache add   type: 'range' }
+508 silly addNamed bindings@>=1.2.1 <1.3.0
+509 verbose addNamed ">=1.2.1 <1.3.0" is a valid semver range for bindings
+510 silly addNameRange { name: 'bindings', range: '>=1.2.1 <1.3.0', hasData: false }
+511 silly mapToRegistry name bindings
+512 silly mapToRegistry using default registry
+513 silly mapToRegistry registry https://registry.npmjs.org/
+514 silly mapToRegistry uri https://registry.npmjs.org/bindings
+515 verbose addNameRange registry:https://registry.npmjs.org/bindings not in flight; fetching
+516 verbose request uri https://registry.npmjs.org/bindings
+517 verbose request no auth needed
+518 info attempt registry request try #1 at 22:32:40
+519 verbose etag "547Q3C60W4DUGPOZ65YOO6930"
+520 http request GET https://registry.npmjs.org/bindings
+521 verbose request uri https://registry.npmjs.org/nan
+522 verbose request no auth needed
+523 info attempt registry request try #1 at 22:32:40
+524 verbose etag "1L4RU1AM541YSVP1YQFXG1Y1J"
+525 http request GET https://registry.npmjs.org/nan
+526 http 304 https://registry.npmjs.org/bindings
+527 silly get cb [ 304,
+527 silly get   { date: 'Thu, 08 Oct 2015 05:32:39 GMT',
+527 silly get     via: '1.1 varnish',
+527 silly get     'cache-control': 'max-age=60',
+527 silly get     etag: '"547Q3C60W4DUGPOZ65YOO6930"',
+527 silly get     age: '41',
+527 silly get     connection: 'keep-alive',
+527 silly get     'x-served-by': 'cache-lax1428-LAX',
+527 silly get     'x-cache': 'HIT',
+527 silly get     'x-cache-hits': '1',
+527 silly get     'x-timer': 'S1444282359.916845,VS0,VE0',
+527 silly get     vary: 'Accept' } ]
+528 verbose etag https://registry.npmjs.org/bindings from cache
+529 verbose get saving bindings to /var/root/.npm/registry.npmjs.org/bindings/.cache.json
+530 http 304 https://registry.npmjs.org/nan
+531 silly get cb [ 304,
+531 silly get   { date: 'Thu, 08 Oct 2015 05:32:39 GMT',
+531 silly get     via: '1.1 varnish',
+531 silly get     'cache-control': 'max-age=60',
+531 silly get     etag: '"1L4RU1AM541YSVP1YQFXG1Y1J"',
+531 silly get     age: '18',
+531 silly get     connection: 'keep-alive',
+531 silly get     'x-served-by': 'cache-lax1430-LAX',
+531 silly get     'x-cache': 'HIT',
+531 silly get     'x-cache-hits': '1',
+531 silly get     'x-timer': 'S1444282359.916294,VS0,VE1',
+531 silly get     vary: 'Accept' } ]
+532 verbose etag https://registry.npmjs.org/nan from cache
+533 verbose get saving nan to /var/root/.npm/registry.npmjs.org/nan/.cache.json
+534 silly addNameRange number 2 { name: 'bindings', range: '>=1.2.1 <1.3.0', hasData: true }
+535 silly addNameRange versions [ 'bindings',
+535 silly addNameRange   [ '0.0.1',
+535 silly addNameRange     '0.1.0',
+535 silly addNameRange     '0.1.1',
+535 silly addNameRange     '0.2.0',
+535 silly addNameRange     '0.2.1',
+535 silly addNameRange     '0.2.2',
+535 silly addNameRange     '0.2.3',
+535 silly addNameRange     '0.2.4',
+535 silly addNameRange     '0.3.0',
+535 silly addNameRange     '0.4.0',
+535 silly addNameRange     '1.0.0',
+535 silly addNameRange     '1.1.0',
+535 silly addNameRange     '1.1.1',
+535 silly addNameRange     '1.2.0',
+535 silly addNameRange     '1.2.1' ] ]
+536 silly addNamed bindings@1.2.1
+537 verbose addNamed "1.2.1" is a plain semver version for bindings
+538 silly addNameRange number 2 { name: 'nan', range: '>=2.0.0 <2.1.0', hasData: true }
+539 silly addNameRange versions [ 'nan',
+539 silly addNameRange   [ '0.3.0-wip',
+539 silly addNameRange     '0.3.0-wip2',
+539 silly addNameRange     '0.3.0',
+539 silly addNameRange     '0.3.1',
+539 silly addNameRange     '0.3.2',
+539 silly addNameRange     '0.4.0',
+539 silly addNameRange     '0.4.1',
+539 silly addNameRange     '0.4.2',
+539 silly addNameRange     '0.4.3',
+539 silly addNameRange     '0.4.4',
+539 silly addNameRange     '0.5.0',
+539 silly addNameRange     '0.5.1',
+539 silly addNameRange     '0.5.2',
+539 silly addNameRange     '0.6.0',
+539 silly addNameRange     '0.7.0',
+539 silly addNameRange     '0.7.1',
+539 silly addNameRange     '0.8.0',
+539 silly addNameRange     '1.0.0',
+539 silly addNameRange     '1.1.0',
+539 silly addNameRange     '1.1.1',
+539 silly addNameRange     '1.1.2',
+539 silly addNameRange     '1.2.0',
+539 silly addNameRange     '1.3.0',
+539 silly addNameRange     '1.4.0',
+539 silly addNameRange     '1.4.1',
+539 silly addNameRange     '1.5.0',
+539 silly addNameRange     '1.4.2',
+539 silly addNameRange     '1.4.3',
+539 silly addNameRange     '1.5.1',
+539 silly addNameRange     '1.5.2',
+539 silly addNameRange     '1.6.0',
+539 silly addNameRange     '1.5.3',
+539 silly addNameRange     '1.6.1',
+539 silly addNameRange     '1.6.2',
+539 silly addNameRange     '1.7.0',
+539 silly addNameRange     '1.8.0',
+539 silly addNameRange     '1.8.1',
+539 silly addNameRange     '1.8.2',
+539 silly addNameRange     '1.8.3',
+539 silly addNameRange     '1.8.4',
+539 silly addNameRange     '1.9.0',
+539 silly addNameRange     '2.0.0',
+539 silly addNameRange     '2.0.1',
+539 silly addNameRange     '2.0.2',
+539 silly addNameRange     '2.0.3',
+539 silly addNameRange     '2.0.4',
+539 silly addNameRange     '2.0.5',
+539 silly addNameRange     '2.0.6',
+539 silly addNameRange     '2.0.7',
+539 silly addNameRange     '2.0.8',
+539 silly addNameRange     '2.0.9' ] ]
+540 silly addNamed nan@2.0.9
+541 verbose addNamed "2.0.9" is a plain semver version for nan
+542 silly cache afterAdd nan@2.0.9
+543 verbose afterAdd /var/root/.npm/nan/2.0.9/package/package.json not in flight; writing
+544 silly cache afterAdd bindings@1.2.1
+545 verbose afterAdd /var/root/.npm/bindings/1.2.1/package/package.json not in flight; writing
+546 verbose afterAdd /var/root/.npm/nan/2.0.9/package/package.json written
+547 verbose afterAdd /var/root/.npm/bindings/1.2.1/package/package.json written
+548 silly install resolved [ { name: 'nan',
+548 silly install resolved     version: '2.0.9',
+548 silly install resolved     description: 'Native Abstractions for Node.js: C++ header for Node 0.8 -> 4 compatibility',
+548 silly install resolved     main: 'include_dirs.js',
+548 silly install resolved     repository: { type: 'git', url: 'git://github.com/nodejs/nan.git' },
+548 silly install resolved     scripts:
+548 silly install resolved      { test: 'tap --gc test/js/*-test.js',
+548 silly install resolved        'rebuild-tests': 'pangyp rebuild --msvs_version=2013 --directory test',
+548 silly install resolved        docs: 'doc/.build.sh' },
+548 silly install resolved     contributors:
+548 silly install resolved      [ [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object],
+548 silly install resolved        [Object] ],
+548 silly install resolved     devDependencies:
+548 silly install resolved      { bindings: '~1.2.1',
+548 silly install resolved        commander: '^2.8.1',
+548 silly install resolved        glob: '^5.0.14',
+548 silly install resolved        'node-gyp': '~2.0.2',
+548 silly install resolved        pangyp: '~2.2.0',
+548 silly install resolved        tap: '~0.7.1',
+548 silly install resolved        xtend: '~4.0.0' },
+548 silly install resolved     license: 'MIT',
+548 silly install resolved     bugs: { url: 'https://github.com/nodejs/nan/issues' },
+548 silly install resolved     homepage: 'https://github.com/nodejs/nan#readme',
+548 silly install resolved     _id: 'nan@2.0.9',
+548 silly install resolved     _shasum: 'd02a770f46778842cceb94e17cab31ffc7234a05',
+548 silly install resolved     _resolved: 'https://registry.npmjs.org/nan/-/nan-2.0.9.tgz',
+548 silly install resolved     _from: 'nan@>=2.0.0 <2.1.0',
+548 silly install resolved     _npmVersion: '2.14.2',
+548 silly install resolved     _nodeVersion: '4.0.0',
+548 silly install resolved     _npmUser: { name: 'kkoopa', email: 'bbyholm@abo.fi' },
+548 silly install resolved     maintainers: [ [Object], [Object] ],
+548 silly install resolved     dist:
+548 silly install resolved      { shasum: 'd02a770f46778842cceb94e17cab31ffc7234a05',
+548 silly install resolved        tarball: 'http://registry.npmjs.org/nan/-/nan-2.0.9.tgz' },
+548 silly install resolved     directories: {},
+548 silly install resolved     readme: 'ERROR: No README data found!' },
+548 silly install resolved   { name: 'bindings',
+548 silly install resolved     description: 'Helper module for loading your native module\'s .node file',
+548 silly install resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp', 'waf', 'c', 'c++' ],
+548 silly install resolved     version: '1.2.1',
+548 silly install resolved     author:
+548 silly install resolved      { name: 'Nathan Rajlich',
+548 silly install resolved        email: 'nathan@tootallnate.net',
+548 silly install resolved        url: 'http://tootallnate.net' },
+548 silly install resolved     repository:
+548 silly install resolved      { type: 'git',
+548 silly install resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
+548 silly install resolved     main: './bindings.js',
+548 silly install resolved     bugs: { url: 'https://github.com/TooTallNate/node-bindings/issues' },
+548 silly install resolved     homepage: 'https://github.com/TooTallNate/node-bindings',
+548 silly install resolved     license: 'MIT',
+548 silly install resolved     gitHead: 'e404152ee27f8478ccbc7122ee051246e8e5ec02',
+548 silly install resolved     _id: 'bindings@1.2.1',
+548 silly install resolved     scripts: {},
+548 silly install resolved     _shasum: '14ad6113812d2d37d72e67b4cacb4bb726505f11',
+548 silly install resolved     _from: 'bindings@>=1.2.1 <1.3.0',
+548 silly install resolved     _npmVersion: '1.4.14',
+548 silly install resolved     _npmUser: { name: 'tootallnate', email: 'nathan@tootallnate.net' },
+548 silly install resolved     maintainers: [ [Object], [Object] ],
+548 silly install resolved     dist:
+548 silly install resolved      { shasum: '14ad6113812d2d37d72e67b4cacb4bb726505f11',
+548 silly install resolved        tarball: 'http://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz' },
+548 silly install resolved     directories: {},
+548 silly install resolved     _resolved: 'https://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz',
+548 silly install resolved     readme: 'ERROR: No README data found!' } ]
+549 info install nan@2.0.9 into /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+550 info install bindings@1.2.1 into /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+551 info installOne nan@2.0.9
+552 verbose installOne of nan to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq not in flight; installing
+553 info installOne bindings@1.2.1
+554 verbose installOne of bindings to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq not in flight; installing
+555 verbose lock using /var/root/.npm/_locks/nan-f3f40d9198c5c2a4.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+556 verbose lock using /var/root/.npm/_locks/bindings-6ef6a0b68862ef57.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+557 silly install write writing nan 2.0.9 to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+558 silly install write writing bindings 1.2.1 to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+559 verbose unbuild lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+560 verbose unbuild lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+561 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan is being purged from base /usr/local
+562 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+563 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings is being purged from base /usr/local
+564 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+565 verbose tar unpack /var/root/.npm/nan/2.0.9/package.tgz
+566 verbose tar unpacking to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+567 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan is being purged
+568 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+569 verbose tar unpack /var/root/.npm/bindings/1.2.1/package.tgz
+570 verbose tar unpacking to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+571 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings is being purged
+572 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+573 silly gunzTarPerm modes [ '755', '644' ]
+574 silly gunzTarPerm modes [ '755', '644' ]
+575 silly gunzTarPerm extractEntry package.json
+576 silly gunzTarPerm extractEntry package.json
+577 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+578 silly gunzTarPerm extractEntry README.md
+579 silly gunzTarPerm extractEntry bindings.js
+580 silly gunzTarPerm extractEntry README.md
+581 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+582 silly gunzTarPerm extractEntry include_dirs.js
+583 silly gunzTarPerm modified mode [ 'include_dirs.js', 436, 420 ]
+584 silly gunzTarPerm extractEntry nan_converters.h
+585 silly gunzTarPerm modified mode [ 'nan_converters.h', 436, 420 ]
+586 silly gunzTarPerm extractEntry LICENSE.md
+587 silly gunzTarPerm modified mode [ 'LICENSE.md', 436, 420 ]
+588 silly gunzTarPerm extractEntry .dntrc
+589 silly gunzTarPerm modified mode [ '.dntrc', 436, 420 ]
+590 silly gunzTarPerm extractEntry appveyor.yml
+591 silly gunzTarPerm modified mode [ 'appveyor.yml', 436, 420 ]
+592 verbose write writing to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings/package.json
+593 info preinstall bindings@1.2.1
+594 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings/package.json
+595 silly gunzTarPerm extractEntry doc/new.md
+596 silly gunzTarPerm modified mode [ 'doc/new.md', 436, 420 ]
+597 silly gunzTarPerm extractEntry doc/.build.sh
+598 silly gunzTarPerm modified mode [ 'doc/.build.sh', 509, 493 ]
+599 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings/package.json
+600 silly gunzTarPerm extractEntry doc/buffers.md
+601 silly gunzTarPerm modified mode [ 'doc/buffers.md', 436, 420 ]
+602 silly gunzTarPerm extractEntry doc/callback.md
+603 silly gunzTarPerm modified mode [ 'doc/callback.md', 436, 420 ]
+604 silly install resolved []
+605 verbose about to build /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+606 info build /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+607 info linkStuff bindings@1.2.1
+608 silly linkStuff bindings@1.2.1 has /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules as its parent node_modules
+609 silly linkStuff bindings@1.2.1 is part of a global install
+610 silly linkStuff bindings@1.2.1 is installed into a global node_modules
+611 verbose linkBins bindings@1.2.1
+612 verbose linkMans bindings@1.2.1
+613 verbose rebuildBundles bindings@1.2.1
+614 info install bindings@1.2.1
+615 info postinstall bindings@1.2.1
+616 silly gunzTarPerm extractEntry doc/converters.md
+617 silly gunzTarPerm modified mode [ 'doc/converters.md', 436, 420 ]
+618 silly gunzTarPerm extractEntry doc/errors.md
+619 silly gunzTarPerm modified mode [ 'doc/errors.md', 436, 420 ]
+620 verbose unlock done using /var/root/.npm/_locks/bindings-6ef6a0b68862ef57.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/bindings
+621 silly gunzTarPerm extractEntry doc/maybe_types.md
+622 silly gunzTarPerm modified mode [ 'doc/maybe_types.md', 436, 420 ]
+623 silly gunzTarPerm extractEntry doc/methods.md
+624 silly gunzTarPerm modified mode [ 'doc/methods.md', 436, 420 ]
+625 silly gunzTarPerm extractEntry doc/asyncworker.md
+626 silly gunzTarPerm modified mode [ 'doc/asyncworker.md', 436, 420 ]
+627 silly gunzTarPerm extractEntry doc/node_misc.md
+628 silly gunzTarPerm modified mode [ 'doc/node_misc.md', 436, 420 ]
+629 silly gunzTarPerm extractEntry doc/persistent.md
+630 silly gunzTarPerm modified mode [ 'doc/persistent.md', 436, 420 ]
+631 silly gunzTarPerm extractEntry doc/scopes.md
+632 silly gunzTarPerm modified mode [ 'doc/scopes.md', 436, 420 ]
+633 silly gunzTarPerm extractEntry doc/script.md
+634 silly gunzTarPerm modified mode [ 'doc/script.md', 436, 420 ]
+635 silly gunzTarPerm extractEntry doc/string_bytes.md
+636 silly gunzTarPerm modified mode [ 'doc/string_bytes.md', 436, 420 ]
+637 silly gunzTarPerm extractEntry doc/v8_internals.md
+638 silly gunzTarPerm modified mode [ 'doc/v8_internals.md', 436, 420 ]
+639 silly gunzTarPerm extractEntry doc/v8_misc.md
+640 silly gunzTarPerm modified mode [ 'doc/v8_misc.md', 436, 420 ]
+641 silly gunzTarPerm extractEntry nan.h
+642 silly gunzTarPerm modified mode [ 'nan.h', 436, 420 ]
+643 silly gunzTarPerm extractEntry nan_callbacks.h
+644 silly gunzTarPerm modified mode [ 'nan_callbacks.h', 436, 420 ]
+645 silly gunzTarPerm extractEntry nan_callbacks_12_inl.h
+646 silly gunzTarPerm modified mode [ 'nan_callbacks_12_inl.h', 436, 420 ]
+647 silly gunzTarPerm extractEntry nan_callbacks_pre_12_inl.h
+648 silly gunzTarPerm modified mode [ 'nan_callbacks_pre_12_inl.h', 436, 420 ]
+649 silly gunzTarPerm extractEntry nan_converters_43_inl.h
+650 silly gunzTarPerm modified mode [ 'nan_converters_43_inl.h', 436, 420 ]
+651 silly gunzTarPerm extractEntry nan_converters_pre_43_inl.h
+652 silly gunzTarPerm modified mode [ 'nan_converters_pre_43_inl.h', 436, 420 ]
+653 silly gunzTarPerm extractEntry nan_implementation_12_inl.h
+654 silly gunzTarPerm modified mode [ 'nan_implementation_12_inl.h', 436, 420 ]
+655 silly gunzTarPerm extractEntry nan_implementation_pre_12_inl.h
+656 silly gunzTarPerm modified mode [ 'nan_implementation_pre_12_inl.h', 436, 420 ]
+657 silly gunzTarPerm extractEntry nan_maybe_43_inl.h
+658 silly gunzTarPerm modified mode [ 'nan_maybe_43_inl.h', 436, 420 ]
+659 silly gunzTarPerm extractEntry nan_maybe_pre_43_inl.h
+660 silly gunzTarPerm modified mode [ 'nan_maybe_pre_43_inl.h', 436, 420 ]
+661 silly gunzTarPerm extractEntry nan_new.h
+662 silly gunzTarPerm modified mode [ 'nan_new.h', 436, 420 ]
+663 silly gunzTarPerm extractEntry nan_object_wrap.h
+664 silly gunzTarPerm modified mode [ 'nan_object_wrap.h', 436, 420 ]
+665 silly gunzTarPerm extractEntry nan_persistent_12_inl.h
+666 silly gunzTarPerm modified mode [ 'nan_persistent_12_inl.h', 436, 420 ]
+667 silly gunzTarPerm extractEntry nan_persistent_pre_12_inl.h
+668 silly gunzTarPerm modified mode [ 'nan_persistent_pre_12_inl.h', 436, 420 ]
+669 silly gunzTarPerm extractEntry nan_string_bytes.h
+670 silly gunzTarPerm modified mode [ 'nan_string_bytes.h', 436, 420 ]
+671 silly gunzTarPerm extractEntry nan_weak.h
+672 silly gunzTarPerm modified mode [ 'nan_weak.h', 436, 420 ]
+673 silly gunzTarPerm extractEntry CHANGELOG.md
+674 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 420 ]
+675 silly gunzTarPerm extractEntry tools/package.json
+676 silly gunzTarPerm modified mode [ 'tools/package.json', 436, 420 ]
+677 silly gunzTarPerm extractEntry tools/README.md
+678 silly gunzTarPerm modified mode [ 'tools/README.md', 436, 420 ]
+679 silly gunzTarPerm extractEntry tools/1to2.js
+680 silly gunzTarPerm modified mode [ 'tools/1to2.js', 509, 493 ]
+681 verbose write writing to /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan/package.json
+682 info preinstall nan@2.0.9
+683 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan/package.json
+684 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan/package.json
+685 silly install resolved []
+686 verbose about to build /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+687 info build /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+688 info linkStuff nan@2.0.9
+689 silly linkStuff nan@2.0.9 has /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules as its parent node_modules
+690 silly linkStuff nan@2.0.9 is part of a global install
+691 silly linkStuff nan@2.0.9 is installed into a global node_modules
+692 verbose linkBins nan@2.0.9
+693 verbose linkMans nan@2.0.9
+694 verbose rebuildBundles nan@2.0.9
+695 info install nan@2.0.9
+696 info postinstall nan@2.0.9
+697 verbose unlock done using /var/root/.npm/_locks/nan-f3f40d9198c5c2a4.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq/node_modules/nan
+698 verbose about to build /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+699 info build /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+700 info linkStuff zmq@2.13.0
+701 silly linkStuff zmq@2.13.0 has /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules as its parent node_modules
+702 silly linkStuff zmq@2.13.0 is part of a global install
+703 silly linkStuff zmq@2.13.0 is installed into a global node_modules
+704 verbose linkBins zmq@2.13.0
+705 verbose linkMans zmq@2.13.0
+706 verbose rebuildBundles zmq@2.13.0
+707 verbose rebuildBundles [ 'bindings', 'nan' ]
+708 info install zmq@2.13.0
+709 verbose unsafe-perm in lifecycle false
+710 info zmq@2.13.0 Failed to exec install script
+711 verbose unlock done using /var/root/.npm/_locks/zmq-414c21793e5a3f73.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+712 verbose about to build /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+713 verbose unlock done using /var/root/.npm/_locks/jmp-90da7114d796f325.lock for /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+714 verbose about to build /usr/local/lib/node_modules/ijavascript
+715 verbose unlock done using /var/root/.npm/_locks/ijavascript-78c9ad2e25a7cf1f.lock for /usr/local/lib/node_modules/ijavascript
+716 verbose stack Error: zmq@2.13.0 install: `node-gyp rebuild`
+716 verbose stack Exit status 1
+716 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+716 verbose stack     at EventEmitter.emit (events.js:110:17)
+716 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+716 verbose stack     at ChildProcess.emit (events.js:110:17)
+716 verbose stack     at maybeClose (child_process.js:1015:16)
+716 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+717 verbose pkgid zmq@2.13.0
+718 verbose cwd /Users/PEM-Mac/br/jobsearch
+719 error Darwin 14.3.0
+720 error argv "node" "/usr/local/bin/npm" "install" "-g" "ijavascript"
+721 error node v0.12.7
+722 error npm  v2.12.1
+723 error code ELIFECYCLE
+724 error zmq@2.13.0 install: `node-gyp rebuild`
+724 error Exit status 1
+725 error Failed at the zmq@2.13.0 install script 'node-gyp rebuild'.
+725 error This is most likely a problem with the zmq package,
+725 error not with npm itself.
+725 error Tell the author that this fails on your system:
+725 error     node-gyp rebuild
+725 error You can get their info via:
+725 error     npm owner ls zmq
+725 error There is likely additional logging output above.
+726 verbose exit [ 1, true ]
+727 verbose unbuild lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+728 info preuninstall zmq@2.13.0
+729 info uninstall zmq@2.13.0
+730 verbose unbuild rmStuff zmq@2.13.0 from /usr/local/lib/node_modules
+731 verbose unbuild rmStuff in /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules
+732 info postuninstall zmq@2.13.0
+733 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq is being purged from base /usr/local
+734 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+735 silly vacuum-fs purging /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules/zmq
+736 silly vacuum-fs removing /usr/local/lib/node_modules/ijavascript/node_modules/jmp/node_modules
+737 silly vacuum-fs quitting because other entries in /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+738 verbose unbuild lib/node_modules/ijavascript/node_modules/jmp
+739 info preuninstall jmp@0.2.3
+740 info uninstall jmp@0.2.3
+741 verbose unbuild rmStuff jmp@0.2.3 from /usr/local/lib/node_modules
+742 verbose unbuild rmStuff in /usr/local/lib/node_modules/ijavascript/node_modules
+743 info postuninstall jmp@0.2.3
+744 silly gentlyRm /usr/local/lib/node_modules/ijavascript/node_modules/jmp is being purged from base /usr/local
+745 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+746 silly vacuum-fs purging /usr/local/lib/node_modules/ijavascript/node_modules/jmp
+747 silly vacuum-fs quitting because other entries in /usr/local/lib/node_modules/ijavascript/node_modules
+748 verbose unbuild lib/node_modules/ijavascript
+749 info preuninstall ijavascript@5.0.6
+750 info uninstall ijavascript@5.0.6
+751 verbose unbuild rmStuff ijavascript@5.0.6 from /usr/local/lib/node_modules
+752 silly gentlyRm /usr/local/bin/ijs is being gently removed
+753 silly gentlyRm verifying /usr/local is an npm working directory
+754 silly gentlyRm containing path /usr/local is under npm's control, in /usr/local
+755 silly gentlyRm deletion target /usr/local/bin/ijs is under /usr/local
+756 verbose gentlyRm vacuuming from /usr/local/bin/ijs up to /usr/local
+757 info postuninstall ijavascript@5.0.6
+758 silly gentlyRm /usr/local/lib/node_modules/ijavascript is being purged from base /usr/local
+759 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ijavascript
+760 silly vacuum-fs purging /usr/local/lib/node_modules/ijavascript
+761 silly vacuum-fs quitting because other entries in /usr/local/lib/node_modules

@@ -11,6 +11,13 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
+import json
+import urllib2
+from django.template import Template, Context, loader
+from urllib2 import URLError
+
+
+
 import requests
 import pdb
 
@@ -348,7 +355,35 @@ def skills_api(request):
     return JsonResponse(sorted_data)
 
 
+@csrf_exempt
+def amazon_reading_api(request):
+    if request.method == 'POST':
+        skill = request.POST['skill']
+        print skill
+        skill_unquote =  urllib2.unquote(skill)
 
+        request_url = 'https://redhoop.com/amazon/' + skill
+        
+        try:
+            data = json.load(urllib2.urlopen(request_url))
+            print data[0]['name']
+            print data[0]['author']
+            print data[0]['url']
+            print data[0]['price']
+            print data[0]['image']
+            
+            t = loader.get_template('api/amazon_reading_api.html')
+            minimum = min(4,len(data))
+            context = Context({"response": data[0:minimum], "skill": skill_unquote})
+            html = t.render(context)
+        
+        
+            
+        except URLError, e:
+            print 'Failed. Got an error code:', e
+        
+        return JsonResponse({"html": html, "skill": skill_unquote}
+            )
 
 ##################
 #  API Examples  #

@@ -1,0 +1,16 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{ skill |title}} Required Reading
+        </h3>
+    </div>
+    <div class="panel-body" id="reading_skills">
+        {% for o in response %}
+        <a target="blank" href="{{ o.url }}"><img class="img-thumbnail" alt="{{ o.title }}" class="bookImage" src="{{ o.image }}"" title="" width="127"></a>
+        <!--</div>-->
+        {% endfor %}
+        
+        
+        
+    </div>
+</div>

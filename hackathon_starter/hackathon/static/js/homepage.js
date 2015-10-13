@@ -16,6 +16,27 @@ $(document).ready(function(){
 //    
 //    ajax(a, step_1);
 //    
+    var get_reading_data = function(skill) {
+        console.log(skill)
+        
+         $.ajax({
+                type:"POST",
+                url: "amazon_reading_api",
+                dataType : 'json',
+                data: 'skill='+encodeURIComponent(skill),
+                success: function(response){
+                    console.log("SUCCESS")
+                    console.log(response)
+                    $("#result").append(response.html)
+                    
+                 },
+                 error: function(data){
+                    console.log("FAILURE")
+                    console.log(data)
+                 }
+            })
+    }
+    
     $("#jobform").submit(
         function (e) {
             console.log("Form submitted")
@@ -25,20 +46,13 @@ $(document).ready(function(){
             $.ajax({
                 type:"POST",
                 url: "skills_api",
-                dataType : 'string',
+                dataType : 'json',
                 data: 'job_desc='+encodeURIComponent(job_desc),
-                success: function(data){
+                success: function(response){
                     console.log("SUCCESS")
-                    console.log(data)
-                 },
-                 error: function(data){
-                    console.log("FAILURE")
-                    console.log(data)
-
-                    response = jQuery.parseJSON(data.responseText)
                     console.log(response)
+                    $('#result').html("")
                     outputHTML = ""
-                    
                     
                     $.each(response.important, function(i) {
                         console.log(response.important[i])
@@ -54,13 +68,22 @@ $(document).ready(function(){
                         x = response.not_important[i]
                         outputHTML += '<div class="col-lg-6"><a href="'+ x.website +'" target="blank">'+ x.name +'</a> <span class="badge">'+ x.frequency.toString() + '</span><br><br></div>'
                     }); 
-                    $('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Other skills needed</h3></div><div class="panel-body" id="not_important_skills"></div></div>')
-                    $("#not_important_skills").html(outputHTML)
-                    
-                    //console.log(sorted);  //display array
+                    $('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Other skills needed</h3></div><div class="panel-body" id="not_important_skills"></div></div>');
+                    $("#not_important_skills").html(outputHTML);
                     
                     
-
+                    $.each(response.important, function(i) {
+                        x = response.important[i].name
+                        
+                        get_reading_data(x)
+                    });
+                    
+                 },
+                 error: function(data){
+                    console.log("FAILURE")
+                    console.log(data)
+                    outputHTML = "Sorry there was an error"
+                    $("#result").html(outputHTML)
                  }
             })
         }
