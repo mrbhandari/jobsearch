@@ -70,7 +70,7 @@ $(document).ready(function(){
                         x = response.important[i]
                         outputHTML += '<div class="col-lg-6"><a href="'+ x.website +'" target="blank">'+ x.name +'</a> <span class="badge">'+ x.frequency.toString() + '</span><br><br></div>'
                     }); 
-                    $('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Based on the description: Key skills needed</h3></div><div class="panel-body" id="important_skills"></div></div>')
+                    $('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Based on the description: Key skills needed</h3></div><div class="panel-body" id="important_skills"></div>    <div class="panel-footer clearfix"><div class="pull-right">Based on skills mentioned in the job description</div></div>')
                     $("#important_skills").html(outputHTML)
                     
                     outputHTML = ""
@@ -79,15 +79,17 @@ $(document).ready(function(){
                         x = response.not_important[i]
                         outputHTML += '<div class="col-lg-6"><a href="'+ x.website +'" target="blank">'+ x.name +'</a> <span class="badge">'+ x.frequency.toString() + '</span><br><br></div>'
                     }); 
-                    $('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Based on the description: Other skills needed</h3></div><div class="panel-body" id="not_important_skills"></div></div>');
+                    $('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" data-toggle="collapse" data-target="#not_important_skills"><span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span> Key skills mentioned in description</h3></div><div class="panel-body collapse" id="not_important_skills"></div></div>');
                     $("#not_important_skills").html(outputHTML);
                     
+                    $('.collapse').collapse('hide')
                     
-                    $.each(response.important.slice(0,2), function(i) {
+                    $.each(response.important.slice(0,3), function(i) {
                         x = response.important[i].name
                         
                         get_reading_data(x)
                     });
+                    
                     
                  },
                  error: function(data){

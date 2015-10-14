@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">
-            Based on the title: {{ job_title |title}}
+            Skills others with this title have
         </h3>
     </div>
     <div class="panel-body" id="monster_skills">
@@ -11,5 +11,11 @@
             {% endfor %}
         </ul>
         
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on skills mentioned for other jobs with the title "{{job_title|title}}"
+        </div>
     </div>
 </div>
