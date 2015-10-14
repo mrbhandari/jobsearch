@@ -154,16 +154,17 @@ def rank_skills(data):
   
   for key in data:
       terms = len(key.split())
-      if terms < 2:
-        output_list_end.append({'name': key, 'terms': terms, 'frequency': int(data[key]), 'website': create_linkedin_skills_url(key)})
-  output_list_end = sorted(output_list_end, key=lambda output_list_end: output_list_end['frequency'], reverse=True)
-  
-  for key in data:
-      terms = len(key.split())
-      if terms >= 2:
+      if terms >= 2 or int(data[key]) >= 4:
           output_list_beg.append({'name': key, 'terms': terms, 'frequency': int(data[key]), 'website': create_linkedin_skills_url(key)})
   output_list_beg = sorted(output_list_beg, key=lambda output_list_beg: output_list_beg['frequency'], reverse=True)
   
+  for key in data:
+      terms = len(key.split())
+      if terms < 2 and int(data[key]) < 4:
+        output_list_end.append({'name': key, 'terms': terms, 'frequency': int(data[key]), 'website': create_linkedin_skills_url(key)})
+  output_list_end = sorted(output_list_end, key=lambda output_list_end: output_list_end['frequency'], reverse=True)
+  
+
   return {'important': output_list_beg, 'not_important': output_list_end}
   
 

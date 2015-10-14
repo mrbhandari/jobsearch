@@ -84,7 +84,7 @@ $(document).ready(function(){
                     
                     $('.collapse').collapse('hide')
                     
-                    $.each(response.important.slice(0,3), function(i) {
+                    $.each(response.important.slice(0,4), function(i) {
                         x = response.important[i].name
                         
                         get_reading_data(x)
