@@ -17,7 +17,10 @@
 			<form id="jobform" action="skills_api" method="post">
 			<div class="form-group">
 			    <label for="comment">Paste in a job description ... </label>
-			    <textarea class="form-control"  style="height:400px;" rows="10" id="job_desc" name=job_desc></textarea>
+			    <textarea class="form-control"  rows="20" id="job_desc" name=job_desc placeholder="Job description"></textarea>
+			    <br>
+			    <label for="comment">Title of the job</label>
+			    <input class="form-control"  rows="1" id="job_title" name=job_title placeholder="Job title"></input>
 			</div>
 			<button class="btn btn-primary btn-lg">Find skills for this job</button>
 			</form>

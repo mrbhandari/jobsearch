@@ -39,7 +39,7 @@ from scripts.googlePlus import *
 from scripts.dropbox import *
 from scripts.foursquare import *
 from scripts.skill_search import *
-
+from scripts.monster import parse_monster_url
 
 
 # Python
@@ -367,10 +367,10 @@ def amazon_reading_api(request):
         try:
             data = json.load(urllib2.urlopen(request_url))
             print data[0]['name']
-            print data[0]['author']
-            print data[0]['url']
-            print data[0]['price']
-            print data[0]['image']
+            #print data[0]['author']
+            #print data[0]['url']
+            #print data[0]['price']
+            #print data[0]['image']
             
             t = loader.get_template('api/amazon_reading_api.html')
             minimum = min(4,len(data))
@@ -384,6 +384,24 @@ def amazon_reading_api(request):
         
         return JsonResponse({"html": html, "skill": skill_unquote}
             )
+
+@csrf_exempt
+def monster_skill_api(request):
+    if request.method == 'POST':
+        job_title = request.POST['job_title']
+        print job_title
+        job_title_unquote =  urllib2.unquote(job_title)
+        data = parse_monster_url(job_title_unquote)
+            
+        t = loader.get_template('api/monster_skill_api.html')
+        
+        context = Context({"response": data, "job_title": job_title})
+        html = t.render(context)
+    
+        
+        return JsonResponse({"html": html, "job_title": job_title}
+            )
+
 
 ##################
 #  API Examples  #
