@@ -7,6 +7,9 @@ urlpatterns = patterns('',
     url(r'^skills_api$', views.skills_api, name='skills_api'),
     url(r'^amazon_reading_api$', views.amazon_reading_api, name='amazon_reading_api'),
     url(r'^monster_skill_api$', views.monster_skill_api, name='monster_skill_api'),
+    url(r'^cover_letter_api$', views.cover_letter_api, name='cover_letter_api'),
+    
+    
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),

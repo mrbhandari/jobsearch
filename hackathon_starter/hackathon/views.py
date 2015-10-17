@@ -399,9 +399,27 @@ def monster_skill_api(request):
         html = t.render(context)
     
         
-        return JsonResponse({"html": html, "job_title": job_title}
+        return JsonResponse({"html": html, "job_title": job_title, "skills": data}
             )
 
+@csrf_exempt
+def cover_letter_api(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            json_text = request.body   
+        
+            load_json_text = json.loads(json_text)
+            job_title_unquote = urllib2.unquote(load_json_text['job_title'])
+            skills = load_json_text['skills']
+            data = []
+                
+            t = loader.get_template('api/cover_letter_api.html')
+            
+            context = Context({"skills": skills, "job_title": job_title_unquote})
+            html = t.render(context)
+        
+            
+            return JsonResponse({"html": html, "job_title": job_title_unquote, "skills": skills})
 
 ##################
 #  API Examples  #

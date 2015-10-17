@@ -48,5 +48,12 @@ cd /etc/apache2/sites-enabled/
 #SERVER set up ports.conf
 
 
+sudo scp -i ~/Downloads/rahulkey.pem ubuntu@ec2-54-163-228-237.compute-1.amazonaws.com:/data/jobsearch/hackathon_starter/hackathon/static/data/download/*.html .
+
+
+MYSQL
+sudo pip install mysql-python
+mysql -u root -p
+    CREATE DATABASE jobsearch;
  
  

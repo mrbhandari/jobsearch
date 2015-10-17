@@ -1,6 +1,33 @@
 
 $(document).ready(function(){
     console.log("ready");
+    
+    var get_cover_letter = function(job_title, job_description, skills) {
+        
+        console.log(job_title)
+        
+         $.ajax({
+                type:"POST",
+                url: "cover_letter_api",
+                dataType : 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    "job_title": encodeURIComponent(job_title),
+                    "skills" : skills,
+                                     }),
+                //data: 'job_title='+encodeURIComponent(job_title)+'&skills='+encodeURIComponent(job_desc),
+                success: function(response){
+                    console.log("SUCCESS MON")
+                    console.log(response)
+                    $("#result").append(response.html)
+                    console.log("SUCCESS APPENDING MONSTER DATA")
+                 },
+                 error: function(data){
+                    console.log("FAILURE")
+                    console.log(data)
+                 }
+            })
+    }
       
     var get_reading_data = function(skill) {
         console.log(skill)
@@ -36,6 +63,8 @@ $(document).ready(function(){
                     console.log(response)
                     $("#result").append(response.html)
                     console.log("SUCCESS APPENDING MONSTER DATA")
+                    
+                    get_cover_letter(job_title, job_desc, response.skills)
                  },
                  error: function(data){
                     console.log("FAILURE")
