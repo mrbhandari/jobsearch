@@ -1,18 +1,37 @@
+
+
 ## See if monster can help
+
+##Djanog libraries
+from django.core.exceptions import ObjectDoesNotExist
+from django.core import serializers
 
 ##Python libraries
 import urllib2
 import urllib
-from bs4 import BeautifulSoup
 import string
 
+##external
+from bs4 import BeautifulSoup
 
 #Internal libraries
 from utils import create_hash_string, get_url_data_with_retries, get_url_data, fetch_save_urls
-
+from hackathon.models import CoviewedSkills
 #Global variables
 
-#i = "Product Engagement Manager"
+
+def get_coviewed_skill(skill):
+    try:
+        print skill
+        coviewed_skill_query = CoviewedSkills.objects.filter(source_skill=skill)
+        #max_query_count = coviewed_skill_query.get(target_skill_rank = 1).target_skill_count
+        data = serializers.serialize("python", CoviewedSkills.objects.filter(source_skill=skill))
+        return data
+        #for i in coviewed_skill_query:
+        #    print {i.target_skill_rank, i.target_skill,  i.target_skill_count, (i.target_skill_count*100/max_query_count)
+    except ObjectDoesNotExist, e:
+        return e
+    
 
 
 def generate_monster_url(job_title):
@@ -45,4 +64,13 @@ def parse_monster_url(job_title):
     m_related_skills.remove("Show More")
     m_related_skills.remove("show less")
     print m_related_skills
-    return m_related_skills
+    
+    monster_output = []
+    for skill in m_related_skills:
+        monster_output.append({"skill_name" : skill, "coviewed_model" : get_coviewed_skill(skill)})
+    
+    print monster_output
+    return monster_output
+
+
+

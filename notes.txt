@@ -51,9 +51,16 @@ cd /etc/apache2/sites-enabled/
 sudo scp -i ~/Downloads/rahulkey.pem ubuntu@ec2-54-163-228-237.compute-1.amazonaws.com:/data/jobsearch/hackathon_starter/hackathon/static/data/download/*.html .
 
 
+#on desktop
 MYSQL
 sudo pip install mysql-python
 mysql -u root -p
     CREATE DATABASE jobsearch;
- 
+
+python manage.py makemigrations
+python manage.py migrate
+
+mysql -u root -p --local-infile
+use jobsearch
+LOAD DATA LOCAL  INFILE 'hackathon/static/data/coviewed_skills_lower.tsv' into table hackathon_CoviewedSkills FIELDS terminated by '\t' lines terminated by '\n' (source_skill,target_skill, target_skill_count, target_skill_rank,filename);
  

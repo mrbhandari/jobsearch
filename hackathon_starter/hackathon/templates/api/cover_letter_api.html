@@ -12,11 +12,11 @@ With the utmost enthusiasm, I would like to express my interest in the <b>{{ job
 <br><br>
 As a candidate, here is what I could immediately bring to the table:
 <br><br>
-An effective <b>{{ skills | first}}</b>: In my role at [previous job], I [action or accomplishment]. I was also able to showcase my [skill] abilities as a [role] in [project name] project by [what you did].
+An effective <b>{{ skills.0.skill_name}}</b>: In my role at [previous job], I [action or accomplishment]. I was also able to showcase my [skill] abilities as a [role] in [project name] project by [what you did].
 <br><br>
-A disciplined <b>{{ skills.1}}</b>: I have always displayed my careful approach to [job duty] by [action]. At [previous company], I frequently [action]. In addition, I had the opportunity to [action or accomplishment], which further shows my dedication to [aspect of your field].
+A disciplined <b>{{ skills.1.skill_name}}</b>: I have always displayed my careful approach to [job duty] by [action]. At [previous company], I frequently [action]. In addition, I had the opportunity to [action or accomplishment], which further shows my dedication to [aspect of your field].
 <br><br>
-A passionate <b>{{ skills.2}}</b>: Everything I have engaged in so far has all been driven by my keen interest in [aspect of your field]. Even as a [previous role], I made sure to dedicate some part of my day to [action]. It is this passion that has driven every one of my career decisions thus far.
+A passionate <b>{{ skills.2.skill_name}}</b>: Everything I have engaged in so far has all been driven by my keen interest in [aspect of your field]. Even as a [previous role], I made sure to dedicate some part of my day to [action]. It is this passion that has driven every one of my career decisions thus far.
 <br><br>
 I look forward to contributing my skills and experiences to the <b>{{ job_title}}</b> position at [company] and hope to have the opportunity to speak with you further about how I can be an asset to your team.
 <br><br>

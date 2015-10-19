@@ -55,7 +55,7 @@ def parse_skills(filepath):
     if len(skill_list) == len(skill_count):
         #checks that there are atleast as many skills as counts before writing
         for i in range(0,len(skill_list)):
-            output_text += ('\t').join([input_skill, skill_list[i], skill_count[i]])+ '\n'
+            output_text += ('\t').join([input_skill, skill_list[i], skill_count[i], str(i+1), filepath])+ '\n'
     #print output_text
     return output_text
 
@@ -74,8 +74,41 @@ def write_to_file():
             print "Invalid character -probably univeristy for "
             print filepath
 
+
+def upload_to_db():
+    # Full path and name to your csv file
+    csv_filepathname="/home/mitch/projects/wantbox.com/wantbox/zips/data/zipcodes.csv"
+    # Full path to your django project directory
+    your_djangoproject_home="/home/mitch/projects/wantbox.com/wantbox/"
+    
+    import sys,os
+    sys.path.append(your_djangoproject_home)
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+    
+    from zips.models import ZipCode
+    
+    import csv
+    dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
+    
+    for row in dataReader:
+        if row[0] != 'ZIPCODE': # Ignore the header row, import everything else
+            zipcode = ZipCode()
+            zipcode.zipcode = row[0]
+            zipcode.city = row[1]
+            zipcode.statecode = row[2]
+            zipcode.statename = row[3]
+            zipcode.save()
+
+from django.db import connection
+            
+def uplaod_to_db_infile():
+    cursor = connection.cursor()
+    nr_records_inserted = cursor.execute("""LOAD DATA LOCAL INFILE '/tmp/import.csv' INTO TABLE import CHARACTER SET latin1 FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY '\n' (id, name);""")
+
 if __name__ == '__main__':
-    write_to_file()
+    #write_to_file()
+
+
 
 
 #print re.findall(r'\([0-9,]+', i.get_text())[0].replace('(', '').replace(',', '').strip()

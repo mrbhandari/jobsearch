@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+
+class CoviewedSkills(models.Model):
+    source_skill = models.CharField(max_length=2000)
+    target_skill = models.CharField(max_length=2000)
+    target_skill_count = models.IntegerField(max_length=10)
+    target_skill_rank = models.IntegerField(max_length=5, default= 0)
+    filename = models.CharField(max_length=2000)
+
+    def __unicode__(self):
+        return unicode(self.source_skill)
+
+
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User)
