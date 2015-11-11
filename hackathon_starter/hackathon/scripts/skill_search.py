@@ -1,23 +1,21 @@
-#imports
+##import python
 from urllib import quote
 from urllib2 import Request, urlopen, URLError
 import string
 import json
+from collections import Counter
+import re
+import os
+
+##import external
 from itertools import tee, izip
 from nltk import PorterStemmer
 from nltk.stem import RegexpStemmer
 from  more_itertools import unique_everseen
-from collections import Counter
-import re
-import os
-from coviewed_skills import create_linkedin_skills_url
 
-#global vars
-STEMMING_ON = True
-STEMMING_LIMIT = 6
-request_string = 'https://www.linkedin.com/ta/skill?query='
-#skills_path = 'skill_data.json'
-#job_path = 'employment.txt'
+#import internal
+from coviewed_skills import create_linkedin_skills_url
+from utils import get_coviewed_skill
 
 
 def ngrams(input_string, n):
@@ -30,19 +28,24 @@ def join_ngram(input_string, n):
     return [' '.join(x) for x in ngrams(input_string, n)] # ['a b', 'b c', 'c d']
 
 def stemmed_word(word):
-   
-    if STEMMING_ON == True and len(word)>STEMMING_LIMIT:
-      #st = RegexpStemmer('ing$|s$|e$|able$', min=STEMMING_LIMIT)
-      try:
-        return PorterStemmer().stem_word(word.lower())
-        #return st.stem(word)
-      except:
-        pass
-    else:
-        return word
+  #config variables
+  STEMMING_LIMIT = 6
+  STEMMING_ON = True
+  if STEMMING_ON == True and len(word)>STEMMING_LIMIT:
+    #st = RegexpStemmer('ing$|s$|e$|able$', min=STEMMING_LIMIT)
+    try:
+      return PorterStemmer().stem_word(word.lower())
+      #return st.stem(word)
+    except:
+      pass
+  else:
+      return word
       
 def autosuggest_api(i):
   ## takes a query and pings linkedin api for autosuggest results - returns display names that match that query
+  #config variables
+  request_string = 'https://www.linkedin.com/ta/skill?query='
+  
   master_skills_list = []
   request = Request( request_string+ quote(i))
   response = urlopen(request)
@@ -155,7 +158,7 @@ def rank_skills(data):
   for key in data:
       terms = len(key.split())
       if terms >= 2 or int(data[key]) >= 4:
-          output_list_beg.append({'name': key, 'terms': terms, 'frequency': int(data[key]), 'website': create_linkedin_skills_url(key)})
+          output_list_beg.append({'name': key, 'terms': terms, 'frequency': int(data[key]), 'website': create_linkedin_skills_url(key), 'coviewed_model': get_coviewed_skill(key) })
   output_list_beg = sorted(output_list_beg, key=lambda output_list_beg: output_list_beg['frequency'], reverse=True)
   
   for key in data:

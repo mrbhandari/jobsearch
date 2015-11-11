@@ -1,0 +1,84 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Based on the description: Key skills needed
+        </h3>
+    </div>
+    <div class="panel-body" id="important_skills">
+        <div class="list-group">
+
+            {% for o in response.important %}
+            <a target="blank" href="{{o.website}}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ o.name | capfirst }}</h4> <i>({{ o.frequency }} mention{{ o.frequency|pluralize }})</i>
+                
+                <p class="list-group-item-text">
+                {% for i in o.coviewed_model%}    
+                    {{ i.fields.target_skill | safe}}, 
+                {% endfor %}
+                </p>
+                <!--<li class="list-group-item col-xs-6">{{ o.skill_name }}</li>-->
+                
+            </a>
+            {% endfor %}
+        </div>
+        
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on skills mentioned in the job description
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title" data-toggle="collapse" data-target="#not_important_skills">
+            <span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span> Other skills mentioned in description
+        </h3>
+    </div>
+    <div class="panel-body collapse" id="not_important_skills">
+        <div class="list-group">
+
+            {% for o in response.not_important %}
+            <a target="blank" href="{{o.website}}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ o.name | capfirst }}</h4> <i>({{ o.frequency }} mention{{ o.frequency|pluralize }})</i>
+                
+                <p class="list-group-item-text">
+                {% for i in o.coviewed_model%}    
+                    {{ i.fields.target_skill | safe}}, 
+                {% endfor %}
+                </p>
+                <!--<li class="list-group-item col-xs-6">{{ o.skill_name }}</li>-->
+                
+            </a>
+            {% endfor %}
+        </div>
+        
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on skills mentioned in the job description
+        </div>
+    </div>
+</div>
+
+
+<!--//$.each(response.important, function(i) {
+                    //    console.log(response.important[i])
+                    //    x = response.important[i]
+                    //    outputHTML += '<div class="col-lg-6"><a href="'+ x.website +'" target="blank">'+ x.name +'</a> <span class="badge">'+ x.frequency.toString() + '</span><br><br></div>'
+                    //}); 
+                    //$('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title">Based on the description: Key skills needed</h3></div><div class="panel-body" id="important_skills"></div>    <div class="panel-footer clearfix"><div class="pull-right">Based on skills mentioned in the job description</div></div>')
+                    //$("#important_skills").html(outputHTML)
+                    //
+                    //outputHTML = ""
+                    //$.each(response.not_important, function(i) {
+                    //    console.log(response.not_important[i])
+                    //    x = response.not_important[i]
+                    //    outputHTML += '<div class="col-lg-6"><a href="'+ x.website +'" target="blank">'+ x.name +'</a> <span class="badge">'+ x.frequency.toString() + '</span><br><br></div>'
+                    //}); 
+                    //$('#result').append('<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" data-toggle="collapse" data-target="#not_important_skills"><span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span> Key skills mentioned in description</h3></div><div class="panel-body collapse" id="not_important_skills"></div></div>');
+                    //$("#not_important_skills").html(outputHTML);
+                    //-->

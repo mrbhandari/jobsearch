@@ -352,7 +352,16 @@ def skills_api(request):
     sorted_data = rank_skills(skills_counter)
     print sorted_data
 
-    return JsonResponse(sorted_data)
+        
+    t = loader.get_template('api/linkedin_skill_api.html')
+    
+    context = Context({"response": sorted_data})
+    html = t.render(context)
+
+    
+    return JsonResponse({"html": html, "job_text": job_text, "skills": sorted_data}
+        )
+    #return JsonResponse(sorted_data)
 
 
 @csrf_exempt

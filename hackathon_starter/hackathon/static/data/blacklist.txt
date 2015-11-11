@@ -61,3 +61,5 @@ job descriptions
 performing
 localism
 localization
+flexible schedule
+changing environments

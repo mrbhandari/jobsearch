@@ -63,4 +63,7 @@ python manage.py migrate
 mysql -u root -p --local-infile
 use jobsearch
 LOAD DATA LOCAL  INFILE 'hackathon/static/data/coviewed_skills_lower.tsv' into table hackathon_CoviewedSkills FIELDS terminated by '\t' lines terminated by '\n' (source_skill,target_skill, target_skill_count, target_skill_rank,filename);
+
+
+sudo /usr/local/mysql-5.6.22-osx10.8-x86_64/support-files/mysql.server start
  
