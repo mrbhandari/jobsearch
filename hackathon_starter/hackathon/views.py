@@ -326,6 +326,13 @@ def index(request):
 
 
 
+def skillsTool(reqest):
+    
+    context = {'hello': 'world'}
+    return render(request, 'hackathon/index.html', context)
+
+
+
 from django.template import loader, Context
 
 def view_1(request):

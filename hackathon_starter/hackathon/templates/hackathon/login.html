@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html>
-    {% include 'hackathon/base.html' %}
+
+    {% extends 'hackathon/base.html' %}
+    
+{% block body %}
     <style>
       .form-signin {
         max-width: 550px;
@@ -9,7 +10,7 @@
       }
     </style>
 
-    <body>
+
       <div class="container text-center">
         <form class="form-signin" id="login_form" method="post" action="/hackathon/login/">
           {% csrf_token %}
@@ -63,5 +64,5 @@
           Sign in with Foursquare
         </a>-->
       </div>
-    </body>
-</html>
+      
+{% endblock %}

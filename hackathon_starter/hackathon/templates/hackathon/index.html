@@ -1,52 +1,92 @@
-<!DOCTYPE html>
+{% extends 'hackathon/base.html' %}
 
-<html>
-    {% include 'hackathon/base.html' %}
+{% block head-content %}
+<script type="text/javascript" src="/static/js/homepage.js"></script>
+{% endblock %}
 
-    <body>
-    <div class="container">
-    	{% if user.is_authenticated %}
-        	<h1>Prepare for your interview</h1>
-        	<strong>{{ boldmessage }}</strong><br/>
+{% block body %}
+    
+
+    	<!--{% if user.is_authenticated %}
         {% else %}
-        	<h1>Prepare & Succeed</h1>
-        {% endif %}
-    	<br>
-		<div class="row">
-		    <div class="col-sm-6 col-md-6">
-			<form id="jobform" action="skills_api" method="post">
-			<div class="form-group">
-			    <label for="comment">Paste in a job description ... </label>
-			    <textarea class="form-control"  rows="20" id="job_desc" name=job_desc placeholder="Job description"></textarea>
-			    <br>
-			    <label for="comment">Title of the job</label>
-			    <input class="form-control"  rows="1" id="job_title" name=job_title placeholder="Job title"></input>
-			</div>
-			<button class="btn btn-primary btn-lg">Find skills for this job</button>
-			</form>
-		    </div>
-			<div class="col-sm-6 col-md-6">
-			<label for="comment">... see what skills required</label>
-			<div id="result">
-			    
-			</div>
-			</div>		    
-		    
-		    
-		    
-		    
-		</div>
-		<br>
-		<div class="row">
-			
-			<div class="col-sm-6 col-md-6">
-				Please send feedback <a target="blank" href="mailto:mr.bhandari@gmail.com?subject=Job Search Feedback">here</a>.
-			</div>
+        {% endif %}-->
 
-		</div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h1 id="forms">Interview Prep Tool</h1>
+            </div>
+          </div>
+        </div>
+
+<div class="col-lg-12">
+<div class="well bs-component">
+<form class="form-horizontal" id="jobform" action="skills_api" method="post">
+  <fieldset>
+    <legend>About the job</legend>
+   
+   <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Job Title</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="job_title" placeholder="Job Title" style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;" autocomplete="off">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Job description</label>
+      
+      
+      <div class="col-lg-10">
+        <textarea  id="job_desc" name=job_desc class="form-control" rows="3" style="background-image: none; background-position: 0% 0%; background-repeat: repeat;"></textarea>
+        <span class="help-block">Tip: Paste all text. Don't limit it to a specific section.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Clear</button>
+        <button type="submit" class="btn btn-primary">Get a prep plan</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+</div>
+
+    
+    
+</div>
+
+	<div class="col-sm-12 col-md-12">
+	    
+	    
+	<legend>Prep Plan</legend>
+	<br>
+	
+	<div id="result">
+	<br>    
 	</div>
-    </body>
-    
+	</div>
+	
+<!--
+<div class="row">
+    <div class="col-sm-6 col-md-6">
+	<form id="jobform" action="skills_api" method="post">
+	<div class="form-group">
+	    <label for="comment">Paste in a job description ... </label>
+	    <textarea class="form-control"  rows="20" id="job_desc" name=job_desc placeholder="Job description"></textarea>
+	    <br>
+	    <label for="comment">Title of the job</label>
+	    <input class="form-control"  rows="1" id="job_title" name=job_title placeholder="Job title"></input>
+	</div>
+	<button class="btn btn-primary btn-lg">Find skills for this job</button>
+	</form>
+    </div>
 
     
-</html>
+    
+    
+</div>-->
+
+
+
+{% endblock %}
