@@ -1,92 +1,46 @@
 {% extends 'hackathon/base.html' %}
 
 {% block head-content %}
-<script type="text/javascript" src="/static/js/homepage.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
 {% endblock %}
 
 {% block body %}
-    
+ <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Text for career guidance</h1>
+	<p>Text a Counselor
+	provides a single access point - available 24-7 - to real people who can help you find
+	people find a job, identify training
+	programs, and gain skills in growing industries. No matter if you are in college, graduating, looking to switch jobs, take
+	comfort knowing you're in the right place to jump start your job search,
+	explore new career options, or prepare to ace your interview.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
 
-    	<!--{% if user.is_authenticated %}
-        {% else %}
-        {% endif %}-->
-
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="page-header">
-              <h1 id="forms">Interview Prep Tool</h1>
-            </div>
-          </div>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
-
-<div class="col-lg-12">
-<div class="well bs-component">
-<form class="form-horizontal" id="jobform" action="skills_api" method="post">
-  <fieldset>
-    <legend>About the job</legend>
-   
-   <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Job Title</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="job_title" placeholder="Job Title" style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;" autocomplete="off">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label">Job description</label>
-      
-      
-      <div class="col-lg-10">
-        <textarea  id="job_desc" name=job_desc class="form-control" rows="3" style="background-image: none; background-position: 0% 0%; background-repeat: repeat;"></textarea>
-        <span class="help-block">Tip: Paste all text. Don't limit it to a specific section.</span>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Clear</button>
-        <button type="submit" class="btn btn-primary">Get a prep plan</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
+      <hr>
 
-</div>
-
-    
-    
-</div>
-
-	<div class="col-sm-12 col-md-12">
-	    
-	    
-	<legend>Prep Plan</legend>
-	<br>
-	
-	<div id="result">
-	<br>    
-	</div>
-	</div>
-	
-<!--
-<div class="row">
-    <div class="col-sm-6 col-md-6">
-	<form id="jobform" action="skills_api" method="post">
-	<div class="form-group">
-	    <label for="comment">Paste in a job description ... </label>
-	    <textarea class="form-control"  rows="20" id="job_desc" name=job_desc placeholder="Job description"></textarea>
-	    <br>
-	    <label for="comment">Title of the job</label>
-	    <input class="form-control"  rows="1" id="job_title" name=job_title placeholder="Job title"></input>
-	</div>
-	<button class="btn btn-primary btn-lg">Find skills for this job</button>
-	</form>
-    </div>
-
-    
-    
-    
-</div>-->
-
-
+    </div> <!-- /container -->
 
 {% endblock %}

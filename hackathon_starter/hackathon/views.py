@@ -326,10 +326,29 @@ def index(request):
 
 
 
-def skillsTool(reqest):
-    
+def skillsTool(request):
     context = {'hello': 'world'}
-    return render(request, 'hackathon/index.html', context)
+    return render(request, 'hackathon/skillsTool.html', context)
+
+def whyText(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/why-text.html', context)
+
+def pricing(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/pricing.html', context)
+
+def aboutUs(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/about-us.html', context)
+
+def faq(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/faq.html', context)
+
+def blog(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/blog.html', context)
 
 
 

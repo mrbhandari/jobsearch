@@ -4,11 +4,18 @@ from hackathon import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^skillsTool/$', views.index, name='index'),
+    url(r'^skillsTool/$', views.skillsTool, name='skillsTool'),
     url(r'^skillsTool/skills_api$', views.skills_api, name='skills_api'),
     url(r'^skillsTool/amazon_reading_api$', views.amazon_reading_api, name='amazon_reading_api'),
     url(r'^skillsTool/monster_skill_api$', views.monster_skill_api, name='monster_skill_api'),
     url(r'^skillsTool/cover_letter_api$', views.cover_letter_api, name='cover_letter_api'),
+    
+    
+    url(r'^why-text/$', views.whyText, name='whyText'),
+    url(r'^pricing/$', views.pricing, name='pricing'),
+    url(r'^about-us/$', views.aboutUs, name='aboutUs'),
+    url(r'^faq/$', views.faq, name='faq'),
+    url(r'^blog/$', views.blog, name='blog'),
     
     
     url(r'^register/$', views.register, name='register'),
