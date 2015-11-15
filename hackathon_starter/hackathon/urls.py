@@ -4,6 +4,7 @@ from hackathon import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
+    url(r'^home/$', views.index, name='index'),
     url(r'^skillsTool/$', views.skillsTool, name='skillsTool'),
     url(r'^skillsTool/skills_api$', views.skills_api, name='skills_api'),
     url(r'^skillsTool/amazon_reading_api$', views.amazon_reading_api, name='amazon_reading_api'),
