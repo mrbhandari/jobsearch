@@ -11,11 +11,14 @@ urlpatterns = patterns('',
     url(r'^skillsTool/cover_letter_api$', views.cover_letter_api, name='cover_letter_api'),
     
     
-    url(r'^why-text/$', views.whyText, name='whyText'),
+    url(r'^how-it-works/$', views.howItWorks, name='howItWorks'),
     url(r'^pricing/$', views.pricing, name='pricing'),
     url(r'^about-us/$', views.aboutUs, name='aboutUs'),
-    url(r'^faq/$', views.faq, name='faq'),
+    url(r'^get-started/$', views.getStarted, name='getStarted'),
+    url(r'^customers/$', views.customers, name='customers'),
     url(r'^blog/$', views.blog, name='blog'),
+    url(r'^meet-our-counselors/$', views.meetOurCounselors, name='meetOurCounselors'),
+    
     
     
     url(r'^register/$', views.register, name='register'),

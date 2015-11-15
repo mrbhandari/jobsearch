@@ -330,9 +330,9 @@ def skillsTool(request):
     context = {'hello': 'world'}
     return render(request, 'hackathon/skillsTool.html', context)
 
-def whyText(request):
+def howItWorks(request):
     context = {'hello': 'world'}
-    return render(request, 'content/why-text.html', context)
+    return render(request, 'content/how-it-works.html', context)
 
 def pricing(request):
     context = {'hello': 'world'}
@@ -342,14 +342,21 @@ def aboutUs(request):
     context = {'hello': 'world'}
     return render(request, 'content/about-us.html', context)
 
-def faq(request):
+def customers(request):
     context = {'hello': 'world'}
-    return render(request, 'content/faq.html', context)
+    return render(request, 'content/customers.html', context)
 
 def blog(request):
     context = {'hello': 'world'}
     return render(request, 'content/blog.html', context)
 
+def getStarted(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/get-started.html', context)
+
+def meetOurCounselors(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/meet-our-counselors.html', context)
 
 
 from django.template import loader, Context

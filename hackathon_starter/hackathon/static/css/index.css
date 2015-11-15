@@ -1,0 +1,140 @@
+.companies-prepped-block {
+	background: #adacaa;
+	padding: 42px 0 36px;
+}
+.companies-prepped-block .title {
+	display: inline-block;
+	vertical-align: middle;
+	width: 135px;
+	font: 800 16px/20px "Open Sans", Arial, Helvetica, sans-serif;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: #fff;
+	position: relative;
+	z-index: 2;
+}
+.companies-prepped-block .logo-list {
+	display: inline-block;
+	vertical-align: middle;
+	width: 100%;
+	padding: 0 0 0 135px;
+	margin: 0 0 0 -135px;
+	text-align: justify;
+	line-height: 0;
+	font-size: 1px;
+	text-justify: newspaper;
+	zoom: 1;
+	text-align-last: justify;
+}
+.companies-prepped-block .logo-list:after {
+	width: 100%;
+	height: 0;
+	visibility: hidden;
+	overflow: hidden;
+	content: "";
+	display: inline-block;
+}
+.companies-prepped-block .logo-list li {
+	display: inline-block;
+	vertical-align: middle;
+	width: 114px;
+	margin: 0 8px;
+	padding: 16px 0;
+}
+.companies-prepped-block .logo-list li img {
+	width: 100%;
+	height: auto;
+}
+.companies-prepped-block .logo-list li.deloitte {
+	width: 122px;
+}
+.companies-prepped-block .logo-list li.bcg {
+	width: 61px;
+}
+.companies-prepped-block .logo-list li.goldman-sachs {
+	width: 65px;
+}
+.companies-prepped-block .logo-list li.jp-morgan {
+	width: 139px;
+}
+.companies-prepped-block .logo-list li.cisco {
+	width: 89px;
+}
+.companies-prepped-block .logo-list li.texas {
+	width: 62px;
+}
+.companies-prepped-block .logo-list li a {
+	-webkit-transition: all .2s linear;
+	transition: all .2s linear;
+}
+.companies-prepped-block .logo-list li a:hover {
+	opacity: .7;
+}
+@media only screen and (max-width: 991px) {
+	.companies-prepped-block .logo-list li {
+		margin: 0 21px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.companies-prepped-block {
+		padding: 53px 10px 69px;
+	}
+	.companies-prepped-block .title {
+		display: block;
+		text-align: center;
+		width: auto;
+		font-size: 18px;
+		line-height: 27px;
+		font-weight: 700;
+		margin: 0 0 13px;
+	}
+	.companies-prepped-block .logo-list {
+		margin: 0;
+		display: block;
+		padding: 0;
+	}
+	.companies-prepped-block .logo-list li {
+		width: 95px;
+		padding: 16px 0 6px;
+		margin: 0 10px;
+	}
+	.companies-prepped-block .logo-list li.deloitte {
+		width: 100px;
+	}
+	.companies-prepped-block .logo-list li.bcg {
+		width: 51px;
+	}
+	.companies-prepped-block .logo-list li.goldman-sachs {
+		width: 53px;
+	}
+	.companies-prepped-block .logo-list li.jp-morgan {
+		width: 121px;
+	}
+	.companies-prepped-block .logo-list li.cisco {
+		width: 73px;
+	}
+}
+
+.companies-prepped-block .logo-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.companies-prepped-block {
+    	font-size: 0;
+	line-height: 0;
+	letter-spacing: -4px;
+}
+
+@media only screen and (max-width: 767px) {
+	.companies-prepped-block.gmat-overview {
+		padding: 53px 10px 61px;
+	}
+	.companies-prepped-block.gmat-overview .title {
+		margin: 0 0 22px;
+	}
+	.companies-prepped-block.gmat-overview .logo-list li {
+		margin: 0 10px 9px;
+	}
+}

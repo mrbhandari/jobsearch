@@ -36,6 +36,26 @@
     <!--<link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">-->
     <link rel="stylesheet" href="/static/bower_components/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+      
+    <!-- Begin Inspectlet Embed Code -->
+    <script type="text/javascript" id="inspectletjs">
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 1677526803]);
+    (function() {
+    function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+    })();
+    </script>
+    <!-- End Inspectlet Embed Code -->
+    
+    <!-- Begin Segment Code -->
+    <script type="text/javascript">
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+    analytics.load("EUZPJj1xpIupzszYZqS172OmmNaDj4z2");
+    analytics.page()
+    }}();
+    </script>
+    <!-- End Segment Code -->
 
   </head>
     
@@ -53,7 +73,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
+            <!--<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Why Text?<span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
                 <li><a href="/why-text/">Default</a></li>
@@ -75,32 +95,48 @@
                 <li><a href="../united/">United</a></li>
                 <li><a href="../yeti/">Yeti</a></li>
               </ul>
+            </li>-->
+            <li>
+              <a href="/how-it-works/">How it Works</a>
+            </li>
+            <li>
+              <a href="/meet-our-counselors/">Meet the Counselors</a>
             </li>
             <li>
               <a href="/pricing/">Pricing</a>
             </li>
             <li>
-              <a href="/about-us/">About Us</a>
-            </li>
-                        <li>
-              <a href="/faq/">FAQ</a>
+              <a href="/customers/">Our Customers</a>
             </li>
             <li>
               <a href="/skillsTool/">Online Tools</a>
             </li>
-                        
             <li>
-              <a href="/blog/">Blog</a>
+              <a href="/about-us/">About</a>
             </li>
+
+                        <!--<li>
+              <a href="/faq/">FAQ</a>
+            </li>-->
+
+                        
+<!--            <li>
+              <a href="/blog/">Blog</a>
+            </li>-->
           </ul>
           <ul class="nav navbar-nav navbar-left">
             {% if user.is_authenticated %}
             <!--<li><a href="/hackathon/api">Connect accounts</a></li>-->
             {% endif %}
-          </ul>
-         
             
-          <ul class="nav navbar-nav navbar-right">
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right ">
+            <li class="active" style="background-color: #2196f3"><a href="/get-started/">Get Started</a></li>
+            
+          </ul>  
+            
+         <!-- <ul class="nav navbar-nav navbar-right">
             {% if not user.is_authenticated %}
               <li><a href="/register">Register <span class="sr-only">(current)</span></a></li>
               
@@ -115,7 +151,7 @@
               <li><a href='/linkedin'>Hello {{user}}</a></li>
               <li><a href="/logout/">Logout</a></li>
             {% endif %}
-          </ul>
+          </ul>-->
             
             
           
@@ -132,7 +168,7 @@
     
     {% endblock %}
     
-  <footer>
+<!--  <footer>
     <div class="row">
       <div class="col-lg-12">
 
@@ -148,7 +184,7 @@
     </div>
 
   </footer>
-  
+  -->
   
   </div>
 
