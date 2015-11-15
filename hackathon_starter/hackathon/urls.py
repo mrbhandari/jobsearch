@@ -2,6 +2,11 @@ from django.conf.urls import patterns, url
 
 from hackathon import views
 
+# urls.py
+from django.views.generic import TemplateView
+ 
+
+
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^home/$', views.index, name='index'),
@@ -71,4 +76,14 @@ urlpatterns = patterns('',
     url(r'^meetupToken/$', views.meetupToken, name='meetupToken'),
     url(r'^meetupUser/$', views.meetupUser, name='meetupUser'),
     url(r'^yelp/$', views.yelp, name='yelp'),
+)
+
+#urlpatterns += patterns('',
+#    url(r'^robots\.txt$', direct_to_template,
+#    {'template': 'robots.txt', 'mimetype': 'text/plain'}),
+#)
+
+
+urlpatterns += patterns('',
+    url(r'^robots\.txt$', TemplateView.as_view(template_name='content/robots.txt', content_type='text/plain'), name="robots"),
 )
