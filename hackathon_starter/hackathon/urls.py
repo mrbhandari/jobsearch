@@ -10,11 +10,11 @@ from django.views.generic import TemplateView
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^home/$', views.index, name='index'),
-    url(r'^skillsTool/$', views.skillsTool, name='skillsTool'),
-    url(r'^skillsTool/skills_api$', views.skills_api, name='skills_api'),
-    url(r'^skillsTool/amazon_reading_api$', views.amazon_reading_api, name='amazon_reading_api'),
-    url(r'^skillsTool/monster_skill_api$', views.monster_skill_api, name='monster_skill_api'),
-    url(r'^skillsTool/cover_letter_api$', views.cover_letter_api, name='cover_letter_api'),
+    url(r'^interview-skills-tool/$', views.skillsTool, name='skillsTool'),
+    url(r'^interview-skills-tool/skills_api$', views.skills_api, name='skills_api'),
+    url(r'^interview-skills-tool/amazon_reading_api$', views.amazon_reading_api, name='amazon_reading_api'),
+    url(r'^interview-skills-tool/monster_skill_api$', views.monster_skill_api, name='monster_skill_api'),
+    url(r'^interview-skills-tool/cover_letter_api$', views.cover_letter_api, name='cover_letter_api'),
     
     
     url(r'^how-it-works/$', views.howItWorks, name='howItWorks'),
@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^customers/$', views.customers, name='customers'),
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^meet-our-counselors/$', views.meetOurCounselors, name='meetOurCounselors'),
+    url(r'^online-tools/$', views.onlineTools, name='onlineTools'),
     
     
     

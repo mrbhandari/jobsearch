@@ -358,6 +358,10 @@ def meetOurCounselors(request):
     context = {'hello': 'world'}
     return render(request, 'content/meet-our-counselors.html', context)
 
+def onlineTools(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/online-tools.html', context)
+
 
 from django.template import loader, Context
 
