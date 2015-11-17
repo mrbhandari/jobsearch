@@ -362,6 +362,10 @@ def onlineTools(request):
     context = {'hello': 'world'}
     return render(request, 'content/online-tools.html', context)
 
+def interviewQuestions(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/interview-questions.html', context)
+
 
 from django.template import loader, Context
 

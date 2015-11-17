@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^meet-our-counselors/$', views.meetOurCounselors, name='meetOurCounselors'),
     url(r'^online-tools/$', views.onlineTools, name='onlineTools'),
+    url(r'^online-tools/interview-questions/$', views.interviewQuestions, name='interviewQuestions'),
     
     
     
