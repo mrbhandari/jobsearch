@@ -366,6 +366,14 @@ def interviewQuestions(request):
     context = {'hello': 'world'}
     return render(request, 'content/interview-questions.html', context)
 
+def fullListIntQuestions(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/full-list-interview-questions.html', context)
+
+def mockInterview(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/mock-interview.html', context)
+
 
 from django.template import loader, Context
 

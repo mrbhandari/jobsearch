@@ -26,6 +26,10 @@ urlpatterns = patterns('',
     url(r'^meet-our-counselors/$', views.meetOurCounselors, name='meetOurCounselors'),
     url(r'^online-tools/$', views.onlineTools, name='onlineTools'),
     url(r'^online-tools/interview-questions/$', views.interviewQuestions, name='interviewQuestions'),
+    url(r'^online-tools/full-list-interview-questions/$', views.fullListIntQuestions, name='fullListIntQuestions'),
+    url(r'^online-tools/mock-interview/$', views.mockInterview, name='mockInterview'),
+    
+    
     
     
     
