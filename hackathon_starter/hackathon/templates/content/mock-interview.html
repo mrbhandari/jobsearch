@@ -1,9 +1,95 @@
 {% extends 'hackathon/base.html' %}
 
 {% block head-content %}
+
+<script src="https://webaudiodemos.appspot.com/AudioRecorder/js/audiodisplay.js"></script>
+	<script src="/static/js/recorderjs/recorder.js"></script>
+	<script src="/static/js/recorderjs/main.js"></script>
+
+
 {% endblock %}
 
 {% block body %}
 
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h3 id="forms">Record a mock interview</h3>
+      <p class="lead">Use this tool hear what you sound like in an interview and share with a friend or mentor to get advice on how to make it better.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+
+
+      <style>
+	/*html { overflow: hidden; }*/
+/*	body { 
+		font: 14pt Arial, sans-serif; 
+		background: lightgrey;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		width: 100%;
+		margin: 0 0;
+	}*/
+	canvas { 
+		display: inline-block; 
+		background: #eeeeee; 
+		width: 49%;
+		height: 0.5%;
+		border-color: #4caf50;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		border-color: #4caf50;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	}
+	/*#controls {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		height: 20%;
+		width: 100%;
+	}*/
+	#record { height: 15vh; }
+	#record.recording { 
+		background: red;
+		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+		background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+		background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+	}
+	#save, #save img { height: 10vh; }
+	#save { opacity: 0.25;}
+	#save[download] { opacity: 1;}
+	/*#viz {
+		height: 80%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}*/
+	@media (orientation: landscape) {
+		body { flex-direction: row;}
+		#controls { flex-direction: column; height: 100%; width: 10%;}
+		#viz { height: 100%; width: 90%;}
+	}
+
+	</style>
+	<h4>Recording display - press mic to toggle recording on and off</h4>
+	<div id="viz">
+		<canvas id="analyser"></canvas>
+		<canvas id="wavedisplay"></canvas>
+	</div>
+	<div id="controls">
+		<img id="record" src="https://webaudiodemos.appspot.com/AudioRecorder/img/mic128.png" onclick="toggleRecording(this);">
+		<a id="save" href="#"><img src="https://webaudiodemos.appspot.com/AudioRecorder/img/save.svg"></a>
+	</div>
+
+
+</div>
 
 {% endblock %}
