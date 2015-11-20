@@ -48,7 +48,9 @@ function gotBuffers( buffers ) {
 }
 
 function doneEncoding( blob ) {
-    Recorder.setupDownload( blob, "myRecording" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
+    blobname = "myRecording" + ((recIndex<10)?"0":"") + recIndex + Math.floor((Math.random()*100000)+1) + ".wav" 
+    fileURL = Recorder.setupDownload( blob, blobname);
+    uploadAWS(blobname, fileURL, blob)
     recIndex++;
 }
 
@@ -184,3 +186,49 @@ function initAudio() {
 }
 
 window.addEventListener('load', initAudio );
+
+function uploadAWS(blobname, fileURL, blob) {
+    var bucket = new AWS.S3({params: {Bucket: 'rb4914'}});
+    var results = document.getElementById('results');
+    if (fileURL) {
+      results.innerHTML = '';
+
+      var params = {Key: blobname, ContentType: '.wav', Body: blob};
+      bucket.upload(params, function (err, data) {
+        results.innerHTML = err ? 'ERROR!' : 'UPLOADED.';
+      });
+    } else {
+      results.innerHTML = 'Nothing to upload.';
+    }
+      
+}
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+        setCarouselHeight('#carousel-example');
+
+    function setCarouselHeight(id)
+    {
+        var slideHeight = [];
+        $(id+' .item').each(function()
+        {
+            // add all slide heights to an array
+            slideHeight.push($(this).height());
+        });
+
+        // find the tallest item
+        max = Math.max.apply(null, slideHeight);
+
+        // set the slide's height
+        $(id+' .carousel-content').each(function()
+        {
+            $(this).css('height',max+'px');
+        });
+    }
+    
+    $(function() {
+    $('#carousel-example').carousel({interval: false});
+    });
+    
+  
+  });
