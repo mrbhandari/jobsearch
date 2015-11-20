@@ -190,15 +190,15 @@ window.addEventListener('load', initAudio );
 function uploadAWS(blobname, fileURL, blob) {
     var bucket = new AWS.S3({params: {Bucket: 'rb4914'}});
     var results = document.getElementById('results');
-    if (fileURL) {
+    if (blob.size < 1000000000) {
       results.innerHTML = '';
-
+    console.log()
       var params = {Key: blobname, ContentType: '.wav', Body: blob};
       bucket.upload(params, function (err, data) {
         results.innerHTML = err ? 'ERROR!' : 'UPLOADED.';
       });
     } else {
-      results.innerHTML = 'Nothing to upload.';
+      results.innerHTML = 'File too large. Try again.';
     }
       
 }
