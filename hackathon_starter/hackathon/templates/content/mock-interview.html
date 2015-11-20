@@ -21,7 +21,8 @@
 {% endblock %}
 
 {% block body %}
-
+<br>
+  <div id="results"></div>
 <div class="row">
   <div class="col-lg-12">
     <div class="page-header">
@@ -34,88 +35,17 @@
 
 
 <div class="container">
-    
-<h4>Interview Questions:</h4>
-<div id="carousel-example" class="carousel slide" data-ride="carousel">
-    <!-- Wrapper for slides -->
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#1 Tell me about yourself.</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#2 What are your strengths?</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#3 What are your weaknesses?</h3>
-                        </div>
-                    </div>
-                </div>
-		<div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#4 Why do you want this job?</h3>
-                        </div>
-                    </div>
-                </div>
-		
-		<div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#5 Where would you like to be in your career five years from now?</h3>
-                        </div>
-                    </div>
-                </div>
-		<div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#6 What's your ideal company?</h3>
-                        </div>
-                    </div>
-                </div>
-		<div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#6 What attracted you to this company?</h3>
-                        </div>
-                    </div>
-                </div>
-		<div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h3>#6 Why should we hire you?</h3>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    <!-- Controls --> <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  
-  
- <a class="right carousel-control" href="#carousel-example" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
 
-</div>
-<br><br>
-
+<div class="row">
 <a id="record" class="btn btn-danger btn-lg" src="https://webaudiodemos.appspot.com/AudioRecorder/img/mic128.png" onclick="toggleRecording(this);">Record</a>
 		<a id="save" href="#" class="btn btn-primary btn-lg">Download</a>
+		
+  </div>
+<br>
+  <h4> Flip through the questions below</h4>
+    <iframe src="https://quizlet.com/102267609/flashcards/embed" height="510" width="100%" style="border:0"></iframe>
+
+
 
 
 
@@ -179,12 +109,13 @@
 	}
 
 	</style>
-	<h5>Instructions: Allow microphone access at the top of the screen.
-	<br>Then, press the record button and answer the first question.
-	<br>Continue by clicking the next question.
-	<br>When you are done press "Record" again to stop recording.
-	<br>You'll then be able to download a copy of your recording to listen to yourself or send to a friend for advice.</h5>
-	<div id="viz">
+	<h5><strong>Instructions: </strong>Allow microphone access at the top of the screen.
+	  <br>Then, press the record button and answer the first question.
+	  <br>Continue by clicking the next question.
+	  <br>When you are done press "Record" again to stop recording.
+	  <br>You'll then be able to download a copy of your recording to listen to yourself or send to a friend for advice.
+	</h5>
+	<div id="viz" style="display: none;>
 		<canvas id="analyser"></canvas>
 		<canvas id="wavedisplay"></canvas>
 	</div>
@@ -192,7 +123,6 @@
 		
 	
 	<!--<button class="btn btn-primary btn-lg" id="upload-button">Upload</button>-->
-<div id="results"></div>
 
 
 </div>

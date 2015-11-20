@@ -193,9 +193,13 @@ function uploadAWS(blobname, fileURL, blob) {
     if (blob.size < 1000000000) {
       results.innerHTML = '';
     console.log()
-      var params = {Key: blobname, ContentType: '.wav', Body: blob};
+      var params = {Key: 'mock-interview/'+blobname, ContentType: '.wav', Body: blob};
+      s3url = 'https://s3-us-west-1.amazonaws.com/rb4914/mock-interview/' + blobname
+      share_link_message = 'Share the link to your recording: ' + '<a target="blank" href="'+ s3url +'">'+s3url+'</a>'
+      htmlmsg = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>'+share_link_message+'</div>'
+      
       bucket.upload(params, function (err, data) {
-        results.innerHTML = err ? 'ERROR!' : 'UPLOADED.';
+        results.innerHTML = err ? 'ERROR!' : htmlmsg;
       });
     } else {
       results.innerHTML = 'File too large. Try again.';
