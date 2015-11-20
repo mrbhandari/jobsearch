@@ -5,6 +5,18 @@
 <script src="https://webaudiodemos.appspot.com/AudioRecorder/js/audiodisplay.js"></script>
 	<script src="/static/js/recorderjs/recorder.js"></script>
 	<script src="/static/js/recorderjs/main.js"></script>
+	
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.17.min.js"></script>
+	<script type="text/javascript">
+	  // See the Configuring section to configure credentials in the SDK
+	  var creds = new AWS.Credentials('AKIAIVNNPV5UT7BRU6XA', 'cBbKW98uevn5jX0ynGnl8DxjyYYRTKZtzqFAZcYR');
+	  AWS.config.credentials = creds
+	  //AWS.config.update({accessKeyId: 'AKIAIVNNPV5UT7BRU6XA', secretAccessKey: 'cBbKW98uevn5jX0ynGnl8DxjyYYRTKZtzqFAZcYR'});
+	  //AWS.config.credentials = 'ss';
+
+	  // Configure your region
+	  AWS.config.region = 'us-west-1';
+	</script>
 
 
 {% endblock %}
@@ -22,6 +34,61 @@
 
 
 <div class="container">
+
+
+<!--amazon sample code-->
+<!--
+<textarea id="data"></textarea>
+<button id="upload-button">Upload to S3</button>
+<div id="results"></div>
+
+<script type="text/javascript">
+  var bucket = new AWS.S3({params: {Bucket: 'rb4914'}});
+
+  var textarea = document.getElementById('data');
+  var button = document.getElementById('upload-button');
+  var results = document.getElementById('results');
+  button.addEventListener('click', function() {
+    results.innerHTML = '';
+    console.log(textarea.value)
+
+    var params = {Key: 'data.txt', Body: textarea.value};
+    bucket.upload(params, function (err, data) {
+      results.innerHTML = err ? 'ERROR!' : 'SAVED.';
+    });
+  }, false);
+</script>-->
+
+<!--end amazon sample code-->
+
+<br>
+  <br>
+    
+    
+    <input type="file" id="file-chooser" /> 
+<button id="upload-button">Upload to S3</button>
+<div id="results"></div>
+
+<script type="text/javascript">
+  var bucket = new AWS.S3({params: {Bucket: 'rb4914'}});
+
+  var fileChooser = document.getElementById('file-chooser');
+  var button = document.getElementById('upload-button');
+  var results = document.getElementById('results');
+  button.addEventListener('click', function() {
+    var file = fileChooser.files[0];
+    if (file) {
+      results.innerHTML = '';
+
+      var params = {Key: file.name, ContentType: file.type, Body: file};
+      bucket.upload(params, function (err, data) {
+        results.innerHTML = err ? 'ERROR!' : 'UPLOADED.';
+      });
+    } else {
+      results.innerHTML = 'Nothing to upload.';
+    }
+  }, false);
+</script>
 
 
       <style>
