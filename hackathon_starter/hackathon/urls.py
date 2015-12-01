@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 
 from hackathon import views
 
@@ -22,13 +22,19 @@ urlpatterns = patterns('',
     url(r'^about-us/$', views.aboutUs, name='aboutUs'),
     url(r'^get-started/$', views.getStarted, name='getStarted'),
     url(r'^customers/$', views.customers, name='customers'),
-    url(r'^blog/$', views.blog, name='blog'),
+    
     url(r'^meet-our-counselors/$', views.meetOurCounselors, name='meetOurCounselors'),
     url(r'^online-tools/$', views.onlineTools, name='onlineTools'),
     url(r'^online-tools/interview-questions/$', views.interviewQuestions, name='interviewQuestions'),
     url(r'^online-tools/full-list-interview-questions/$', views.fullListIntQuestions, name='fullListIntQuestions'),
+    
     url(r'^online-tools/mock-interview/$', views.mockInterview, name='mockInterview'),
     
+    #url(r'^blog/$', views.blog, name='blog'),
+    url(r'^blog/', include('zinnia.urls', namespace='zinnia')),
+    url(r'^comments/', include('django_comments.urls')),
+    
+
     
     
     

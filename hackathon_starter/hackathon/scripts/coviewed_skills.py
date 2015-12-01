@@ -18,8 +18,8 @@ def create_linkedin_skills_url(skill):
 
 
 #path = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon_starter", "hackathon", "static", "data", 'download_slug_list.txt')
-input_file = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon", "static", "data", 'download_slug_list.txt')
-output_dir = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon", "static", "data", 'download')
+#input_file = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon", "static", "data", 'download_slug_list.txt')
+#output_dir = os.path.join(os.path.abspath(os.path.dirname('__file__')), "hackathon", "static", "data", 'download')
 
 
 #fetch_save_urls(input_file, output_dir, create_linkedin_skills_url)

@@ -43,7 +43,16 @@ INSTALLED_APPS = (
     'rest_framework',
     'corsheaders',
     'django_extensions',
+    'django_comments',
+    'mptt',
+    'tagging',
+    'zinnia',
+    'django.contrib.sites',
 )
+
+SITE_ID = 1
+
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -85,13 +94,13 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+TIME_ZONE = 'America/Los_Angeles'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -100,6 +109,32 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'zinnia.context_processors.version',
+    )
+
+#TEMPLATES = [
+#  {
+#    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#    'APP_DIRS': True,
+#    'OPTIONS': {
+#      'context_processors': [
+#        'django.contrib.auth.context_processors.auth',
+#        'django.template.context_processors.i18n',
+#        'django.template.context_processors.request',
+#        'django.contrib.messages.context_processors.messages',
+#        'zinnia.context_processors.version',  # Optional
+#      ]
+#    }
+#  }
+#]
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
