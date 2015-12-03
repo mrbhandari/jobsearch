@@ -1,10 +1,6 @@
 {% load i18n %}
 <nav>
-  <ul class="paginator">
-    <li class="index">
-      {% blocktrans with current_page=page.number total_page=page.paginator.num_pages %}Page {{ current_page }} of {{ total_page }}{% endblocktrans %}
-    </li>
-
+  <ul class="pagination">
     {% if page.has_previous %}
     <li class="page previous">
       <a href="?page={{ page.previous_page_number }}{{ GET_string }}"
@@ -13,9 +9,9 @@
     {% endif %}
 
     {% for page_number in begin %}
-    <li class="page{% ifequal page.number page_number %} current{% endifequal %}">
+    <li class="page {% ifequal page.number page_number %}active{% endifequal %}">
       {% ifequal page.number page_number %}
-      {{ page_number }}
+      <a href="#">{{ page_number }}</a>
       {% else %}
       <a href="?page={{ page_number }}{{ GET_string }}"
          title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
@@ -24,11 +20,13 @@
     {% endfor %}
 
     {% if middle %}
-    <li class="ellipsis">&hellip;</li>
+    <li class="disabled">
+      <a href="#">&hellip;</a>
+    </li>
     {% for page_number in middle %}
-    <li class="page{% ifequal page.number page_number %} current{% endifequal %}">
+    <li class="page {% ifequal page.number page_number %}active{% endifequal %}">
       {% ifequal page.number page_number %}
-      {{ page_number }}
+      <a href="#">{{ page_number }}</a>
       {% else %}
       <a href="?page={{ page_number }}{{ GET_string }}"
          title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
@@ -38,11 +36,13 @@
     {% endif %}
 
     {% if end %}
-    <li class="ellipsis">&hellip;</li>
+    <li class="disabled">
+      <a href="#">&hellip;</a>
+    </li>
     {% for page_number in end %}
-    <li class="page{% ifequal page.number page_number %} current{% endifequal %}">
+    <li class="page {% ifequal page.number page_number %}active{% endifequal %}">
       {% ifequal page.number page_number %}
-      {{ page_number }}
+      <a href="#">{{ page_number }}</a>
       {% else %}
       <a href="?page={{ page_number }}{{ GET_string }}"
          title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
