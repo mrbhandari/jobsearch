@@ -66,4 +66,77 @@ LOAD DATA LOCAL  INFILE 'hackathon/static/data/coviewed_skills_lower.tsv' into t
 
 
 sudo /usr/local/mysql-5.6.22-osx10.8-x86_64/support-files/mysql.server start
+
+#from http://stackoverflow.com/questions/14454304/convert-tz-returns-null
+sudo mv /usr/share/zoneinfo/Factory /usr/share/zoneinfo/.bak/Factory
+sudo mv /usr/share/zoneinfo/+VERSION /usr/share/zoneinfo/.bak/+VERSION
+sudo mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql #on server only need this
+
+mysql_tzinfo_to_sql /usr/share/zoneinfo/ | mysql -u root --force -p mysql
+
+sudo mysql_tzinfo_to_sql /usr/share/zoneinfo/America/ | mysql -u root -p mysql
+sudo vim /etc/my.cnf 
+
+default-time-zone = 'America/Los_Angeles'
+
+
+#starting a ipython notebook
+python manage.py shell_plus --notebook
+
+
+
+
+
+
+#deleted files accidentally
+
+ git clean  -d  -fx ""
+Removing hackathon_starter/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+Removing hackathon_starter/.ipynb_checkpoints/Untitled1-checkpoint.ipynb
+Removing hackathon_starter/Untitled.ipynb
+Removing hackathon_starter/Untitled1.ipynb
+
+Removing hackathon_starter/db.sqlite3
+
+Removing hackathon_starter/hackathon/__init__.pyc
+Removing hackathon_starter/hackathon/admin.pyc
+
+Removing hackathon_starter/hackathon/migrations/0001_initial.py
+Removing hackathon_starter/hackathon/migrations/0001_initial.pyc
+Removing hackathon_starter/hackathon/migrations/0002_coviewedskills.py
+Removing hackathon_starter/hackathon/migrations/0002_coviewedskills.pyc
+Removing hackathon_starter/hackathon/migrations/__init__.pyc
+Removing hackathon_starter/hackathon/models.pyc
+Removing hackathon_starter/hackathon/static/bower_components/
+Removing hackathon_starter/hackathon/static/data/download/
+warning: failed to remove hackathon_starter/hackathon/templates/content/online-tools.html
+#Removing hackathon_starter/hackathon_starter/__init__.pyc
+#Removing hackathon_starter/hackathon_starter/settings.pyc
+#Removing hackathon_starter/hackathon_starter/wsgi.pyc
+Removing nohup.out
+
+Add bower components
+Figure out databases migrations
+Figure out database data in chekcing tool
+Install zinnia (including timezone files etc.)
+
+Check if zinnia is working / admin
+
+#onserver django blog
+
+sudo apt-get build-dep python-imaging
+sudo apt-get install libjpeg8 libjpeg62-dev libf
+reetype6 libfreetype6-dev
+sudo  pip install django-blog-zinnia
+sudo apt-get install libmysqlclient-dev
+makemigrations/migrate
+
+python manage.py createsuperuser
+sudo mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql
+
+#enable virtual host to use '/data/virt_env/django_starter/local/lib/python2.7/site-packages/zinnia/__init__.pyc'
+
+
+#django bootstrap for zinnia
+sudo pip install ~/Downloads/zinnia-theme-bootstrap-develop.zip 
  

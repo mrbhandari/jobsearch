@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'django_extensions',
     'django_comments',
+    #'zinnia_bootstrap',
     'mptt',
     'tagging',
     'zinnia',
@@ -111,13 +112,18 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 
+TEMPLATE_LOADERS = [
+  #'app_namespace.Loader',
+  'django.template.loaders.eggs.Loader',
+]
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.i18n',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
-    'zinnia.context_processors.version',
+    #'zinnia.context_processors.version',
     )
 
 #TEMPLATES = [
