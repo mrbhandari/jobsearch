@@ -1,0 +1,185 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Skills people like you develop
+        </h3>
+    </div>
+    <div class="panel-body" id="skills_agg">
+        <div class="tags">
+            
+            {% for o in response.skills_agg %}
+            <div class="tags primary">
+                <strong>{{ o.0 | capfirst }}</strong>
+                <i>({{ o.1 }} mention{{ o.1|pluralize }})</i>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on skills listed in the profiles of people like you
+        </div>
+    </div>
+</div>
+
+   
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Companies people like you work at
+        </h3>
+    </div>
+    <div class="panel-body" id="companies_agg">
+        <div class="tags">
+            
+            {% for o in response.companies_agg %}
+            <div class="tags primary">
+                <strong>{{ o.0 | capfirst }}</strong>
+                <i>({{ o.1 }} mention{{ o.1|pluralize }})</i>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on companies people like you go on to work at
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Titles people like you have
+        </h3>
+    </div>
+    <div class="panel-body" id="titles_agg">
+        <div class="tags">
+            
+            {% for o in response.titles_agg %}
+            <div class="tags primary">
+                <strong>{{ o.0 | capfirst }}</strong>
+                <i>({{ o.1 }} mention{{ o.1|pluralize }})</i>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on titles people like you list
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Schools people like you attend/attended
+        </h3>
+    </div>
+    <div class="panel-body" id="schools_agg">
+        <div class="tags">
+            
+            {% for o in response.schools_agg %}
+            <div class="tags primary">
+                <strong>{{ o.0 | capfirst }}</strong>
+                <i>({{ o.1 }} mention{{ o.1|pluralize }})</i>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on schools people like you list
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Degrees people like you acquire
+        </h3>
+    </div>
+    <div class="panel-body" id="degrees_agg">
+        <div class="tags">
+            
+            {% for o in response.degrees_agg %}
+            <div class="tags primary">
+                <strong>{{ o.0 | capfirst }}</strong>
+                <i>({{ o.1 }} mention{{ o.1|pluralize }})</i>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on degrees people like you list
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Links to profiles of people like you
+        </h3>
+    </div>
+    <div class="panel-body" id="degrees_agg">
+        <div class="tags">
+            
+            {% for o in response.urls %}
+            <div class="tags">
+                <a href="{{ o }}" target="blank">{{ o }}</a>
+
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on the keywords you provided
+        </div>
+    </div>
+</div>
+
+
+
+{% for o in response.master_dump %}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{ o.url }}
+        </h3>
+    </div>
+    <div class="panel-body" id="degrees_agg">
+        <p><strong>Education</strong>: {{ o.education }}</p>
+        <p><strong>Experience</strong>: {{ o.experience }}</p>
+        <p><strong>Skills</strong>: {{ o.skills }}</p>
+        
+    </div>
+    
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            Based on the profile
+        </div>
+    </div>
+</div>
+{% endfor %}

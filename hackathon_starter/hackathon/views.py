@@ -41,6 +41,8 @@ from scripts.foursquare import *
 from scripts.skill_search import *
 from scripts.monster import parse_monster_url
 
+from scripts.predict_future_api import generate_summary
+
 
 # Python
 import oauth2 as oauth
@@ -375,6 +377,11 @@ def mockInterview(request):
     return render(request, 'content/mock-interview.html', context)
 
 
+def predictFuture(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/predict-my-future.html', context)    
+
+
 from django.template import loader, Context
 
 def view_1(request):
@@ -389,6 +396,39 @@ def view_1(request):
     return t.render(c)
 
 #TODO: this could use the Django REst framework
+
+
+
+
+@csrf_exempt
+def predict_future_api(request):
+    print "started"
+    if request.method == 'POST':
+        user_keywords = request.POST['user_keywords']
+        user_keywords =  urllib2.unquote(user_keywords)
+        
+        num_results = request.POST['num_results']
+        num_results =  int(urllib2.unquote(num_results))
+    print user_keywords
+    #skills_counter = find_matching_skills(job_text, skills_file)
+    #sorted_data = rank_skills(skills_counter)
+    #print sorted_data
+
+    #user_keywords = 'Google Analytics "Staff Engineer"'
+    #num_results = 11
+    response = generate_summary(user_keywords, num_results)
+    
+    t = loader.get_template('api/predict_future_api.html')
+    
+    context = Context({"response": response})
+    html = t.render(context)
+
+    
+    return JsonResponse({"html": html}
+        )
+    #return JsonResponse(sorted_data)
+
+
 @csrf_exempt
 def skills_api(request):
     print "started"
@@ -411,6 +451,7 @@ def skills_api(request):
     return JsonResponse({"html": html, "job_text": job_text, "skills": sorted_data}
         )
     #return JsonResponse(sorted_data)
+
 
 
 @csrf_exempt

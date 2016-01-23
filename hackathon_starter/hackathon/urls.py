@@ -29,6 +29,10 @@ urlpatterns = patterns('',
     url(r'^online-tools/full-list-interview-questions/$', views.fullListIntQuestions, name='fullListIntQuestions'),
     
     url(r'^online-tools/mock-interview/$', views.mockInterview, name='mockInterview'),
+    url(r'^online-tools/predict-my-future/$', views.predictFuture, name='predictFuture'),
+    url(r'^online-tools/predict-my-future/predict_future_api$', views.predict_future_api, name='predict_future_api'),
+    
+    
     
     #url(r'^blog/$', views.blog, name='blog'),
     url(r'^blog/', include('zinnia.urls', namespace='zinnia')),

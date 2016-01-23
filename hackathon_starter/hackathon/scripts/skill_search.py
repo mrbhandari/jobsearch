@@ -123,7 +123,7 @@ def find_matching_skills(job_text, skills_path):
     max_num_terms = 3
     
     while max_num_terms > 0:
-      print ["starting", max_num_terms]
+      #print ["starting", max_num_terms]
       all_candidates = generate_candidates(job_text, max_num_terms)
       
       for f in all_candidates:
@@ -140,7 +140,7 @@ def find_matching_skills(job_text, skills_path):
       max_num_terms = max_num_terms -1
       #print job_text.encode('utf-8')
       skills_counter= Counter(matched_skills_linkedin)
-      print skills_counter
+      #print skills_counter
       if max_num_terms == 0:
         break
     
