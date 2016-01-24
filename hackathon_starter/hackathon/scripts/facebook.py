@@ -41,7 +41,7 @@ class FacebookOauthClient(object):
                 - The authorization url.
 
 		'''
-		authSettings = {'redirect_uri': "http://localhost:8000/hackathon/",
+		authSettings = {'redirect_uri': "http://localhost:8000/facebook/",
 		                'client_id': self.client_id}
 		params = urllib.urlencode(authSettings)
 		return AUTHORIZE_URL + '?' + params
@@ -58,7 +58,7 @@ class FacebookOauthClient(object):
                   to obtain access_token.
 		'''
 		authSettings = {'code': code,
-		                'redirect_uri': "http://localhost:8000/hackathon/",
+		                'redirect_uri': "http://localhost:8000/facebook/",
 		                'client_secret': self.client_secret,
 		                'client_id': self.client_id}
 		params = urllib.urlencode(authSettings)
@@ -144,7 +144,7 @@ class FacebookOauthClient(object):
 				- The URL to redirect the user in order to get the permission.
 		'''
 		authSettings = {'client_id' : self.client_id, 
-		                'redirect_uri' : 'http://localhost:8000/hackathon/', 
+		                'redirect_uri' : 'http://localhost:8000/facebook/', 
 		                'auth_type' : 'rerequest', 
 		                'scope' : perm,
 		                'access_token' : access_token}

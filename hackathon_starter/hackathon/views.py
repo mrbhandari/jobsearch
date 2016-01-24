@@ -142,6 +142,34 @@ def index(request):
                 user = authenticate(username=getLinkedIn.user_id+'_linkedin', password='password')
                 login(request, user)
 
+            #elif profile_track == 'facebook':
+            #    code = request.GET['code']
+            #    print code
+            #    getFacebook.get_access_token(code)
+            #    
+            #    userInfo = getFacebook.get_user_info()
+            #    print userInfo
+            #    username = 'blah'
+            #
+            #    try:
+            #        user = User.objects.get(username=username+'_facebook')
+            #    except User.DoesNotExist:
+            #        new_user = User.objects.create_user(username+'_facebook', username+'@madewithfacbook', 'password')
+            #        new_user.save()
+            #
+            #        try:
+            #            profile = FacebookProfile.objects.get(user=new_user.id)
+            #            profile.access_token = getFacebook.access_token
+            #        except:
+            #            profile = FacebookProfile()
+            #            profile.user = userInfo['firstName'] + userInfo['lastName']
+            #            profile.fb_user_id = userInfo['id']
+            #            profile.profile_url = userInfo['link']
+            #            profile.access_token = getFacebook.access_token
+            #        profile.save()
+            #    user = authenticate(username=username+'_facebook', password='password')
+            #    login(request, user)
+            
             elif profile_track == 'facebook':
                 code = request.GET['code']
                 getFacebook.get_access_token(code)
@@ -379,7 +407,17 @@ def mockInterview(request):
 
 def predictFuture(request):
     context = {'hello': 'world'}
-    return render(request, 'content/predict-my-future.html', context)    
+    return render(request, 'content/predict-my-future.html', context)
+
+def privacy_policy(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/privacy.html', context)
+
+
+
+def startJoin(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/lp_welcome.html', context)
 
 
 from django.template import loader, Context

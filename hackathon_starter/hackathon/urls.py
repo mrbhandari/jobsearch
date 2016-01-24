@@ -33,12 +33,14 @@ urlpatterns = patterns('',
     url(r'^online-tools/predict-my-future/predict_future_api$', views.predict_future_api, name='predict_future_api'),
     
     
+    url(r'^start/join/', views.startJoin, name='startJoin'),
+    
     
     #url(r'^blog/$', views.blog, name='blog'),
     url(r'^blog/', include('zinnia.urls', namespace='zinnia')),
     url(r'^comments/', include('django_comments.urls')),
     
-
+    url(r'^privacy-policy/$', views.privacy_policy, name='privacy_policy'),
     
     
     
@@ -67,8 +69,12 @@ urlpatterns = patterns('',
     url(r'^twitter_login/$', views.twitter_login, name='twitter_login'),
     url(r'^github_login/$', views.github_login, name='github_login'),
     url(r'^linkedin_login/$', views.linkedin_login, name='linkedin_login'),
-    url(r'^facebook_login/$', views.facebook_login, name='facebook_login'),
-    url(r'^facebook/$', views.facebook, name='facebook'),
+    
+    #url(r'^facebook_login/$', views.facebook_login, name='facebook_login'),
+    #url(r'^facebook/$', views.facebook, name='facebook'),
+
+
+    
     url(r'^google_login/$', views.google_login, name='google_login'),
     url(r'^google/$', views.googlePlus, name='googlePlus'),
     url(r'^dropbox_login/$', views.dropbox_login, name='dropbox_login'),
@@ -103,3 +109,4 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
     url(r'^robots\.txt$', TemplateView.as_view(template_name='content/robots.txt', content_type='text/plain'), name="robots"),
 )
+

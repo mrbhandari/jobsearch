@@ -26,7 +26,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -49,6 +48,7 @@ INSTALLED_APPS = (
     'tagging',
     'zinnia',
     'django.contrib.sites',
+    
 )
 
 SITE_ID = 1
@@ -127,6 +127,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #'zinnia.context_processors.version',
     )
 
+
+
 #TEMPLATES = [
 #  {
 #    'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -196,8 +198,8 @@ TOPAPIKEY = 'c9655598e1fd4ff591f6d46f2321260e:17:71947444'
 
 QUANDLAPIKEY = 'fANs6ykrCdAxas7zpMz7'
 
-FACEBOOK_APP_ID = '885847011479129'
-FACEBOOK_APP_SECRET = '9a81d5797b87885ef608463086a5c4ac'
+FACEBOOK_APP_ID = '156499904724852'
+FACEBOOK_APP_SECRET = '7f53d283ef2c9260db617c2e213f298a'
 
 GOOGLE_PLUS_APP_ID = '52433353167-5hvsos5pvd2i2dt62trivbqvfk4qc2pv.apps.googleusercontent.com'
 GOOGLE_PLUS_APP_SECRET = 'mv1ZcpHqMF6uX7NRTLDC2jXR'
@@ -207,3 +209,4 @@ DROPBOX_APP_SECRET = 'xx0virsvtghxlui'
 
 FOURSQUARE_APP_ID = '2V342MA2PZQEKABT450WJQKKRHV0QPFMOUBA1ZHXKWZ5YZ1Y'
 FOURSQUARE_APP_SECRET = 'PC0O1JQWP24EAPPLXNRIJVVBN5D2DW3XD5GJGGSQWIESYN1B'
+
