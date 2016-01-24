@@ -1,0 +1,37 @@
+
+{% extends 'hackathon/base_lp.html' %}
+{% load socialaccount %}
+
+{% block head-content %}
+{% endblock %}
+
+{% block body %}
+        <br>
+            <br>
+                <br>
+                    
+                    
+        {% load account %}
+        
+        
+        
+        {% get_social_accounts user as accounts %}
+        
+        
+        
+        {% if request.user.is_authenticated %}
+    <a href="/accounts/logout/" class="pull-right">Logout</a>
+    {% if request.user.first_name or request.user.last_name %}
+        {{ request.user.first_name }} {{ request.user.last_name }}
+    {% else %}
+        {{ request.user.username }}
+    {% endif %}
+    {% if request.user.profile.account_verified %} (verified) {% else %} (unverified) {% endif %}
+ 
+{% else %}
+    <a href="/accounts/login/" class="pull-right">Login</a>
+{% endif %}
+
+
+
+{% endblock %}

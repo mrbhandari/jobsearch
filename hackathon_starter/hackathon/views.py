@@ -436,7 +436,9 @@ def view_1(request):
 #TODO: this could use the Django REst framework
 
 
-
+def facebook_profile(request):
+    context = {'hello': 'world'}
+    return render(request, 'content/profile.html', context)
 
 @csrf_exempt
 def predict_future_api(request):

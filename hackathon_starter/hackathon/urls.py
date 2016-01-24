@@ -70,8 +70,11 @@ urlpatterns = patterns('',
     url(r'^github_login/$', views.github_login, name='github_login'),
     url(r'^linkedin_login/$', views.linkedin_login, name='linkedin_login'),
     
+    
+    url(r'^accounts/profile', views.facebook_profile, name='facebook_profile'),
     #url(r'^facebook_login/$', views.facebook_login, name='facebook_login'),
     #url(r'^facebook/$', views.facebook, name='facebook'),
+    url(r'^accounts/', include('allauth.urls')),
 
 
     
