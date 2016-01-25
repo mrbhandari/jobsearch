@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from hackathon.models import UserProfile
 
-#from django.contrib.localflavor.fr.forms import FRPhoneNumberField
+
 
 
 
@@ -20,6 +20,8 @@ class SignupForm(forms.ModelForm):
     #wsPwd  = forms.CharField(max_length=40, label='WS Password')
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)
+        
+        
     def signup(self, request, user):
         wsData = UserProfile()
         wsData.user = user

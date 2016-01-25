@@ -7,6 +7,9 @@ from allauth.socialaccount.models import SocialAccount
 import hashlib
 
 
+#model fields
+from localflavor.us.models import USZipCodeField
+
 # Create your models here.
 
 
@@ -18,14 +21,14 @@ class UserProfile(models.Model):
     
     
     # Attributes - Mandatory
-    zipcode = models.PositiveIntegerField(default=0,
-                                          )
+    zipcode = USZipCodeField()
     age = models.PositiveIntegerField(default=0,
                                           )
     currently_employed = models.BooleanField(default=False,
                                           )
     paid_job_before = models.BooleanField(default=False,
                                           )
+    
     #Education level
     NO_HS = 'NO'
     HIGHSCHOOL = 'HS'
@@ -43,6 +46,12 @@ class UserProfile(models.Model):
     #currently_studying
     #hours_preferred
     #hours_preferred = ("Part time", "Casual", "Fulltime", "Holidays/seasonal")
+    #user = models.ForeignKey(User, unique=True)
+    #location = models.CharField(max_length=140)  
+    #gender = models.CharField(max_length=140)  
+    #employer = models.ForeignKey(Employer)
+    #profile_picture = models.ImageField(upload_to='thumbpath', blank=True)
+
 
  
     class Meta:

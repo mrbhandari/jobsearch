@@ -6,10 +6,9 @@
 {% endblock %}
 
 {% block body %}
-        <br>
-            <br>
-                <br>
-                    
+<div class="page-header">
+        <h1>{{ request.user.first_name }} {{ request.user.last_name }}'s Profile</h1>
+      </div>
                     
         {% load account %}
         
@@ -39,10 +38,13 @@
     Account Status: {% if request.user.profile.account_verified %} (verified) {% else %} (unverified) {% endif %}
     </p>
     
-    <p>
-        Gender: {{ request.user.profile.profile_gender }}
+    <p>Zipcode: {{ request.user.profile.zipcode }}</p>
+    <p>Age: {{ request.user.profile.age }}</p>
+    <p>Currently Employed?: {{ request.user.profile.currently_employed }}</p>
+    <p>Paid Job Before?: {{ request.user.profile.paid_job_before }}</p>
+    <p>Education Level: {{ request.user.profile.education_level }}</p>
         
-    </p>
+    
     
  
 {% else %}

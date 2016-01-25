@@ -143,4 +143,8 @@ sudo pip install ~/Downloads/zinnia-theme-bootstrap-develop.zip
 
 #django all auth
 sudo pip install django-allauth
+pip install django-localflavor
+sudo pip install django-bootstrap3
+
+
  
