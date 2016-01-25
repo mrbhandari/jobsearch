@@ -21,16 +21,47 @@
         
         {% if request.user.is_authenticated %}
     <a href="/accounts/logout/" class="pull-right">Logout</a>
+    
+    <p>
+    Name:
     {% if request.user.first_name or request.user.last_name %}
         {{ request.user.first_name }} {{ request.user.last_name }}
-    {% else %}
-        {{ request.user.username }}
     {% endif %}
-    {% if request.user.profile.account_verified %} (verified) {% else %} (unverified) {% endif %}
+    
+    <img src="{{ request.user.profile.profile_image_url }}"/>
+    </p>
+    
+    <p>
+    Username: {{ request.user.username }}
+    </p>
+    
+    <p>
+    Account Status: {% if request.user.profile.account_verified %} (verified) {% else %} (unverified) {% endif %}
+    </p>
+    
+    <p>
+        Gender: {{ request.user.profile.profile_gender }}
+        
+    </p>
+    
  
 {% else %}
     <a href="/accounts/login/" class="pull-right">Login</a>
 {% endif %}
+
+    
+    
+
+
+
+<br>
+
+When you give an app access to your public profile, the app receives:
+
+Your name, user id, username, profile picture, gender and network in order to identify you
+Your age range, language and country in order to personalize the experience
+Other info that you choose to make public
+
 
 
 

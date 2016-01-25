@@ -138,5 +138,9 @@ sudo mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql
 
 
 #django bootstrap for zinnia
-sudo pip install ~/Downloads/zinnia-theme-bootstrap-develop.zip 
+sudo pip install ~/Downloads/zinnia-theme-bootstrap-develop.zip
+
+
+#django all auth
+sudo pip install django-allauth
  

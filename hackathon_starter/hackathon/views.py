@@ -52,9 +52,9 @@ from rest_framework.parsers import JSONParser
 import urllib2
 
 # Models
-from hackathon.models import Snippet, Profile, InstagramProfile, TwitterProfile, MeetupToken, GithubProfile, LinkedinProfile, FacebookProfile, TumblrProfile, GoogleProfile, DropboxProfile, FoursquareProfile
+from hackathon.models import Snippet #,Profile, InstagramProfile, TwitterProfile, MeetupToken, GithubProfile, LinkedinProfile, FacebookProfile, TumblrProfile, GoogleProfile, DropboxProfile, FoursquareProfile
 from hackathon.serializers import SnippetSerializer
-from hackathon.forms import UserForm
+#from hackathon.forms import UserForm
 
 
 profile_track = None
@@ -67,6 +67,26 @@ getFacebook = FacebookOauthClient(settings.FACEBOOK_APP_ID, settings.FACEBOOK_AP
 getGoogle = GooglePlus(settings.GOOGLE_PLUS_APP_ID, settings.GOOGLE_PLUS_APP_SECRET)
 getDropbox = DropboxOauthClient(settings.DROPBOX_APP_ID, settings.DROPBOX_APP_SECRET)
 getFoursquare = FoursquareOauthClient(settings.FOURSQUARE_APP_ID, settings.FOURSQUARE_APP_SECRET)
+
+
+
+# users.views
+from django.dispatch import receiver
+from allauth.account.signals import user_signed_up
+
+@receiver(user_signed_up)
+def set_gender(sender, **kwargs):
+    user = kwargs.pop('user')
+    extra_data = user.socialaccount_set.filter(provider='facebook')[0].extra_data
+    gender = extra_data['gender']
+
+    if gender == 'male': # because the default is female.
+        user.gender = 'male'
+
+    user.save()
+    
+    
+
 
 def index(request):
     print "index: " + str(request.user)
@@ -991,102 +1011,102 @@ def twilio(request):
 ######################
 # Registration Views #
 ######################
-
-def register(request):
-    registered = False
-    if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        if user_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-            registered = True
-        else:
-            print user_form.errors
-    else:
-        user_form = UserForm()
-
-
-    return render(request,
-            'hackathon/register.html',
-            {'user_form': user_form, 'registered': registered} )
-
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(username=username, password=password)
-
-        if user:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('/')
-            else:
-                return HttpResponse("Your Job Search account is disabled.")
-        else:
-            print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
-
-    else:
-        return render(request, 'hackathon/login.html', {})
-
-def user_logout(request):
-    logout(request)
-    return HttpResponseRedirect('/')
-
-
-def instagram_login(request):
-    global profile_track
-    profile_track = 'instagram'
-    instagram_url = getInstagram.get_authorize_url()
-    return HttpResponseRedirect(instagram_url)
-
-def tumblr_login(request):
-    global profile_track
-    profile_track = 'tumblr'
-    tumblr_url = getTumblr.authorize_url()
-    return HttpResponseRedirect(tumblr_url)
-
-def twitter_login(request):
-    global profile_track
-    profile_track = 'twitter'
-    twitter_url = getTwitter.get_authorize_url()
-    return HttpResponseRedirect(twitter_url)
-
-def github_login(request):
-    global profile_track
-    profile_track = 'github'
-    github_url = getGithub.get_authorize_url()
-    return HttpResponseRedirect(github_url)
-
-def linkedin_login(request):
-    global profile_track
-    profile_track = 'linkedin'
-    linkedin_url = getLinkedIn.get_authorize_url()
-    return HttpResponseRedirect(linkedin_url)
-
-def facebook_login(request):
-    global profile_track
-    profile_track = 'facebook'
-    facebook_url = getFacebook.get_authorize_url()
-    return HttpResponseRedirect(facebook_url)
-
-
-def google_login(request):
-    global profile_track
-    profile_track = 'google'
-    google_url = getGoogle.get_authorize_url()
-    return HttpResponseRedirect(google_url)
-
-def dropbox_login(request):
-    global profile_track
-    profile_track = 'dropbox'
-    dropbox_url = getDropbox.get_authorize_url()
-    return HttpResponseRedirect(dropbox_url)
-
-def foursquare_login(request):
-    global profile_track
-    profile_track = 'foursquare'
-    forsquare_url = getFoursquare.get_authorize_url()
-    return HttpResponseRedirect(forsquare_url)
+#
+#def register(request):
+#    registered = False
+#    if request.method == 'POST':
+#        user_form = UserForm(data=request.POST)
+#        if user_form.is_valid():
+#            user = user_form.save()
+#            user.set_password(user.password)
+#            user.save()
+#            registered = True
+#        else:
+#            print user_form.errors
+#    else:
+#        user_form = UserForm()
+#
+#
+#    return render(request,
+#            'hackathon/register.html',
+#            {'user_form': user_form, 'registered': registered} )
+#
+#def user_login(request):
+#    if request.method == 'POST':
+#        username = request.POST.get('username')
+#        password = request.POST.get('password')
+#
+#        user = authenticate(username=username, password=password)
+#
+#        if user:
+#            if user.is_active:
+#                login(request, user)
+#                return HttpResponseRedirect('/')
+#            else:
+#                return HttpResponse("Your Job Search account is disabled.")
+#        else:
+#            print "Invalid login details: {0}, {1}".format(username, password)
+#            return HttpResponse("Invalid login details supplied.")
+#
+#    else:
+#        return render(request, 'hackathon/login.html', {})
+#
+#def user_logout(request):
+#    logout(request)
+#    return HttpResponseRedirect('/')
+#
+#
+#def instagram_login(request):
+#    global profile_track
+#    profile_track = 'instagram'
+#    instagram_url = getInstagram.get_authorize_url()
+#    return HttpResponseRedirect(instagram_url)
+#
+#def tumblr_login(request):
+#    global profile_track
+#    profile_track = 'tumblr'
+#    tumblr_url = getTumblr.authorize_url()
+#    return HttpResponseRedirect(tumblr_url)
+#
+#def twitter_login(request):
+#    global profile_track
+#    profile_track = 'twitter'
+#    twitter_url = getTwitter.get_authorize_url()
+#    return HttpResponseRedirect(twitter_url)
+#
+#def github_login(request):
+#    global profile_track
+#    profile_track = 'github'
+#    github_url = getGithub.get_authorize_url()
+#    return HttpResponseRedirect(github_url)
+#
+#def linkedin_login(request):
+#    global profile_track
+#    profile_track = 'linkedin'
+#    linkedin_url = getLinkedIn.get_authorize_url()
+#    return HttpResponseRedirect(linkedin_url)
+#
+#def facebook_login(request):
+#    global profile_track
+#    profile_track = 'facebook'
+#    facebook_url = getFacebook.get_authorize_url()
+#    return HttpResponseRedirect(facebook_url)
+#
+#
+#def google_login(request):
+#    global profile_track
+#    profile_track = 'google'
+#    google_url = getGoogle.get_authorize_url()
+#    return HttpResponseRedirect(google_url)
+#
+#def dropbox_login(request):
+#    global profile_track
+#    profile_track = 'dropbox'
+#    dropbox_url = getDropbox.get_authorize_url()
+#    return HttpResponseRedirect(dropbox_url)
+#
+#def foursquare_login(request):
+#    global profile_track
+#    profile_track = 'foursquare'
+#    forsquare_url = getFoursquare.get_authorize_url()
+#    return HttpResponseRedirect(forsquare_url)
