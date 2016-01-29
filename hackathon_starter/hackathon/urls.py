@@ -5,10 +5,15 @@ from hackathon import views
 # urls.py
 from django.views.generic import TemplateView
  
+#from allauth
+from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
+admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    url(r'^$', views.index, name='index'),
+    #url(r'^$', views.index, name='index'),
     url(r'^home/$', views.index, name='index'),
     url(r'^interview-skills-tool/$', views.skillsTool, name='skillsTool'),
     url(r'^interview-skills-tool/skills_api$', views.skills_api, name='skills_api'),
@@ -73,10 +78,10 @@ urlpatterns = patterns('',
     #url(r'^linkedin_login/$', views.linkedin_login, name='linkedin_login'),
     
     
-    url(r'^accounts/profile', views.facebook_profile, name='facebook_profile'),
+    #url(r'^accounts/profile', views.facebook_profile, name='facebook_profile'),
     #url(r'^facebook_login/$', views.facebook_login, name='facebook_login'),
     #url(r'^facebook/$', views.facebook, name='facebook'),
-    url(r'^accounts/', include('allauth.urls')),
+    #url(r'^accounts/', include('allauth.urls')),
 
     #
     #
@@ -114,4 +119,20 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
     url(r'^robots\.txt$', TemplateView.as_view(template_name='content/robots.txt', content_type='text/plain'), name="robots"),
 )
+
+
+urlpatterns += patterns('',
+    url(r'^$', TemplateView.as_view(template_name='visitor/landing-index.html'), name='landing_index'),
+    url(r'^about$', TemplateView.as_view(template_name='visitor/landing-about.html'), name='landing_about'),
+    url(r'^terms/$', TemplateView.as_view(template_name='visitor/terms.html'), name='website_terms'),
+    url(r'^contact$', TemplateView.as_view(template_name='visitor/contact.html'), name='website_contact'),
+
+    (r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/profile/$', 'authdemo.views.account_profile', name='account_profile'),
+ 
+    url(r'^member/$', views.member_index, name='user_home'),
+    url(r'^member/action$', views.member_action, name='user_action'),
+
+    url(r'^admin/', include(admin.site.urls)),
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

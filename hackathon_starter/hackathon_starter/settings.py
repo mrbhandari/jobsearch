@@ -68,6 +68,9 @@ INSTALLED_APPS = (
     
     #for forms
     'bootstrap3',
+    'authdemo',
+    'demo',
+
     
 )
 
@@ -115,12 +118,12 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
 TIME_ZONE = 'America/Los_Angeles'
 
 
@@ -129,8 +132,15 @@ TIME_ZONE = 'America/Los_Angeles'
 
 STATIC_URL = '/static/'
 
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates'),
+                os.path.join(BASE_DIR, 'templates', 'allauth'),
+                os.path.join(BASE_DIR, 'hackathon', 'templates', 'plain', 'example'),
+                #os.path.join(BASE_DIR, 'hackathon', 'templates', 'bootstrap', 'allauth'),
+                os.path.join(BASE_DIR, 'hackathon', 'templates', 'allauth'),
+                os.path.join(BASE_DIR, 'hackathon', 'templates'),
+                 ]
 
+        
 MEDIA_URL = '/'
 
 TEMPLATE_LOADERS = [
@@ -164,6 +174,44 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #    }
 #  }
 #]
+
+
+
+#
+#TEMPLATES = [
+#    {
+#    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#    'DIRS': [
+#        # allauth templates: you could copy this directory into your
+#        # project and tweak it according to your needs
+#        # os.path.join(PROJECT_ROOT, 'templates', 'uniform', 'allauth'),
+#        # example project specific templates
+#        os.path.join(BASE_DIR, 'hackathon', 'templates', 'plain', 'example'),
+#        #os.path.join(BASE_DIR, 'hackathon', 'templates', 'bootstrap', 'allauth'),
+#        os.path.join(BASE_DIR, 'hackathon', 'templates', 'allauth'),
+#        os.path.join(BASE_DIR, 'hackathon', 'templates'),
+#    ],
+#    'APP_DIRS': True,
+#    'OPTIONS': {
+#        'context_processors': [
+#            # needed for admin templates
+#            'django.contrib.auth.context_processors.auth',
+#            # these *may* not be needed
+#            'django.template.context_processors.debug',
+#            'django.template.context_processors.i18n',
+#            'django.template.context_processors.media',
+#            'django.template.context_processors.static',
+#            'django.contrib.messages.context_processors.messages',
+#            # allauth needs this from django
+#            'django.template.context_processors.request',
+#            # allauth specific context processors
+#            #'allauth.account.context_processors.account',
+#            #'allauth.socialaccount.context_processors.socialaccount',
+#          ],
+#       },
+#    }
+#]
+
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -230,39 +278,27 @@ DROPBOX_APP_SECRET = 'xx0virsvtghxlui'
 FOURSQUARE_APP_ID = '2V342MA2PZQEKABT450WJQKKRHV0QPFMOUBA1ZHXKWZ5YZ1Y'
 FOURSQUARE_APP_SECRET = 'PC0O1JQWP24EAPPLXNRIJVVBN5D2DW3XD5GJGGSQWIESYN1B'
 
-#facebook settings
-SOCIALACCOUNT_PROVIDERS = \
-    {'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time',
-            'age_range',
-            ],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'}}
 
 
-#for allauth
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+SITE_ID = 1
+AUTH_USER_MODEL = 'authdemo.DemoUser'
+LOGIN_REDIRECT_URL = '/member/'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = "none"
-SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_MIN_LENGTH = 3
+# ACCOUNT_EMAIL_VERIFICATION = 'none'  # testing...
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+SOCIALACCOUNT_AUTO_SIGNUP = False  # require social accounts to use the signup form ... I think
+# For custom sign-up form:
+# http://stackoverflow.com/questions/12303478/how-to-customize-user-profile-when-using-django-allauth
 
-#LOGIN_REDIRECT_URL = "/"
-
-ACCOUNT_SIGNUP_FORM_CLASS = 'hackathon.forms.SignupForm'
-SOCIALACCOUNT_AUTO_SIGNUP = False
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 

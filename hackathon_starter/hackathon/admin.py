@@ -1,5 +1,5 @@
 from django.contrib import admin
-from hackathon.models import UserProfile
+#from hackathon.models import UserProfile
 
 #Profile, InstagramProfile, TwitterProfile, MeetupToken, GithubProfile, LinkedinProfile, TumblrProfile
 
@@ -7,7 +7,7 @@ from hackathon.models import UserProfile
 class TwitterProfileAdmin(admin.ModelAdmin):
 	list_display = ('user','twitter_user')
 
-admin.site.register(UserProfile)
+#admin.site.register(UserProfile)
 #admin.site.register(Profile)
 #admin.site.register(InstagramProfile)
 #admin.site.register(TwitterProfile, TwitterProfileAdmin)

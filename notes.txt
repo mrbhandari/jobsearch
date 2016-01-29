@@ -147,4 +147,7 @@ pip install django-localflavor
 sudo pip install django-bootstrap3
 
 
+templates / accounts / login.thml
+
+
  

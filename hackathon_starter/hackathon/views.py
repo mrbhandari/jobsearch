@@ -1,5 +1,5 @@
 # Django
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.contrib.auth import logout
 from django.template import RequestContext, loader
 from django.contrib.auth import authenticate, login
@@ -20,6 +20,11 @@ from urllib2 import URLError
 
 import requests
 import pdb
+
+
+#allauthdemo
+from django.core.urlresolvers import reverse
+
 
 # Scripts
 from scripts.steam import gamespulling, steamidpulling
@@ -86,6 +91,19 @@ def set_gender(sender, **kwargs):
     user.save()
     
     
+
+
+
+
+@login_required
+def member_index(request):
+    return render_to_response("member/member-index.html", RequestContext(request))
+
+@login_required
+def member_action(request):
+    return render_to_response("member/member-action.html", RequestContext(request))
+
+
 
 
 def index(request):

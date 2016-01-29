@@ -13,81 +13,81 @@ from localflavor.us.models import USZipCodeField
 # Create your models here.
 
 
-
- 
-class UserProfile(models.Model):
-    # Relations
-    user = models.OneToOneField(User, related_name='profile')
-    
-    
-    # Attributes - Mandatory
-    zipcode = USZipCodeField()
-    age = models.PositiveIntegerField(default=0,
-                                          )
-    currently_employed = models.BooleanField(default=False,
-                                          )
-    paid_job_before = models.BooleanField(default=False,
-                                          )
-    
-    #Education level
-    NO_HS = 'NO'
-    HIGHSCHOOL = 'HS'
-    COLLEGE = 'BA'
-    EDUCATION_LEVEL_CHOICES = (
-        (NO_HS, 'Less than highschool'),
-        (HIGHSCHOOL, 'Highschool completed'),
-        (COLLEGE, "Bachelor's degree"),
-    )
-    education_level = models.CharField(max_length=2,
-                                      choices=EDUCATION_LEVEL_CHOICES,
-                                      default=NO_HS)
-
-
-    #currently_studying
-    #hours_preferred
-    #hours_preferred = ("Part time", "Casual", "Fulltime", "Holidays/seasonal")
-    #user = models.ForeignKey(User, unique=True)
-    #location = models.CharField(max_length=140)  
-    #gender = models.CharField(max_length=140)  
-    #employer = models.ForeignKey(Employer)
-    #profile_picture = models.ImageField(upload_to='thumbpath', blank=True)
-
-
- 
-    class Meta:
-        db_table = 'user_profile'
-    
-    # Custom Properties
-    def account_verified(self):
-        if self.user.is_authenticated:
-            result = EmailAddress.objects.filter(email=self.user.email)
-            if len(result):
-                return result[0].verified
-        return False
-
-    def profile_image_url(self):
-        fb_uid = SocialAccount.objects.filter(user_id=self.user.id, provider='facebook')
-        print "XXXXXXXXXXXXs"
-        print fb_uid
-     
-        if len(fb_uid):
-            return "http://graph.facebook.com/{}/picture?width=40&height=40".format(fb_uid[0].uid)
-     
-        return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.user.email).hexdigest())
-    
-    # Methods
-    
-    # Meta and String
-    class Meta:
-        pass
-    
-    def __unicode__(self):
-        return "{}'s profile".format(self.user.username)
- 
-
-
-
-User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+#
+# 
+#class UserProfile(models.Model):
+#    # Relations
+#    user = models.OneToOneField(User, related_name='profile')
+#    
+#    
+#    # Attributes - Mandatory
+#    zipcode = USZipCodeField()
+#    age = models.PositiveIntegerField(default=0,
+#                                          )
+#    currently_employed = models.BooleanField(default=False,
+#                                          )
+#    paid_job_before = models.BooleanField(default=False,
+#                                          )
+#    
+#    #Education level
+#    NO_HS = 'NO'
+#    HIGHSCHOOL = 'HS'
+#    COLLEGE = 'BA'
+#    EDUCATION_LEVEL_CHOICES = (
+#        (NO_HS, 'Less than highschool'),
+#        (HIGHSCHOOL, 'Highschool completed'),
+#        (COLLEGE, "Bachelor's degree"),
+#    )
+#    education_level = models.CharField(max_length=2,
+#                                      choices=EDUCATION_LEVEL_CHOICES,
+#                                      default=NO_HS)
+#
+#
+#    #currently_studying
+#    #hours_preferred
+#    #hours_preferred = ("Part time", "Casual", "Fulltime", "Holidays/seasonal")
+#    #user = models.ForeignKey(User, unique=True)
+#    #location = models.CharField(max_length=140)  
+#    #gender = models.CharField(max_length=140)  
+#    #employer = models.ForeignKey(Employer)
+#    #profile_picture = models.ImageField(upload_to='thumbpath', blank=True)
+#
+#
+# 
+#    class Meta:
+#        db_table = 'user_profile'
+#    
+#    # Custom Properties
+#    def account_verified(self):
+#        if self.user.is_authenticated:
+#            result = EmailAddress.objects.filter(email=self.user.email)
+#            if len(result):
+#                return result[0].verified
+#        return False
+#
+#    def profile_image_url(self):
+#        fb_uid = SocialAccount.objects.filter(user_id=self.user.id, provider='facebook')
+#        print "XXXXXXXXXXXXs"
+#        print fb_uid
+#     
+#        if len(fb_uid):
+#            return "http://graph.facebook.com/{}/picture?width=40&height=40".format(fb_uid[0].uid)
+#     
+#        return "http://www.gravatar.com/avatar/{}?s=40".format(hashlib.md5(self.user.email).hexdigest())
+#    
+#    # Methods
+#    
+#    # Meta and String
+#    class Meta:
+#        pass
+#    
+#    def __unicode__(self):
+#        return "{}'s profile".format(self.user.username)
+# 
+#
+#
+#
+#User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
 
 
