@@ -15,6 +15,9 @@ except ImportError:
 from allauth.account.signals import user_signed_up
 
 
+#additional fields
+from localflavor.us.models import USZipCodeField
+
 class MyUserManager(UserManager):
     """
     Custom User Model manager.
@@ -49,7 +52,11 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
 
     Remember to change ``AUTH_USER_MODEL`` in ``settings.py``.
     """
-
+    
+    #Relations
+    
+    
+    #Attributes
     email = models.EmailField(_('email address'), blank=False, unique=True)
     first_name = models.CharField(_('first name'), max_length=40, blank=True, null=True, unique=False)
     last_name = models.CharField(_('last name'), max_length=40, blank=True, null=True, unique=False)
@@ -62,6 +69,42 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+
+
+
+    # Attributes - Mandatory
+    zipcode = USZipCodeField()
+    age = models.PositiveIntegerField(default=0,
+                                          )
+    currently_employed = models.BooleanField(default=False,
+                                          )
+    paid_job_before = models.BooleanField(default=False,
+                                          )
+    
+    #Education level
+    NO_HS = 'NO'
+    HIGHSCHOOL = 'HS'
+    COLLEGE = 'BA'
+    EDUCATION_LEVEL_CHOICES = (
+        (NO_HS, 'Less than highschool'),
+        (HIGHSCHOOL, 'Highschool completed'),
+        (COLLEGE, "Bachelor's degree"),
+    )
+    education_level = models.CharField(max_length=2,
+                                      choices=EDUCATION_LEVEL_CHOICES,
+                                      default=NO_HS)
+
+
+    #currently_studying
+    #hours_preferred
+    #hours_preferred = ("Part time", "Casual", "Fulltime", "Holidays/seasonal")
+    #user = models.ForeignKey(User, unique=True)
+    #location = models.CharField(max_length=140)  
+    #gender = models.CharField(max_length=140)  
+    #employer = models.ForeignKey(Employer)
+    #profile_picture = models.ImageField(upload_to='thumbpath', blank=True)
+
+
 
     objects = MyUserManager()
 

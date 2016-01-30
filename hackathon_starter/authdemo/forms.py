@@ -4,6 +4,12 @@ from django.core.validators import MinLengthValidator
 from .models import DemoUser
 
 
+
+#from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.models import User
+
+from authdemo.models import DemoUser
+
 class DemoUserEditForm(forms.ModelForm):
     """Form for viewing and editing name fields in a DemoUser object.
 
@@ -21,6 +27,25 @@ class DemoUserEditForm(forms.ModelForm):
     class Meta:
         model = DemoUser
         fields = ('first_name', 'last_name', 'display_name')
+        fields += ('zipcode', 'age', 'currently_employed', 'paid_job_before', 'education_level' )
+        
+            
+    def signup(self, request, user):
+        wsData = DemoUser()
+        wsData.user = user
+        
+        wsData.zipcode = self.cleaned_data['zipcode']
+        wsData.age = self.cleaned_data['age']
+        wsData.currently_employed = self.cleaned_data['currently_employed']
+        wsData.paid_job_before = self.cleaned_data['paid_job_before']
+        wsData.education_level = self.cleaned_data['education_level']
+        
+        #wsData.wsUser = self.cleaned_data['wsUser']
+        #wsData.wsPwd = self.cleaned_data['wsPwd']
+        
+        wsData.save()
+    
+
 
 #
 class DemoUserAdminForm(forms.ModelForm):
