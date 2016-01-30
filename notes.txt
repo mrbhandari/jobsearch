@@ -143,11 +143,23 @@ sudo pip install ~/Downloads/zinnia-theme-bootstrap-develop.zip
 
 #django all auth
 sudo pip install django-allauth
-pip install django-localflavor
+sudo pip install django-localflavor
 sudo pip install django-bootstrap3
 
-
+#location for all auth
 templates / accounts / login.thml
 
+#updates to schema
+alter table auth_user ADD `display_name` varchar(14) NULL;
+
+# "Unknown column 'auth_user_groups.demouser_id'
+Alter table auth_user_groups ADD `demouser_id` integer NOT NULL;
+
+#Unknown column 'auth_user_user_permissions.demouser_id' in 'where clause
+
+Alter table auth_user_user_permissions ADD `demouser_id` integer NOT NULL;
+
+#Field 'username' doesn't have a default value
+ALTER TABLE auth_user drop column username;
 
  
