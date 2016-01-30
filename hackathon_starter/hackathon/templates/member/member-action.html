@@ -4,7 +4,25 @@
 
 {% block content %}
 <div class="container">
-<p>A user could do something else here.</p>
+    
+    <h3>Job Matches</h3>
+    <div class="well">
+<p>You have no matches yet. Employers can find you. Your current ranking as employers search is <strong>low</strong> because your <strong>profile is incomplete</strong></p>
+    </div>
+    
+    
+   <h3>Status</h3>
+          <div>
+      <p><img src="https://cdn4.iconfinder.com/data/icons/colicon/24/checkmark_done_complete-24.png">
+      Basic profile finished, employers can now find you
+      </p>
+      <p>
+        <img src="https://cdn4.iconfinder.com/data/icons/colicon/24/close_delete-24.png">
+        Standout by <a href="{% url 'account_profile' %}">telling them what you can do</a>
+      </p>
+    </div>
+          
+          
 </div>
 {% endblock %}
 

@@ -18,6 +18,9 @@ from allauth.account.signals import user_signed_up
 #additional fields
 from localflavor.us.models import USZipCodeField
 
+#from localflavor.ca.f import CAPhoneNumberField, CAPostalCodeField, CAProvinceField, CAProvinceSelect, CASocialInsuranceNumberField
+
+
 class MyUserManager(UserManager):
     """
     Custom User Model manager.
@@ -73,12 +76,15 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
 
 
     # Attributes - Mandatory
-    zipcode = USZipCodeField()
-    age = models.PositiveIntegerField(default=0,
+    zipcode = models.CharField(_('Postal Code'), max_length=6, blank=True, null=True, unique=False)
+    age = models.PositiveIntegerField(default=18,
+                                          help_text='Required for some jobs.',
                                           )
     currently_employed = models.BooleanField(default=False,
+                                        verbose_name="I am currently employed.",
                                           )
     paid_job_before = models.BooleanField(default=False,
+                                          verbose_name="I have had a paid job before.",
                                           )
     
     #Education level
@@ -91,6 +97,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
         (COLLEGE, "Bachelor's degree"),
     )
     education_level = models.CharField(max_length=2,
+                                       verbose_name='Education Level (highest)',
                                       choices=EDUCATION_LEVEL_CHOICES,
                                       default=NO_HS)
 
@@ -109,7 +116,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     class Meta:
         verbose_name = _('user')

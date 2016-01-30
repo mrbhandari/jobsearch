@@ -50,6 +50,7 @@ class DemoUserEditView(UpdateView):
         return super(DemoUserEditView, self).form_valid(form)
 
 
+
 account_profile = login_required(DemoUserEditView.as_view())
 
 

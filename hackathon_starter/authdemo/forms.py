@@ -1,14 +1,14 @@
 from django import forms
 from django.core.validators import MinLengthValidator
 
-from .models import DemoUser
+from authdemo.models import DemoUser, UserProfile
 
 
 
 #from django.contrib.auth.forms import UserCreationForm
 #from django.contrib.auth.models import User
 
-from authdemo.models import DemoUser
+
 
 class DemoUserEditForm(forms.ModelForm):
     """Form for viewing and editing name fields in a DemoUser object.

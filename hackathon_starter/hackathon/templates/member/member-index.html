@@ -12,15 +12,28 @@
     <div class="col-sm-6 col-md-4 col-lg4">
       <p class="sticky taped2" style="width: 250px;">
         <strong>Welcome {{ request.user.name }}!</strong><br>
-        At this point, the site has<br />
-        authenticated you and, if you<br />
-        used a social network, retrieved<br />
-        your picture and key bio details<br />
-        such as name.
+        You've finished creating a basic<br />
+        profile. Now tell us more about <br />
+        what you are looking for.<br />
       </p>
     </div>
+    
+
 
     <div class="col-sm-6 col-md-4 col-lg-4">
+      
+      <h3>Status</h3>
+          <div>
+      <p><img src="https://cdn4.iconfinder.com/data/icons/colicon/24/checkmark_done_complete-24.png">
+      Basic profile finished, employers can now find you
+      </p>
+      <p>
+        <img src="https://cdn4.iconfinder.com/data/icons/colicon/24/close_delete-24.png">
+        Standout by <a href="{% url 'account_profile' %}">telling them what you can do</a>
+      </p>
+    </div>
+          
+          
       <h3>Picture</h3>
       <p class="picture-frame">
       {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 256px; height: 256px">
