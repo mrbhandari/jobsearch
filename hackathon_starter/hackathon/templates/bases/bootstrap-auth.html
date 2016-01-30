@@ -3,10 +3,19 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 big-box">
+    <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2"> <!--big-box-->
     {% block inner-content %}
     {% endblock %}
     </div>
   </div>
+
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 big-box ">
+    {% block outer-content %}
+    {% endblock %}
+    </div>
+  
+  
 </div><!-- container -->
 {% endblock %}

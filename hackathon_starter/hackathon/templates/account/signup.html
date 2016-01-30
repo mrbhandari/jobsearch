@@ -9,20 +9,35 @@
 {% block inner-content %}
 {% get_providers as socialaccount_providers %}
 
+<style>
+  
+  .horizontal-interstitial {margin: 2.2rem 0}
+  .horizontal-interstitial {border-bottom: 1px solid #ccc}
+</style>
+<!--<h1>{% trans "Step 1 of 2" %}</h1>-->
 
-<h1>{% trans "Sign Up" %}</h1>
+
+
+
+<img class="media-object pull-left" style="margin-right:10px" src="https://cdn0.iconfinder.com/data/icons/internet-3-2/64/user_internet_activity_connected-32.png">
+<h3>{% trans "Start matching me to jobs" %}</h3>
+<br>
 <div class="row">
+  
   {% if socialaccount_providers  %}
   <div class="col-md-5 col-lg-5">
+    <p class="text-center lead">Sign in with Facebook</p>
     {% include "allauth/account/provider_panel.html" with process="login" %}
   </div>
   {% endif %}
 
   <div class="{% if socialaccount_providers %}col-md-7 col-lg-7 {% else %} col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 {% endif %}">
 
-    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-        
-    <!--<form id="signup_form" method="post" action="{% url 'account_signup' %}">
+    <p class="text-center lead">Or tell us about yourself:</p>
+
+
+    
+    <form id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
       {% bootstrap_form form %}
       {% if redirect_field_value %}
@@ -31,8 +46,35 @@
       <div class="form-actions">
         <button class="btn btn-primary" type="submit">{% trans "Sign Up" %}</button>
       </div>
-    </form>-->
+    </form>
+    
+    <!--<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>-->
+
+    
   </div>
+  
+  <div>
+    
+    
+  </div>
+  
 </div>
+
+    
+{% endblock %}
+
+{% block outer-content %}
+  
+  <img class="media-object pull-left col-md-3 col-lg-3" style="margin-right:10px" src="https://cdn1.iconfinder.com/data/icons/survey/500/Questionnaire_lance-64.png">
+
+      <div class="col-md-9 col-lg-9">
+        <p >"It's so hard getting started looking for a job and FlexJobs puts all the info at your finger tips."</p>
+        <div class="media-right">
+        <p><strong>Janice Pennington</strong></p>
+        <p><i>Found a job at Starbucks</i></p>
+        </div>
+      </div>
+    
+
 {% endblock %}
 
