@@ -76,7 +76,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
 
 
     # Attributes - Mandatory
-    zipcode = models.CharField(_('Postal Code'), max_length=6, blank=True, null=True, unique=False)
+    zipcode = models.CharField(_('Postal Code'), max_length=20, default='', blank=True, null=True, unique=False)
     age = models.PositiveIntegerField(default=18,
                                           help_text='Required for some jobs.',
                                           )
