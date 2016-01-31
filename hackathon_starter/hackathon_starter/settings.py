@@ -69,7 +69,7 @@ INSTALLED_APPS = (
     #for forms
     'bootstrap3',
     'authdemo',
-    'demo',
+    
 
     
 )

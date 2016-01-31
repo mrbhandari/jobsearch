@@ -48,6 +48,9 @@ class DemoUserEditView(UpdateView):
         form.save()
         messages.add_message(self.request, messages.INFO, 'User profile updated')
         return super(DemoUserEditView, self).form_valid(form)
+    
+    def get_success_url(self):
+        return '/member/'
 
 
 
