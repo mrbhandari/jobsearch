@@ -68,11 +68,15 @@ INSTALLED_APPS = (
     
     #for forms
     'bootstrap3',
-    'authdemo',
     
-
+    'widget_tweaks',
     
 )
+
+
+PROJECT_APPS = ('myjobs', 'myprofile', 'authdemo')
+
+INSTALLED_APPS += PROJECT_APPS
 
 SITE_ID = 1
 
@@ -301,4 +305,17 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 SOCIALACCOUNT_AUTO_SIGNUP = False  # require social accounts to use the signup form ... I think
 # For custom sign-up form:
 # http://stackoverflow.com/questions/12303478/how-to-customize-user-profile-when-using-django-allauth
+
+
+#for myjobs
+FORM_DATE_FORMAT = '%d-%b-%Y'
+# Modules considered when calculating profile completion
+PROFILE_COMPLETION_MODULES = (
+    'name',
+    'summary',
+    'address',
+    'telephone',
+    'employmenthistory',
+    'education',
+)
 

@@ -13,13 +13,15 @@ try:
 except ImportError:
     from django.utils.encoding import force_unicode as force_text
 from allauth.account.signals import user_signed_up
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 #additional fields
 from localflavor.us.models import USZipCodeField
 
 #from localflavor.ca.f import CAPhoneNumberField, CAPostalCodeField, CAProvinceField, CAProvinceSelect, CASocialInsuranceNumberField
 
+#job function
+from django.conf import settings
 
 class MyUserManager(UserManager):
     """
@@ -59,7 +61,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
     #Relations
     
     
-    #Attributes
+    #Basic Attributes
     email = models.EmailField(_('email address'), blank=False, unique=True)
     first_name = models.CharField(_('first name'), max_length=40, blank=True, null=True, unique=False)
     last_name = models.CharField(_('last name'), max_length=40, blank=True, null=True, unique=False)
@@ -73,8 +75,16 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-
-
+    #From job github
+    profile_completion = models.IntegerField(validators=[MaxValueValidator(100),
+                                                         MinValueValidator(0)],
+                                             blank=False, default=0)
+    
+    opt_in_employers = models.BooleanField(_('Email is visible to Employers'),
+                                           default=True,
+                                           help_text=_('Checking this allows '
+                                                       'employers to send '
+                                                       'emails to you.'))
     # Attributes - Mandatory
     zipcode = models.CharField(_('Postal Code'), max_length=20, default='', blank=True, null=True, unique=False)
     age = models.PositiveIntegerField(default=18,
@@ -165,6 +175,57 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         """
         send_mail(subject, message, from_email, [self.email])
+        
+    def update_profile_completion(self):
+        """
+        Updates the percent of modules in
+        settings.PROFILE_COMPLETION_MODULES that a user has completed.
+        """
+        profile_dict = self.profileunits_set.all()
+        num_complete = len(list(set([unit.get_model_name() for unit
+                           in profile_dict if unit.get_model_name()
+                           in settings.PROFILE_COMPLETION_MODULES])))
+        self.profile_completion = int(float(
+            1.0 * num_complete / len(settings.PROFILE_COMPLETION_MODULES))*100)
+        self.save()
+    
+    def add_primary_name(self, update=False, f_name="", l_name=""):
+        """
+        Primary function that adds the primary user's ProfileUnit.Name object
+        first and last name to the user model, if Name object exists.
+
+        Inputs:
+        :update:    Update is a flag that should be used to determine if to use
+                    this function as an update (must provide f_name and l_name
+                    if that is the case) or if the function needs to be called
+                    to set the user's first_name and last_name in the model.
+
+        :f_name:    If the update flag is set to true this needs to have the
+                    given_name value from the updating Name object.
+
+        :l_name:    If the update flag is set to true this needs to have the
+                    family_name value from the updating Name object.
+        """
+        if update and f_name != '' and l_name != '':
+            self.first_name = f_name
+            self.last_name = l_name
+            self.save()
+            return
+
+        try:
+            name_obj = self.profileunits_set.filter(
+                content_type__name="name").get(name__primary=True)
+        except ObjectDoesNotExist:
+            name_obj = None
+
+        if name_obj:
+            self.first_name = name_obj.name.given_name
+            self.last_name = name_obj.name.family_name
+            self.save()
+        else:
+            self.first_name = ""
+            self.last_name = ""
+            self.save()
 
     def __str__(self):
         return self.email
