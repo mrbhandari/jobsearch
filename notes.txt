@@ -170,29 +170,3 @@ pip install django-countries
 pip install django-passwords==0.2.0
 pip install django-widget-tweaks==1.1.2
 
-
-from base
-
-<!--from jobs-->
-    <script>
-        var static_url = "{{ STATIC_URL }}";
-    </script>
-    <!--[if IE]>
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/basejob/es5-shim.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/basejob/es5-sham.min.js"></script>
-    <![endif]-->
-    <!--<script type="text/javascript" src="{{ STATIC_URL }}js/basejob/custom.166-06.js{{ gz }}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/basejob/my.jobs.160-30.js{{ gz }}"></script>-->
-<!--end from jobs-->
-
-On edit profile.html
-
-<!--<script src="{{ STATIC_URL }}/js/profile.153-10.js{{ gz }}"></script>-->
-<script type="text/javascript">
-    //$(document).ready(function() {
-    //    $(".product-card:not(.no-highlight)").on("click", function() {
-    //       window.location = $(this).find("a").attr("href");
-    //    });
-    //});
-</script>
- 

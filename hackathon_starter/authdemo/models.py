@@ -14,6 +14,7 @@ except ImportError:
     from django.utils.encoding import force_unicode as force_text
 from allauth.account.signals import user_signed_up
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ObjectDoesNotExist
 
 #additional fields
 from localflavor.us.models import USZipCodeField
