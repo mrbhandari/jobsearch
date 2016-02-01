@@ -1,9 +1,9 @@
 /*Main Styles*/
-body {
+/*body {
     background-color: #ddd;
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 29px;
-}
+}*/
 
 #main {
     padding: 50px;
@@ -962,9 +962,9 @@ input.picker-right {
     font-size: 0.9em;
 }
 
-.record-details {
+/*.record-details {
     max-width: 300px;
-}
+}*/
 
 #prm-arrow-left{
     width: 0;
@@ -2253,9 +2253,9 @@ table#row-link-table {
 }
 
 /* Contact Form Styles */
-#success-table tr td {
+/*#success-table tr td {
     min-width: 101px;
-}
+}*/
 
 #success-table tr td + td {
     font-weight: bold;
@@ -3076,7 +3076,7 @@ td .gravatar-blank,
 }
 
 /* Tablets */
-@media screen and (max-width: 992px) {
+/*@media screen and (max-width: 992px) {
     body {
         padding-top: 70px;
     }
@@ -4226,6 +4226,7 @@ td .gravatar-blank,
 
 }
 
+*/
 /* Account Settings */
 .as-content > .span4 + .span8 { margin-left: 0; }
 .as-content .actions.offset4 { margin-left: 355px; }
@@ -4240,9 +4241,9 @@ td .gravatar-blank,
     display: none;
 }
 
-@media screen and (max-width: 500px) {
+/*@media screen and (max-width: 500px) {
     .as-content .actions.offset4 { margin-left: 0; }
-}
+}*/
 
 .account-box {
     padding: 0;
