@@ -274,6 +274,8 @@ class Education(ProfileUnits):
     degree_minor = models.CharField(max_length=255, blank=True,
                                     verbose_name=_('minor'))
     
+    module_description = "Your education helps employers know that you value learning and you have the basic skills for the job."
+    
     @classmethod
     def get_suggestion(cls, user):
         """Get a list of all suggestions for a user to improve their education

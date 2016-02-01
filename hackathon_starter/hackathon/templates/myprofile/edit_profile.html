@@ -1,4 +1,4 @@
-{% extends "bases/bootstrap-member.html" %}
+{% extends "bases/bootstrap-member-jobs.html" %}
 
 {% load bootstrap3 %}
 
@@ -19,18 +19,23 @@
 <div class="container">   
 <div class="container"> 
     <div class="row" id="profileTitleRow">
+        
+      <p class="picture-frame">
+      {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 256px; height: 256px">
+      {% else %}No picture available yet.{% endif %}
+      </p>
         <div class="span2">
             {% get_gravatar user '140' %}
         </div>
         <div class="span10" id="profileTitleBar">
 
-            <h1>{% if user.get_full_name %}{{user.get_full_name}}{%else%}&nbsp;{%endif%}</h1>
+            <h3>{% if user.get_full_name %}{{user.get_full_name}}{%else%}&nbsp;{%endif%}</h3>
 
-            <h3>{{user.email}}</h3>
+            <p class="lead">{{user.email}}</p>
         </div>
-        <div class="span10" id="profileSubtitleBar">
+<!--        <div class="span10" id="profileSubtitleBar">
             <a href="{% url 'edit_account' %}">{% trans "Account Settings" %}</a>
-        </div>
+        </div>-->
     </div>{# /profileTitleRow #}
     <div class="row">
         <div class="span8" id="moduleColumn">
@@ -46,7 +51,7 @@
         </div>
         <div class="span4">
             <div class="sidebar" id="moduleBank">
-                <h2 class="top">Profile Completion</h2>
+                <h4 class="top">Profile Completion</h4>
                 <div class="pull-right">Your profile is <span id="highlight">{{user.profile_completion}}% complete</span></div><br>
                 
                 <div class="progress">
@@ -56,7 +61,7 @@
                     </div>
                 </div>
                 
-                <h2>Add a New Section</h2>
+                <h4>Add a New Section</h4>
                 <table class="table table-bordered tables-striped">
                 {% for module in unit_names %}
                 <tr class="profile-section" {% if module.items %}style="display:none;"{% endif %}><td>
@@ -76,4 +81,8 @@
 
 {% block tail_js %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+   
 {% endblock %}

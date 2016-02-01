@@ -70,8 +70,10 @@ INSTALLED_APPS = (
     'bootstrap3',
     
     'widget_tweaks',
+    #'crispy_forms',
     
 )
+
 
 
 PROJECT_APPS = ('myjobs', 'myprofile', 'authdemo')
@@ -319,3 +321,4 @@ PROFILE_COMPLETION_MODULES = (
     'education',
 )
 
+#CRISPY_TEMPLATE_PACK = 'bootstrap3'

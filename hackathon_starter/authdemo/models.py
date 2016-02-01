@@ -16,6 +16,8 @@ from allauth.account.signals import user_signed_up
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.exceptions import ObjectDoesNotExist
 
+from django.db.models.signals import post_save
+
 #additional fields
 from localflavor.us.models import USZipCodeField
 

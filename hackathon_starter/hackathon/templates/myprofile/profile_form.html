@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "bases/bootstrap-member-jobs.html" %}
 {% load common_tags %}
 {% load i18n %}
 {% gz as gz %}
@@ -86,7 +86,7 @@
 
 {% endblock %}
 
-{% block extra-js %}
+{% block tail_js %}
 <script src="{{ STATIC_URL }}jquery.placeholder.min.js{{ gz }}"></script>
 <script src="{{ STATIC_URL }}profile.153-10.js{{ gz }}"></script>
 {% endblock %}
