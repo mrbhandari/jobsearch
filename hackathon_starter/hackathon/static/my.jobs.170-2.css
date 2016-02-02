@@ -1624,7 +1624,7 @@ div[id$="-wrapper"] + div[id$="-wrapper"] > .list-header {
 h1.bottom-bordered,
 h2.bottom-bordered,
 h3.bottom-bordered {
-    border-bottom: 2px solid #873f3d;
+    border-bottom: 2px solid #006dcc;
 }
 
 .reporting-breadcrumbs ul {
@@ -1911,12 +1911,12 @@ span.small {
 #profileTitleRow{
     margin-bottom: 20px;
 }
-#profileTitleRow img{
+/*#profileTitleRow img{
     border-radius:5px;
-    border: 2px solid #873f3d;
-}
+    border: 2px solid #006dcc;
+}*/
 #profileTitleBar{
-    border-bottom: 2px solid #873f3d;
+    border-bottom: 2px solid #006dcc;
 }
 
 .profile-action-form {
@@ -2280,16 +2280,16 @@ table#row-link-table {
 }
 
 /* Form Styles */
-.form-label {
+/*.form-label {
     text-align: right;
     margin-right: 20px;
     width: 240px;
 }
-
-.form-label label {
+*/
+/*.form-label label {
     font-weight: bold;
 }
-
+*/
 .ui-combobox {
     position: relative;
     display: inline-block;
@@ -2831,14 +2831,14 @@ em.pendingText {
 
 input [type='text'] + .help-block,
 div + .help-block,
-div > .help-block{
+/*div > .help-block{
     max-width: 96%;
     margin: -12px 0 5px 280px;
     color: #555;
     font-size: .85em;
     font-style: italic;
 }
-
+*/
 input[type='checkbox'] + .help-block {
     display:inline;
     padding-left: 5px;
@@ -3886,7 +3886,7 @@ td .gravatar-blank,
     #company_dashboard_link {
         overflow: hidden;
     }
-
+/*
     form .pull-left {
         float: none;
     }
@@ -3898,8 +3898,8 @@ td .gravatar-blank,
     .form-label {
         width: 96%;
     }
-
-    input[type=checkbox] {
+*/
+   /* input[type=checkbox] {
         float: left;
         margin: 2px;
     }
@@ -3912,7 +3912,7 @@ td .gravatar-blank,
 
     ul.ui-autocomplete {
         display: none !important;
-    }
+    }*/
 
     /* Mobile Forms */
 

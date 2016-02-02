@@ -17,17 +17,19 @@
 
 {% block content %}
 <div class="container">   
-<div class="container"> 
+<div class="container">
+    
+                
     <div class="row" id="profileTitleRow">
         
       <p class="picture-frame">
-      {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 256px; height: 256px">
+      {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 256px; height: 256px" class="img-thumbnail">
       {% else %}No picture available yet.{% endif %}
       </p>
-        <div class="span2">
+        <div> <!--class="span2"-->
             {% get_gravatar user '140' %}
         </div>
-        <div class="span10" id="profileTitleBar">
+        <div id="profileTitleBar"> <!--class="span10"--> 
 
             <h3>{% if user.get_full_name %}{{user.get_full_name}}{%else%}&nbsp;{%endif%}</h3>
 
@@ -37,6 +39,22 @@
             <a href="{% url 'edit_account' %}">{% trans "Account Settings" %}</a>
         </div>-->
     </div>{# /profileTitleRow #}
+    
+    <div class="well">
+        <h4>Status</h4>
+        <p>You've finished creating a basic profile and employers can find you. The more you tell them about about yourself the higher the chances of employers contacting you.</p>
+        <p><strong>Your discoverability score: <span id="highlight">{{user.profile_completion |add:"10"}}% </span></p></strong>
+        
+        <div>
+            <div class="progress-bar progress-bar-{% completion_level user.profile_completion%}" role="progressbar" aria-valuenow="{{ user.profile_completion |add:"10"}}"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{ user.profile_completion |add:"10"}}%">
+              {{ user.profile_completion |add:"10"}}%
+            </div>
+        </div>
+        <br>
+    </div>
+    
+    
     <div class="row">
         <div class="span8" id="moduleColumn">
 
@@ -49,18 +67,10 @@
             {% endfor %}
 
         </div>
-        <div class="span4">
-            <div class="sidebar" id="moduleBank">
-                <h4 class="top">Profile Completion</h4>
-                <div class="pull-right">Your profile is <span id="highlight">{{user.profile_completion}}% complete</span></div><br>
-                
-                <div class="progress">
-                    <div class="progress-bar progress-bar-{% completion_level user.profile_completion%}" role="progressbar" aria-valuenow="{{ user.profile_completion }}"
-                    aria-valuemin="0" aria-valuemax="100" style="width:{{ user.profile_completion }}%">
-                      {{ user.profile_completion }}%
-                    </div>
-                </div>
-                
+        <br>
+        <div>
+            <div class="well" id="moduleBank">
+
                 <h4>Add a New Section</h4>
                 <table class="table table-bordered tables-striped">
                 {% for module in unit_names %}

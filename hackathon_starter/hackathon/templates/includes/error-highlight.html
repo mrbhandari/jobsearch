@@ -15,16 +15,16 @@
 {% endif %}
 
 {% if 'country_code' in field.html_name %}
-    <div class="profile-form-input {{ field.label|slugify }}-field">
+    <div class="{{ field.label|slugify }}-field">
         {% with "id_"|add:form.prefix|add:"-country_sub_division_code" as region_id %}
             {% country_select selected=field|default_country html_id=field.id_for_label  region_html_id=region_id input_name=field.html_name %}
         {% endwith %}
     </div>
 {% else %}
-    <div class="span3 form-label pull-left {% if is_boolean %}checkbox-label{% else %}initial{% endif %} {{ field.label|slugify }}-label">
+    <div class="{% if is_boolean %}checkbox-label{% else %}initial{% endif %} {{ field.label|slugify }}-label">
         {% add_required_label field %}
     </div>
-    <div class="profile-form-input {{ field.label|slugify }}-field">
+    <div class=" {{ field.label|slugify }}-field">
         {% if field.label == 'Send Results to *' %}
             <select id="id_email" name="email" style="display: inline-block;" {% if form.fields.email.widget.attrs.disabled %}disabled{% endif %}>
             {% for email, contact in form.fields.email.choices %}
@@ -40,9 +40,9 @@
         {% endif %}
         {% if field.help_text %}
             {% if field|is_checkbox_field %}
-                <br/><span class="help-block checkbox-help-block">{{ field.help_text|safe }}</span>
+                <br/><p class="help-block checkbox-help-block">{{ field.help_text|safe }}</p>
             {% else %}
-                <span class="help-block">{{ field.help_text|safe }}</span>
+                <p class="help-block">{{ field.help_text|safe }}</p>
             {% endif %}
         {% endif %}
     </div>

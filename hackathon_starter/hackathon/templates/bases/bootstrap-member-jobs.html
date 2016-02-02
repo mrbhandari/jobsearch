@@ -9,7 +9,10 @@
     <!--[if IE]>
     <link href="{{ STATIC_URL }}my.jobs.ie.163-29.css{{ gz }}" rel="stylesheet" type="text/css">
     <![endif]-->
-    <!--<link href="{{ STATIC_URL }}bootstrap/bootstrap-modal.css{{ gz }}" rel="stylesheet" type="text/css">-->
+    <link href="{{ STATIC_URL }}bootstrap/bootstrap-modal.css{{ gz }}" rel="stylesheet" type="text/css">
+    
+    <!--repeat-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
       
       <!--end my jobs-->
 {% endblock %}
@@ -52,22 +55,30 @@
         </div>
       </div>
     </div>
+    
+
 
 {% endblock %}
 
 
 {% block tail_js %}
 
-    <script>
-        var static_url = "{{ STATIC_URL }}";
-    </script>
-    <!--[if IE]>
-    <script type="text/javascript" src="{{ STATIC_URL }}es5-shim.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}es5-sham.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript" src="{{ STATIC_URL }}custom.166-06.js{{ gz }}"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}my.jobs.160-30.js{{ gz }}"></script>
     
+  <script>
+      var static_url = "{{ STATIC_URL }}";
+  </script>
+  <!--[if IE]>
+  <script type="text/javascript" src="{{ STATIC_URL }}es5-shim.min.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}es5-sham.min.js"></script>
+  <![endif]-->
+
+<!--  <script type="text/javascript" src="{{ STATIC_URL }}custom.166-06.js{{ gz }}"></script>
+  
+  <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/bootstrap-modalmanager.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/bootstrap-modal.js"></script>
+  
+  <script type="text/javascript" src="{{ STATIC_URL }}my.jobs.160-30.js{{ gz }}"></script>
+-->
     
 
 {% endblock %}
