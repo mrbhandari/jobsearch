@@ -310,7 +310,7 @@ SOCIALACCOUNT_AUTO_SIGNUP = False  # require social accounts to use the signup f
 
 
 #for myjobs
-FORM_DATE_FORMAT = '%d-%b-%Y'
+FORM_DATE_FORMAT = '%d/%m/%Y'
 # Modules considered when calculating profile completion
 PROFILE_COMPLETION_MODULES = (
     'name',

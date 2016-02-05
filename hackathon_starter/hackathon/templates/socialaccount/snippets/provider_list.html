@@ -2,7 +2,12 @@
 
 {% get_providers as socialaccount_providers %}
 
+
+
 {% for provider in socialaccount_providers %}
+
+{% providers_media_js %}
+
 {% if provider.id == "openid" %}
   {% for brand in provider.get_brands %}
     
@@ -19,12 +24,20 @@
 
 {% if provider.id == "facebook" %}
   
+  <!--js way of doing this-->
+<!--  <li>
+    <a  href="{% provider_login_url "facebook" method="js_sdk" %}">
+      <img class="img-responsive center-block" style="max-width: 80%" src="http://www.mytenfacts.com/assets/fb_login-24b3895d0d832446c5b3ec0a872585f6.png">
+    </a>
+  
+  </li>-->
+  
   <li>
     <a  href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
       <img class="img-responsive center-block" style="max-width: 80%" src="http://www.mytenfacts.com/assets/fb_login-24b3895d0d832446c5b3ec0a872585f6.png">
     </a>
   
-</li>
+  </li>
 
 {% else %}
 
