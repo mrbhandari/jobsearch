@@ -255,7 +255,7 @@ class Education(ProfileUnits):
     city_name = models.CharField(max_length=255, blank=True,
                                  verbose_name=_('city'))
     # ISO 3166-2:2007
-    country_sub_division_code = models.CharField(max_length=5, blank=True,
+    country_sub_division_code = models.CharField(max_length=25, blank=True,
                                                  verbose_name=_("State/Region"))
     country_code = models.CharField(max_length=3, blank=True,
                                     verbose_name=_("country"))  # ISO 3166-1
@@ -308,7 +308,7 @@ class Address(ProfileUnits):
     city_name = models.CharField(max_length=255, blank=True,
                                  verbose_name=_("City"),
                                  help_text='ie Chicago, Washington, Dayton')
-    country_sub_division_code = models.CharField(max_length=5, blank=True,
+    country_sub_division_code = models.CharField(max_length=25, blank=True,
                                                  verbose_name=_("State/Region"),
                                                  help_text='ie NY, WA, DC')
     country_code = models.CharField(max_length=3, blank=True,
@@ -416,7 +416,7 @@ class EmploymentHistory(ProfileUnits):
     # Optional fields
     end_date = models.DateField(blank=True, null=True)
     city_name = models.CharField(max_length=255, blank=True, null=True)
-    country_sub_division_code = models.CharField(max_length=5, blank=True,
+    country_sub_division_code = models.CharField(max_length=25, blank=True,
                                                  verbose_name=_("State/Region"))
     country_code = models.CharField(max_length=3, blank=True, null=True,
                                     verbose_name=_("country"))
@@ -705,7 +705,7 @@ class VolunteerHistory(ProfileUnits):
     # Optional fields
     end_date = models.DateField(blank=True, null=True)
     city_name = models.CharField(max_length=255, blank=True)
-    country_sub_division_code = models.CharField(max_length=5, blank=True,
+    country_sub_division_code = models.CharField(max_length=25, blank=True,
                                                  verbose_name=_("State/Region"))
     country_code = models.CharField(max_length=3, blank=True,
                                     verbose_name=_("country"))
