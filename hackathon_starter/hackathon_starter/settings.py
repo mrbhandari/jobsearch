@@ -71,6 +71,7 @@ INSTALLED_APPS = (
     
     'widget_tweaks',
     #'crispy_forms',
+    'debug_toolbar',
     
 )
 
@@ -135,6 +136,10 @@ TIME_ZONE = 'America/Los_Angeles'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+print "XXXXXXXXXXXXXXXXX"
+str(os.path.join(BASE_DIR, 'hackathon', 'static')) + '/'
+
 
 STATIC_URL = '/static/'
 
@@ -310,7 +315,7 @@ SOCIALACCOUNT_AUTO_SIGNUP = False  # require social accounts to use the signup f
 
 
 #for myjobs
-FORM_DATE_FORMAT = '%d/%m/%Y'
+FORM_DATE_FORMAT = '%m/%d/%Y'
 # Modules considered when calculating profile completion
 PROFILE_COMPLETION_MODULES = (
     'name',
@@ -319,6 +324,7 @@ PROFILE_COMPLETION_MODULES = (
     'telephone',
     'employmenthistory',
     'education',
+    'endorsementinvitation',
 )
 
 #CRISPY_TEMPLATE_PACK = 'bootstrap3'

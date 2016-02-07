@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<div class="product-card" id="{{module.0.get_model_name}}-{{module.0.id}}-item">
+    <div class="big-title">
+        {{ module.0.invitee_first_name }} {{ module.0.invitee_last_name }}
+    </div>
+    <div class="product-details">
+        {{ module.0.invitee_email }}
+        {% if module.0.endorsed == True %}<i>Verified</i>{% endif %}
+        {% if module.0.endorsed == False %}<i class="text-warning">Email sent</i>{% endif %}
+    </div>
+    <a class="btn" href="{% url 'handle_form' %}?id={{ module.0.id }}&module={{ module.0.get_verbose.title }}">{% trans 'Edit' %}</a>
+</div>

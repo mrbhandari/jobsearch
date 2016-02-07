@@ -7,14 +7,68 @@ from django.utils.translation import ugettext_lazy as _
 from myjobs.forms import BaseUserForm
 from myprofile.models import (
     Name,
-    #SecondaryEmail,
+    #SecondaryEmail,MilitaryService, License, Website,
     Education, EmploymentHistory, Telephone, Address,
-    MilitaryService, License, Website, Summary, VolunteerHistory)
+     Summary, VolunteerHistory, EndorsementInvitation as Invitation) 
 #from countries import COUNTRIES
 
 from django_countries.fields import CountryField
 from django_countries import countries
 
+from django import forms
+from django.core.validators import validate_email
+from authdemo.models import DemoUser as User
+
+class EndorsementInvitationForm(BaseUserForm): #forms.ModelForm
+    class Meta:
+        model = Invitation
+        
+
+    def clean_invitee_email(self):
+        invitee_email = self.cleaned_data['invitee_email']
+        
+        for key in self.cleaned_data:
+            print key
+        
+        # validate_email raises a ValidationError if validation fails
+        validate_email(invitee_email)
+        invitee = User.objects.get_email_owner(invitee_email)
+        if invitee is None:
+            print "there is no invitee user, not saving"
+            pass
+            #invitee = User.objects.create_user(email=invitee_email,
+            #                                   first_name = '',
+            #                                   last_name = '',
+            #                                   #send_email=False,
+            #                                   )
+            #[0]
+        setattr(self, 'invitee', invitee)
+        return invitee_email
+
+    def clean_inviting_user(self):
+        inviting_user = self.data.get('inviting_user')
+        if inviting_user is None:
+            print "there is no inviting user, not saving"
+            inviting_user = getattr(self, 'admin_user', None)
+        return inviting_user
+
+    def clean(self):
+        cleaned_data = super(EndorsementInvitationForm, self).clean()
+        inviting_user = self.clean_inviting_user()
+        cleaned_data['inviting_user'] = inviting_user
+        
+        return cleaned_data
+
+    def save(self, commit=True):
+        instance = super(EndorsementInvitationForm, self).save(commit=False)
+        instance.invitee = getattr(self, 'invitee')
+        for field, value in self.cleaned_data.items():
+            if value is not None:
+                setattr(instance, field, value)
+        print "Saving instance of form"
+        instance.save()
+        #instance.send(instance.added_saved_search or "")
+        return instance
 
 def generate_custom_widgets(model):
     """
@@ -49,6 +103,7 @@ def generate_custom_widgets(model):
                 widgets[field.attname] = TextInput(attrs=attrs)
 
     return widgets
+
 
 
 class NameForm(BaseUserForm):
@@ -134,46 +189,46 @@ class AddressForm(BaseUserForm):
         widgets = generate_custom_widgets(model)
 
 
-class MilitaryServiceForm(BaseUserForm):
-    def __init__(self, *args, **kwargs):
-        super(MilitaryServiceForm, self).__init__(*args, **kwargs)
-        self.fields['service_start_date'].input_formats = settings.DATE_INPUT_FORMATS
-        self.fields['service_end_date'].input_formats = settings.DATE_INPUT_FORMATS
-
-    class Meta:
-        form_name = _("Military Service History")
-        model = MilitaryService
-        widgets = generate_custom_widgets(model)
-        widgets['branch'].attrs['placeholder'] = 'Army, Navy, Air Force...'
-        widgets['service_start_date'].attrs['placeholder'] = 'ie 05/30/2005'
-        widgets['service_end_date'].attrs['placeholder'] = 'ie 06/01/2007'
-        widgets['start_rank'].attrs['placeholder'] = 'Pay Grade ie E-4'
-        widgets['end_rank'].attrs['placeholder'] = 'Pay Grade ie E-8'
-
-    def clean_branch(self):
-        return self.cleaned_data['branch'].lower()
-
-    def clean_start_rank(self):
-        return self.cleaned_data['start_rank'].upper()
-
-    def clean_end_rank(self):
-        return self.cleaned_data['end_rank'].upper()
-
-
-class LicenseForm(BaseUserForm):
-    class Meta:
-        form_name = _("License")
-        model = License
-        widgets = generate_custom_widgets(model)
-
-
-class WebsiteForm(BaseUserForm):
-    class Meta:
-        form_name = _('Website')
-        model = Website
-        widgets = generate_custom_widgets(model)
-        widgets['description'] = Textarea(attrs={'rows': 5, 'cols': 24})
-
+#class MilitaryServiceForm(BaseUserForm):
+#    def __init__(self, *args, **kwargs):
+#        super(MilitaryServiceForm, self).__init__(*args, **kwargs)
+#        self.fields['service_start_date'].input_formats = settings.DATE_INPUT_FORMATS
+#        self.fields['service_end_date'].input_formats = settings.DATE_INPUT_FORMATS
+#
+#    class Meta:
+#        form_name = _("Military Service History")
+#        model = MilitaryService
+#        widgets = generate_custom_widgets(model)
+#        widgets['branch'].attrs['placeholder'] = 'Army, Navy, Air Force...'
+#        widgets['service_start_date'].attrs['placeholder'] = 'ie 05/30/2005'
+#        widgets['service_end_date'].attrs['placeholder'] = 'ie 06/01/2007'
+#        widgets['start_rank'].attrs['placeholder'] = 'Pay Grade ie E-4'
+#        widgets['end_rank'].attrs['placeholder'] = 'Pay Grade ie E-8'
+#
+#    def clean_branch(self):
+#        return self.cleaned_data['branch'].lower()
+#
+#    def clean_start_rank(self):
+#        return self.cleaned_data['start_rank'].upper()
+#
+#    def clean_end_rank(self):
+#        return self.cleaned_data['end_rank'].upper()
+#
+#
+#class LicenseForm(BaseUserForm):
+#    class Meta:
+#        form_name = _("License")
+#        model = License
+#        widgets = generate_custom_widgets(model)
+#
+#
+#class WebsiteForm(BaseUserForm):
+#    class Meta:
+#        form_name = _('Website')
+#        model = Website
+#        widgets = generate_custom_widgets(model)
+#        widgets['description'] = Textarea(attrs={'rows': 5, 'cols': 24})
+#
 
 class SummaryForm(BaseUserForm):
     class Meta:

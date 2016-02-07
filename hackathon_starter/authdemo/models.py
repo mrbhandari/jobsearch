@@ -33,18 +33,53 @@ class MyUserManager(UserManager):
     It overrides default User Model manager's create_user() and create_superuser,
     which requires username field.
     """
-
+    
     def create_user(self, email, password=None, **kwargs):
-        user = self.model(email=email, **kwargs)
-        user.set_password(password)
-        user.save()
-        return user
+        user = self.get_email_owner(email)
+        if user is None:
+            print "NO USER FOUND"
+            user = self.model(email=email, **kwargs)
+            user.set_password(password)
+            user.save()
+            return user
+    
+    
 
     def create_superuser(self, email, password, **kwargs):
         user = self.model(email=email, is_staff=True, is_superuser=True, **kwargs)
         user.set_password(password)
         user.save()
         return user
+    
+
+    
+    def get_email_owner(self, email, only_verified=False):
+        """
+        Tests if the specified email is already in use.
+
+        Inputs:
+        :email: String representation of email to be checked
+        :only_verified: Only check verified secondary addresses; Default: False
+
+        Outputs:
+        :user: User object if one exists; None otherwise
+        """
+        try:
+            user = self.get(email__iexact=email)
+        except DemoUser.DoesNotExist:
+            #prefix = 'profileunits__secondaryemail__%s'
+            #print prefix
+            #search = {prefix % 'email__iexact': email}
+            #print search
+            #if only_verified:
+            #    search[prefix % 'verified'] = True
+            #try:
+            #    print self  
+            #    user = self.get(**search)
+            #except DemoUser.DoesNotExist:
+            user = None
+        return user
+    
 
 
 class DemoUser(AbstractBaseUser, PermissionsMixin):
@@ -65,7 +100,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
     
     
     #Basic Attributes
-    email = models.EmailField(_('email address'), blank=False, unique=True)
+    email = models.EmailField(_('email address'), blank=False, unique=True, db_index=True)
     first_name = models.CharField(_('first name'), max_length=40, blank=True, null=True, unique=False)
     last_name = models.CharField(_('last name'), max_length=40, blank=True, null=True, unique=False)
     display_name = models.CharField(_('display name'), max_length=14, blank=True, null=True, unique=False)
@@ -127,6 +162,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
 
 
     objects = MyUserManager()
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']

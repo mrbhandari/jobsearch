@@ -34,16 +34,25 @@ def edit_profile(request):
 
     user.update_profile_completion()
 
-    manager = BaseProfileUnitManager(order=['summary', 'name',
-                                            'employmenthistory', 'education',
-                                            'militaryservice',
-                                            'volunteerhistory', 'license',
-                                            'secondaryemail', 'website',
+    manager = BaseProfileUnitManager(order=['summary',
+                                            'name',
+                                            'employmenthistory',
+                                            'education',
+                                            #'militaryservice',
+                                            'volunteerhistory',
+                                            #'license',
+                                            #'secondaryemail',
+                                            #'website',
+                                            'endorsementinvitation',
                                             'address'])
+    
+    
     profile_config = manager.displayed_units(user.profileunits_set.all())
 
     empty_units = [model for model in ProfileUnits.__subclasses__()]
-
+    
+    
+        
     for units in profile_config.itervalues():
         if units[0].__class__ in empty_units:
             del empty_units[empty_units.index(units[0].__class__)]
@@ -74,7 +83,7 @@ def handle_form(request):
     item_id = request.REQUEST.get('id', 'new')
     module = request.REQUEST.get('module')
     module = module.replace(" ", "")
-
+    
     item = None
     if item_id != 'new':
         try:
@@ -116,6 +125,7 @@ def handle_form(request):
 
         model_name = model._meta.verbose_name.lower()
         if form_instance.is_valid():
+            
             instance = form_instance.save()
             if request.is_ajax():
                 suggestions = ProfileUnits.suggestions(request.user)

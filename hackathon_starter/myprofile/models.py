@@ -13,7 +13,7 @@ from itertools import chain
 #from registration.models import ActivationProfile
 from django.core.exceptions import ObjectDoesNotExist
 
-from authdemo.models import DemoUser
+from authdemo.models import DemoUser as User
 
 
 class ProfileUnits(models.Model):
@@ -29,9 +29,9 @@ class ProfileUnits(models.Model):
                                         editable=False)
     content_type = models.ForeignKey(ContentType, editable=False, null=True)
     #user = models.ForeignKey('myjobs.User', editable=False)
-    user = models.ForeignKey(DemoUser, editable=False)
+    user = models.ForeignKey(User, editable=False)
     
-    #user = models.OneToOneField(DemoUser, primary_key=True, verbose_name='user', related_name='profile')
+    #user = models.OneToOneField(User, primary_key=True, verbose_name='user', related_name='profile')
     
     def save(self, *args, **kwargs):
         """
@@ -251,6 +251,7 @@ class Education(ProfileUnits):
                                          verbose_name=_('institution'),
                                          blank=True)
     degree_date = models.DateField(verbose_name=_('completion date'),
+                                   help_text = 'Can be in the future e.g., graduating March 2018',
                                    blank=True, null=True)
     city_name = models.CharField(max_length=255, blank=True,
                                  verbose_name=_('city'))
@@ -266,7 +267,7 @@ class Education(ProfileUnits):
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
     education_score = models.CharField(max_length=255, blank=True,
-                                       verbose_name=_("GPA"))
+                                       verbose_name=_("GPA"), help_text = "If you are a student or recent graduate, list your GPA if it is 3.0 or higher.")
     degree_name = models.CharField(max_length=255, blank=True,
                                    verbose_name=_('degree type'))
     degree_major = models.CharField(max_length=255, verbose_name=_('major'),
@@ -274,7 +275,7 @@ class Education(ProfileUnits):
     degree_minor = models.CharField(max_length=255, blank=True,
                                     verbose_name=_('minor'))
     
-    module_description = "Your education helps employers know that you value learning and you have the basic skills for the job."
+    module_description = "Students and new grads with little related work experience may use the education section as the centerpiece of their resumes, showcasing academic achievements, extracurricular activities, special projects and related courses."
     
     @classmethod
     def get_suggestion(cls, user):
@@ -466,188 +467,10 @@ class EmploymentHistory(ProfileUnits):
                      'priority': 1,
                      'module': 'Employment'}]
 
-#
-#class SecondaryEmail(ProfileUnits):
-#    email = models.EmailField(max_length=255, unique=True, error_messages={
-#        'unique': 'This email is already registered.'})
-#    label = models.CharField(max_length=30, blank=True, null=True)
-#    verified = models.BooleanField(default=False, editable=False)
-#    verified_date = models.DateTimeField(blank=True, null=True, editable=False)
-#
-#    def __unicode__(self):
-#        return self.email
-#
-#    def save(self, *args, **kwargs):
-#        """
-#        Custom save triggers the creation of an activation profile and the
-#        sending of an activation email if the email is new.
-#        """
-#
-#        primary = kwargs.pop('old_primary', None)
-#        if not self.pk and not self.verified and primary is None:
-#            reg_signals.email_created.send(sender=self, user=self.user,
-#                                           email=self.email)
-#            reg_signals.send_activation.send(sender=self, user=self.user,
-#                                             email=self.email)
-#        super(SecondaryEmail, self).save(*args, **kwargs)
-#
-#    def set_as_primary(self):
-#        """
-#        Replaces the User email with this email object, saves the old primary
-#        as a new address while maintaining the state of verification. The
-#        new primary address is then deleted from the SecondaryEmail table. This
-#        is only allowed if the email has been verified.
-#        Returns boolean if successful.
-#        """
-#
-#        if self.verified:
-#            user = self.user
-#            user.is_active, self.verified = self.verified, user.is_active
-#
-#            self.email, user.email = user.email, self.email
-#
-#            user.save()
-#            self.user = user
-#            self.save(old_primary=True)
-#
-#            return True
-#        else:
-#            return False
-#
-#    @classmethod
-#    def get_suggestion(cls, user):
-#        """Get a list of all suggestions for a user to add secondary emails to
-#        their profile.
-#
-#        :Inputs:
-#        user = User for which to get suggestions
-#
-#        :Outputs:
-#        suggestion - A dictionary object which should conform to the format
-#                     indicated in ProfileUnits.suggestions().
-#        """
-#        if not cls.objects.filter(user=user).exists():
-#            return [{'msg': "Would you like to add an additional email?",
-#                     'url': reverse('handle_form') + \
-#                            '?module=SecondaryEmail&id=new',
-#                     'priority': 3,
-#                     'module': 'Secondary Email'}]
-#        return []
-#
-
-class MilitaryService(ProfileUnits):
-    country_code = models.CharField(max_length=3, blank=True,
-                                    verbose_name=_("Country"))  # ISO 3166-1
-    branch = models.CharField(max_length=255, verbose_name="Branch")
-    department = models.CharField(max_length=255, blank=True,
-                                  verbose_name="Department")
-    division = models.CharField(max_length=255, blank=True,
-                                verbose_name="Division")
-    expertise = models.CharField(max_length=255, blank=True,
-                                 verbose_name="Expertise")
-    service_start_date = models.DateField(verbose_name=_("Start Date"),
-                                          null=True, blank=True)
-    service_end_date = models.DateField(verbose_name=_("End Date"),
-                                        null=True, blank=True)
-    start_rank = models.CharField(max_length=50, blank=True,
-                                  verbose_name=_("Start Rank"))
-    end_rank = models.CharField(max_length=50, blank=True,
-                                verbose_name=_("End Rank"))
-    campaign = models.CharField(max_length=255, blank=True,
-                                verbose_name="Campaign")
-    honor = models.CharField(max_length=255, blank=True,
-                             verbose_name="Honors")
-
-    @classmethod
-    def get_suggestion(cls, user):
-        """Get a list of suggestions for a user to add military service to
-        their profile.
-
-        :Inputs:
-        user = User for which to get suggestions
-
-        :Outputs:
-        suggestion - A dictionary object which should conform to the format
-                     indicated in ProfileUnits.suggestions().
-        """
-        if not cls.objects.filter(user=user).exists():
-            return [{'msg': "Have you served in the armed forces?",
-                     'url': reverse('handle_form') + \
-                     '?module=MilitaryService&id=new',
-                    'priority': 3,
-                     'module': 'Military Service'}]
-        return []
-
-
-class Website(ProfileUnits):
-    SITE_TYPE_CHOICES = (
-        ('personal', 'Personal'),
-        ('portfolio', 'Portfolio of my work'),
-        ('created', 'Site I created or helped create'),
-        ('association', 'Group or Association'),
-        ('social', 'Social media'),
-        ('other', 'Other'),
-    )
-
-    display_text = models.CharField(max_length=50, blank=True,
-                                    verbose_name='Display Text')
-    uri = models.URLField(verbose_name='Web Address')
-    uri_active = models.BooleanField(default=False,
-                                     verbose_name='Currently active?')
-    description = models.TextField(max_length=500, blank=True,
-                                   verbose_name='Site Description')
-    site_type = models.CharField(max_length=50, choices=SITE_TYPE_CHOICES,
-                                 blank=True, verbose_name='Type of Site')
-
-    @classmethod
-    def get_suggestion(cls, user):
-        """Get a list of suggestions for a user to add a website to their
-
-        :Inputs:
-        user = User for which to get suggestions
-
-        :Outputs:
-        suggestion - A dictionary object which should conform to the format
-                     indicated in ProfileUnits.suggestions().
-        """
-        if not cls.objects.filter(user=user):
-            return [{
-                'msg': "Do you have a personal website or online portfolio?",
-                'url': reverse('handle_form') + '?module=Website&id=new',
-                'priority': 3,
-                'module': 'Website'}]
-        return []
-
-
-class License(ProfileUnits):
-    license_name = models.CharField(max_length=255, verbose_name="License Name")
-    license_type = models.CharField(max_length=255, verbose_name="License Type")
-    description = models.CharField(max_length=255, verbose_name="Description",
-                                   blank=True)
-
-    @classmethod
-    def get_suggestion(cls, user):
-        """Get a list of all suggestions for a user to add licenses or
-        certifications to their profile.
-
-        :Inputs:
-        user = User for which to get suggestions
-
-        :Outputs:
-        suggestion - A dictionary object which should conform to the format
-                     indicated in ProfileUnits.suggestions().
-        """
-        if not cls.objects.filter(user=user).exists():
-            msg = ('Would you like to add and professional licenses or ' +
-                  'certifications?')
-            return [{'msg': msg,
-                     'url': reverse('handle_form') + '?module=License&id=new',
-                     'priority': 3,
-                     'module': 'License'}]
-        return []
 
 
 class Summary(ProfileUnits):
+    module_description = "Hook employers into reading your profile by telling them your job target as well as the main benefit of hiring you."
     headline = models.CharField(max_length=100, verbose_name="Headline",
                                 help_text='How you describe your profession.' +
                                           ' ie "Experienced accounting ' +
@@ -655,7 +478,7 @@ class Summary(ProfileUnits):
     the_summary = models.TextField(max_length=2000, verbose_name="Summary",
                                    blank=True,
                                    help_text='A short summary of your ' +
-                                             'strength and career to date.')
+                                             'strengths and career to date.')
 
     def save(self, *args, **kwargs):
         try:
@@ -733,28 +556,64 @@ class VolunteerHistory(ProfileUnits):
                      'module': 'Volunteer History'}]
         return []
 
-#TODO:DELETED
-#def delete_secondary_activation(sender, **kwargs):
-#    """
-#    When a secondary email is deleted, deletes that email's associated
-#    activation profile
-#
-#    Inputs:
-#    :sender: Model that sent this signal
-#    :instance: instance of :sender:
-#    """
-#
-#    instance = kwargs.get('instance')
-#    activation = ActivationProfile.objects.filter(user=instance.user,
-#                                                  email__iexact=instance.email)
-#    activation.delete()
 
-# Calls `delete_secondary_activation` after a secondary email is deleted.
-# dispatch_uid: arbitrary unique string that prevents this signal from
-# being connected to multiple times
-#models.signals.pre_delete.connect(delete_secondary_activation,
-#                                  sender=SecondaryEmail,
-#                                  dispatch_uid='delete_secondary_activation')
+
+class EndorsementInvitation(ProfileUnits):
+    """
+    Represents a non-user being invited to endorse a user
+    """
+    module_description = "<strong>A verified profile significantly increases your chances of landing a job.</strong><br><br><strong>Friends or coworkers</strong> can verify your profile. We send them an email and they simply have to say 'Yes' to verify the facts in your profile."
+    
+    #ediatable
+    invitee_email = models.CharField(max_length=255, db_index=True, verbose_name="Email of verifier")
+    invitee_first_name = models.CharField(max_length=255, verbose_name="First name of verifier")
+    invitee_last_name = models.CharField(max_length=255, verbose_name="Last name of verifier")
+    
+    
+    #not editable
+    inviting_user = models.ForeignKey(User, editable=False,
+                                      related_name='invites_sent',
+                                      null=True)
+    invitee = models.ForeignKey(User, related_name='invites',
+                                on_delete=models.SET_NULL, null=True,
+                                editable=False)
+    invited = models.DateTimeField(auto_now_add=True, editable=False)
+    endorsed = models.BooleanField(default=False, editable=False,
+                                   help_text='Has the invitee hase '
+                                             'endorsed you') 
+    accepted = models.BooleanField(default=False, editable=False,
+                                   help_text='Has the invitee accepted '
+                                             'this invitation')    
+    
+    
+
+
+    def save(self, *args, **kwargs):
+        #from myjobs.models import User
+        invitee = [self.invitee_email, self.invitee]
+        if all(invitee):
+            if not User.objects.get_email_owner(
+                    self.invitee_email) == self.invitee:
+                # ValidationErrors aren't appropriate, but nothing else fits
+                # either; these are unrecoverable
+                raise ValidationError('Invitee information does not match')
+        elif not any(invitee):
+            raise ValidationError('Invitee not provided')
+        elif self.invitee_email:
+            # create_user first checks if an email is in use and creates an
+            # account if it does not.
+            self.invitee = User.objects.create_user(email=self.invitee_email,
+                                                    first_name=self.invitee_first_name,
+                                                    last_name=self.invitee_last_name,
+                                                    #in_reserve=True,
+                                                    )
+            #[0]
+        else:
+            self.invitee_email = self.invitee.email
+
+        super(EndorsementInvitation, self).save(*args, **kwargs)
+        
+    
 
 
 class BaseProfileUnitManager(object):
