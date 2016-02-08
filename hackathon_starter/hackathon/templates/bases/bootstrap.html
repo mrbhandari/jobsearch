@@ -85,10 +85,10 @@
   <hr>
   <footer>
     <ul class="list-inline pull-right">
-      <li><a href="">Terms</a></li>
-      <li><a href="">Contact</a></li>
+      <li><a href="{% url 'website_terms' %}">Terms</a></li>
+      <!--<li><a href="{% url 'website_contact' %}">Contact</a></li>-->
     </ul>
-    <p class=muted></p>
+    <p class=muted>{% include "bases/copyright.html" %}</p>
   </footer>
 </div>
 {% endblock %}

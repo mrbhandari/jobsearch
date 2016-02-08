@@ -300,6 +300,7 @@ class Education(ProfileUnits):
             return []
 
 class Address(ProfileUnits):
+    module_description = "Some employers require you to live within a certain radius."
     address_line_one = models.CharField(max_length=255, blank=True,
                                         verbose_name=_('Address Line One'),
                                         help_text='ie 123 Main St')
@@ -352,6 +353,7 @@ class Address(ProfileUnits):
 
 
 class Telephone(ProfileUnits):
+    module_description = "Some employers require your phone number for a phone screen."
     USE_CODE_CHOICES = (
         ('', 'Phone Type'),
         ('Home', 'Home'),
@@ -406,6 +408,7 @@ class Telephone(ProfileUnits):
 
 
 class EmploymentHistory(ProfileUnits):
+    module_description = "With honest and well-written employment histories, even if you have a less-than-perfect background, you will secure interviews. Always be truthful about your background."
     position_title = models.CharField(max_length=255,
                                       verbose_name=_("Position Title"))
     organization_name = models.CharField(max_length=255, blank=True,
@@ -516,6 +519,7 @@ class Summary(ProfileUnits):
 
 
 class VolunteerHistory(ProfileUnits):
+    module_description = "Volunteer work, whether in addition to a current job or an activity in between jobs, shows an employer that you are willing to try new experiences, be involved in your community and generally demonstrates a willingness to take initiative and make things happen."
     position_title = models.CharField(max_length=255,
                                       verbose_name=_("Position Title"))
     organization_name = models.CharField(max_length=255,
