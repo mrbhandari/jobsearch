@@ -102,6 +102,7 @@ class ProfileUnits(models.Model):
 
 
 class Name(ProfileUnits):
+    module_description = "Use the name you want people to call you on the first contact."
     given_name = models.CharField(max_length=30,
                                   verbose_name=_("first name"))
     family_name = models.CharField(max_length=30,
@@ -251,7 +252,7 @@ class Education(ProfileUnits):
                                          verbose_name=_('institution'),
                                          blank=True)
     degree_date = models.DateField(verbose_name=_('completion date'),
-                                   help_text = 'Can be in the future e.g., graduating March 2018',
+                                   help_text = 'Use the date picker. Can be in the future e.g., graduating March 2018',
                                    blank=True, null=True)
     city_name = models.CharField(max_length=255, blank=True,
                                  verbose_name=_('city'))
@@ -264,8 +265,8 @@ class Education(ProfileUnits):
     education_level_code = models.IntegerField(choices=EDUCATION_LEVEL_CHOICES,
                                                verbose_name=_("education level"),
                                                blank=True, null=True)
-    start_date = models.DateField(blank=True, null=True)
-    end_date = models.DateField(blank=True, null=True)
+    start_date = models.DateField(blank=True, null=True, help_text = "Use the date picker")
+    end_date = models.DateField(blank=True, null=True, help_text = "Use the date picker")
     education_score = models.CharField(max_length=255, blank=True,
                                        verbose_name=_("GPA"), help_text = "If you are a student or recent graduate, list your GPA if it is 3.0 or higher.")
     degree_name = models.CharField(max_length=255, blank=True,

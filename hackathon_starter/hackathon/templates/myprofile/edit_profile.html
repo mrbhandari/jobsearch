@@ -41,17 +41,21 @@
     </div>{# /profileTitleRow #}
     
     <div class="well">
-        <h4>Status</h4>
-        <p>You've finished creating a basic profile and employers can find you. The more you tell them about about yourself the higher the chances of employers contacting you.</p>
+        <h4>FlexJobs Discoverability Score</h4>
+        <p>The higher your discoverability score the higher the chances of employers contacting you.</p>
+        
         <p><strong>Your discoverability score: <span id="highlight">{{user.profile_completion |add:"10"}}% </span></p></strong>
         
-        <div>
+        <div class="progress">
             <div class="progress-bar progress-bar-{% completion_level user.profile_completion%}" role="progressbar" aria-valuenow="{{ user.profile_completion |add:"10"}}"
             aria-valuemin="0" aria-valuemax="100" style="width:{{ user.profile_completion |add:"10"}}%">
               {{ user.profile_completion |add:"10"}}%
             </div>
         </div>
-        <br>
+    
+        <div class="alert alert-info" role="alert">Tip: People with scores higher than 90% get an average of 3-5 matches per week.</div>
+        
+        
     </div>
     
     
@@ -72,7 +76,7 @@
         <div>
             <div class="well" id="moduleBank">
 
-                <h4>Increase your score by adding a section</h4>
+                <h4>Increase your score by telling employers about yourself</h4>
                 <table class="table table-bordered tables-striped">
                 {% for module in unit_names %}
                 <tr class="profile-section" {% if module.items %}style="display:none;"{% endif %}><td>

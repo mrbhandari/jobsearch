@@ -72,7 +72,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     #'crispy_forms',
     'debug_toolbar',
-    
+
 )
 
 
@@ -82,6 +82,7 @@ PROJECT_APPS = ('myjobs', 'myprofile', 'authdemo')
 INSTALLED_APPS += PROJECT_APPS
 
 SITE_ID = 1
+
 
 
 
