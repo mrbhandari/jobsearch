@@ -90,8 +90,23 @@ def set_gender(sender, **kwargs):
 
     user.save()
     
-    
 
+from scripts.utils import get_geoip
+
+
+
+def landing_index(request):
+    geo_ip = get_geoip(request)
+    location = " local employers"
+    try:
+        location += " in " + geo_ip['city']
+    except KeyError, e:
+        print "no city found"
+    #str(random.randint(100,999))
+    headline_text = "to 600+" + location
+    print headline_text
+    context = {'headline_text': headline_text}
+    return render(request, 'visitor/landing-index.html', context)
 
 
 

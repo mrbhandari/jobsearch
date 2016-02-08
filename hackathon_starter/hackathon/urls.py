@@ -122,7 +122,7 @@ urlpatterns += patterns('',
 
 
 urlpatterns += patterns('',
-    url(r'^$', TemplateView.as_view(template_name='visitor/landing-index.html'), name='landing_index'),
+    url(r'^$', views.landing_index, name='landing_index'),
     url(r'^about$', TemplateView.as_view(template_name='visitor/landing-about.html'), name='landing_about'),
     url(r'^terms/$', TemplateView.as_view(template_name='visitor/terms.html'), name='website_terms'),
     url(r'^contact$', TemplateView.as_view(template_name='visitor/contact.html'), name='website_contact'),

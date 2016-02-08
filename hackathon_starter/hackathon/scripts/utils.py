@@ -9,7 +9,7 @@ import hashlib
 ##Django libraries
 from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
-
+import pyipinfoio
 
 ##external
 from bs4 import BeautifulSoup
@@ -72,3 +72,16 @@ def fetch_save_urls(input_file, output_dir, createURL):
                 except Exception as e:
                     print e
                     print "failed\t " + i
+                    
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+def get_geoip(request):
+    ip_address = get_client_ip(request)
+    ip = pyipinfoio.IPLookup()
+    return ip.lookup(ip_address)
