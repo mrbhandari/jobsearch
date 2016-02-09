@@ -567,12 +567,20 @@ class EndorsementInvitation(ProfileUnits):
     """
     Represents a non-user being invited to endorse a user
     """
-    module_description = "<strong>A verified profile significantly increases your chances of landing a job.</strong><br><br><strong>Friends or coworkers</strong> can verify your profile. We send them an email and they simply have to say 'Yes' to verify the facts in your profile."
+    
+    
+    module_description ="""<p><strong>What is this?</strong> In the real world you are only as good as those you recommend you. What you don't get on other websites or job boards is the ability of people that know you to vouch for you.  Our platform allows the people who know your work the best to easily speak out on your behalf so you stand out.</p>
+<br>
+<p><strong>How do I do this?</strong> Invite friends or coworkers to give your profile a thumbs up. We send them an email and they simply have to say 'Yes' to verify the facts in your profile.</p>
+<br>
+<p><strong>Why?</strong> Endorsed profiles are promoted and ranked much higher when employers search for you.</p>"""
+    
+    #module_description = "<strong>A verified profile significantly increases your chances of landing a job.</strong><br><br><strong>Friends or coworkers</strong> can verify your profile. We send them an email and they simply have to say 'Yes' to verify the facts in your profile."
     
     #ediatable
-    invitee_email = models.CharField(max_length=255, db_index=True, verbose_name="Email of verifier")
-    invitee_first_name = models.CharField(max_length=255, verbose_name="First name of verifier")
-    invitee_last_name = models.CharField(max_length=255, verbose_name="Last name of verifier")
+    invitee_email = models.CharField(max_length=255, db_index=True, verbose_name="Email of friend/co-worker who can give you a thumbs-up")
+    invitee_first_name = models.CharField(max_length=255, verbose_name="First name")
+    invitee_last_name = models.CharField(max_length=255, verbose_name="Last name")
     
     
     #not editable
