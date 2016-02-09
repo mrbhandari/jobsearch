@@ -58,7 +58,7 @@ class DemoUserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    list_display = ('email', 'first_name', 'last_name', 'display_name', 'is_staff', 'profile_completion')
+    list_display = ('email', 'first_name', 'last_name', 'is_staff', 'profile_completion', 'date_joined')
     search_fields = ('first_name', 'last_name', 'display_name', 'email')
     ordering = ('email',)
 

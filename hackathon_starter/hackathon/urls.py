@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url, include
 
 from hackathon import views
+from myprofile import views as myprofileviews
 
 # urls.py
 from django.views.generic import TemplateView
@@ -130,7 +131,7 @@ urlpatterns += patterns('',
     (r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/$', 'authdemo.views.account_profile', name='account_profile'),
  
-    url(r'^member/$', views.member_index, name='user_home'),
+    url(r'^member/$', myprofileviews.edit_profile, name='user_home'), #views.member_index
     url(r'^member/action$', views.member_action, name='user_action'),
 
     url(r'^admin/', include(admin.site.urls)),
