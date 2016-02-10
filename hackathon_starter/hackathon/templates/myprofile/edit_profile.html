@@ -60,19 +60,6 @@
     
     
     <div class="row">
-        <div class="span8" id="moduleColumn">
-
-            {% for module in profile_config.values %}
-
-            
-            {% with module.0|custom_template as c_template %}
-                {% include "myprofile/profile_section.html" %}
-            {% endwith %}
-
-            {% endfor %}
-
-        </div>
-        <br>
         <div>
             <div class="well" id="moduleBank">
 
@@ -88,6 +75,21 @@
                 </table>
             </div>
         </div>
+        <br>
+        <div class="span8" id="moduleColumn">
+
+            {% for module in profile_config.values %}
+
+            
+            {% with module.0|custom_template as c_template %}
+                {% include "myprofile/profile_section.html" %}
+            {% endwith %}
+
+            {% endfor %}
+
+        </div>
+
+
     </div>{# /row #}
 </div>{# /container #}
 </div>{# /container #}

@@ -179,6 +179,16 @@ def str_to_date(string):
         return strftime("%b. %d %Y", strptime(string, "%Y-%m-%dT%H:%M:%S.%fZ"))
 
 
+
+@register.simple_tag
+def date_to_str(t):
+    try:
+        return t.strftime('%b %Y')
+    except:
+        print "Had trouble converting string"
+        return t
+
+
 @register.simple_tag
 def to_string(value):
     return str(value)

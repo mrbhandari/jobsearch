@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load common_tags %}
 {% for item in module %}
 <div class="product-card" id="{{item.get_model_name}}-{{item.id}}-item">
     <div class="big-title">
@@ -11,7 +12,7 @@
     {% endif %}
     {% if item.degree_date %}
     <div class="product-details">
-        Graduated on {{ item.degree_date }}
+        Graduated {% date_to_str item.degree_date %}
     </div>
     {% endif %}
     {% if item.degree_major %}

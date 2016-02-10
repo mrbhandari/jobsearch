@@ -1,8 +1,8 @@
 $(document).ready(function() {
     $('#summary_items').children('.add-module-btn').hide();
-    $( "input[id$='date']" ).datepicker({yearRange: getYear('past')+":"+getYear('future'),
-        changeMonth: true, changeYear: true, /*dateFormat: window.dateFormat,*/
-                                                     constrainInput: false});
+    //$( "input[id$='date']" ).datepicker({yearRange: getYear('past')+":"+getYear('future'),
+    //    changeMonth: true, changeYear: true, /*dateFormat: window.dateFormat,*/
+    //                                                 constrainInput: false});
 
     if($(window).width() >= 501) {
         // This function will be executed when the user scrolls the page.
@@ -47,7 +47,7 @@ $(document).ready(function() {
     if ($('#moduleBank').find('tr:visible').length == 0) {
         $('#moduleBank').hide();
     }
-    setTimeout(add_date_button, 1);
+    //setTimeout(add_date_button, 1);
 
     set_autocomplete();
 });
@@ -149,17 +149,17 @@ $(function() {
     });
 
 
-    $(document).on("click", ".calendar", function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        that = $(e.target).parents('.input-append');
-        if ($('#ui-datepicker-div').css("display") == "block") {
-            that.find('[id$="date"]').datepicker('hide');
-        }
-        else {
-            that.find('[id$="date"]').datepicker('show');
-        }
-    });
+    //$(document).on("click", ".calendar", function(e) {
+    //    e.stopPropagation();
+    //    e.preventDefault();
+    //    that = $(e.target).parents('.input-append');
+    //    if ($('#ui-datepicker-div').css("display") == "block") {
+    //        that.find('[id$="date"]').datepicker('hide');
+    //    }
+    //    else {
+    //        that.find('[id$="date"]').datepicker('show');
+    //    }
+    //});
 
 
     $('#id_employmenthistory-current_indicator').on("click", function() {
@@ -252,24 +252,24 @@ somewhere in it's ID.
 .icon-search is a bootstrap function that searches a large 'sprite'
 and puts up css for backposition. Called glyphicons.
 */
-function add_date_button() {
-    var field = $('[class="hasDatepicker"]');
-    field.parent().addClass('input-append');
+//function add_date_button() {
+//    var field = $('[class="hasDatepicker"]');
+//    field.parent().addClass('input-append');
+//
+//    if($(window).width() <= 501){
+//        var field_width = field.width() - 28;
+//        field.css("width", String(field_width)+"px");
+//    }
+//    field.after('<span class="btn add-on calendar"><i class="icon-search icon-calendar"></i></span>');
+//
+//}
 
-    if($(window).width() <= 501){
-        var field_width = field.width() - 28;
-        field.css("width", String(field_width)+"px");
-    }
-    field.after('<span class="btn add-on calendar"><i class="icon-search icon-calendar"></i></span>');
-
-}
-
-function getYear(when){
-    if(when == "past"){
-        return String(new Date().getFullYear()-70);
-    } else if(when == "future"){
-        return String(new Date().getFullYear()+10);
-    } else {
-        return String(new Date().getFullYear());
-    }
-}
+//function getYear(when){
+//    if(when == "past"){
+//        return String(new Date().getFullYear()-70);
+//    } else if(when == "future"){
+//        return String(new Date().getFullYear()+10);
+//    } else {
+//        return String(new Date().getFullYear());
+//    }
+//}

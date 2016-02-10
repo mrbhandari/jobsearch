@@ -97,6 +97,7 @@
 <script type="text/javascript" src="//d2e48ltfsb5exy.cloudfront.net/content_mj/files/my.jobs.160-30.js"></script>
 <script type="text/javascript" src="//d2e48ltfsb5exy.cloudfront.net/content_mj/files/jquery.placeholder.min.js"></script>
 <script src="{{ STATIC_URL }}profile.153-10.js{{ gz }}"></script>
+<script src="{{ STATIC_URL }}/js/jquery.mask.min.js"></script>
     
 <script>
     $( document ).ready(function() {
@@ -106,6 +107,9 @@
         var allInputs = $( "form :input:not(:button)" );
         console.log(allInputs)
         allInputs.addClass("form-control")
+        $( "#id_telephone-number" ).mask('000-0000', {placeholder: "000-0000"});
+        $( "#id_education-education_score" ).mask('0.00', {placeholder: "0.00"});
+        $( "input[id$='date']" ).mask('00/0000', {placeholder: "__/____"});
     });
     
 </script>

@@ -316,7 +316,15 @@ SOCIALACCOUNT_AUTO_SIGNUP = False  # require social accounts to use the signup f
 
 
 #for myjobs
-FORM_DATE_FORMAT = '%m/%d/%Y'
+DATE_INPUT_FORMATS = (
+    '%d.%m.%Y', '%d.%m.%Y', '%d.%m.%y',  # '25.10.2006', '25.10.2006', '25.10.06'
+    '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y',  # '25-10-2006', '25/10/2006', '25/10/06'
+    '%d %b %Y',  # '25 Oct 2006', 
+    '%d %B %Y',  # '25 October 2006',
+    '%m/%Y',  # '25 October 2006', 
+)
+
+FORM_DATE_FORMAT = '%m/%Y'
 # Modules considered when calculating profile completion
 PROFILE_COMPLETION_MODULES = (
     'name',

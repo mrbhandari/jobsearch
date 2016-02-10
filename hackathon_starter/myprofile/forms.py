@@ -175,11 +175,11 @@ class TelephoneForm(BaseUserForm):
         widgets['country_dialing'].attrs['class'] = "phoneCountryCode"
         widgets['area_dialing'].attrs['class'] = "phoneAreaCode"
         widgets['number'].attrs['class'] = "phoneNumber"
-        widgets['extension'].attrs['class'] = "phoneExtension"
+        #widgets['extension'].attrs['class'] = "phoneExtension"
         widgets['country_dialing'].attrs['value'] = "1"
         widgets['area_dialing'].attrs['placeholder'] = "555"
         widgets['number'].attrs['placeholder'] = "555-5555"
-        widgets['extension'].attrs['placeholder'] = "1234"
+        #widgets['extension'].attrs['placeholder'] = "1234"
 
 
 class AddressForm(BaseUserForm):
@@ -279,7 +279,7 @@ class InitialAddressForm(InitialForm):
 class InitialPhoneForm(InitialForm):
     class Meta:
         model = Telephone
-        fields = ['area_dialing', 'number', 'extension', 'use_code']
+        fields = ['area_dialing', 'number', 'use_code']
 
 
 class InitialWorkForm(InitialForm):
@@ -300,5 +300,4 @@ class InitialEducationForm(InitialForm):
 
     class Meta:
         model = Education
-        fields = ['organization_name', 'degree_date', 'education_level_code',
-                  'degree_name']
+        fields = ['organization_name', 'degree_date', 'education_level_code']

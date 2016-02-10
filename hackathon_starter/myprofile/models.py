@@ -249,10 +249,9 @@ EDUCATION_LEVEL_CHOICES = (
 
 class Education(ProfileUnits):
     organization_name = models.CharField(max_length=255,
-                                         verbose_name=_('institution'),
-                                         blank=True)
-    degree_date = models.DateField(verbose_name=_('completion date'),
-                                   help_text = 'Use the date picker. Can be in the future e.g., graduating March 2018',
+                                         verbose_name=_('institution'))
+    degree_date = models.DateField(verbose_name=_('Completion or expected completion date'),
+                                   help_text = 'e.g., 09/2016',
                                    blank=True, null=True)
     city_name = models.CharField(max_length=255, blank=True,
                                  verbose_name=_('city'))
@@ -265,12 +264,12 @@ class Education(ProfileUnits):
     education_level_code = models.IntegerField(choices=EDUCATION_LEVEL_CHOICES,
                                                verbose_name=_("education level"),
                                                blank=True, null=True)
-    start_date = models.DateField(blank=True, null=True, help_text = "Use the date picker")
-    end_date = models.DateField(blank=True, null=True, help_text = "Use the date picker")
+    start_date = models.DateField(blank=True, null=True, help_text = "e.g., 02/2003")
+    end_date = models.DateField(blank=True, null=True, help_text = "e.g., 02/2004")
     education_score = models.CharField(max_length=255, blank=True,
-                                       verbose_name=_("GPA"), help_text = "If you are a student or recent graduate, list your GPA if it is 3.0 or higher.")
-    degree_name = models.CharField(max_length=255, blank=True,
-                                   verbose_name=_('degree type'))
+                                       verbose_name=_("GPA"), help_text = "If you are a student or recent graduate, list your GPA.")
+    #degree_name = models.CharField(max_length=255, blank=True,
+    #                               verbose_name=_('degree type'))
     degree_major = models.CharField(max_length=255, verbose_name=_('major'),
                                     blank=True)
     degree_minor = models.CharField(max_length=255, blank=True,
@@ -371,7 +370,7 @@ class Telephone(ProfileUnits):
                                     verbose_name=_("Area Code"))
     number = models.CharField(max_length=10, blank=True,
                               verbose_name=_("Local Number"))
-    extension = models.CharField(max_length=5, blank=True)
+    #extension = models.CharField(max_length=5, blank=True)
     use_code = models.CharField(max_length=30, choices=USE_CODE_CHOICES,
                                 blank=True, verbose_name=_("Phone Type"))
 
