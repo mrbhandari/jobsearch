@@ -55,6 +55,7 @@ import simplejson as json
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 import urllib2
+from foursquare import Foursquare
 
 # Models
 from hackathon.models import Snippet #,Profile, InstagramProfile, TwitterProfile, MeetupToken, GithubProfile, LinkedinProfile, FacebookProfile, TumblrProfile, GoogleProfile, DropboxProfile, FoursquareProfile
@@ -114,9 +115,26 @@ def landing_index(request):
 def member_index(request):
     return render_to_response("member/member-index.html", RequestContext(request))
 
+
+import foursquare
+
+def get_local_places(near):
+    # Construct the client object
+    client = Foursquare(client_id='3UIUOF15EB15H55PGAKOJO3RZXWAEH0BUGU1AIRCSNNO3UBL', client_secret='2XCS3QA5DWG450NO5S33JDFCRFSMUYH2VWENHQWXKPAUAEDD')
+    #optional parameters
+    return client.venues.search(params={'near': near})
+
+
 @login_required
 def member_action(request):
-    return render_to_response("member/member-action.html", RequestContext(request))
+    geo_ip = get_geoip(request)
+    try:
+        near_string = geo_ip['city'] + ", " + geo_ip['region']
+    except:
+        near_string = "Canada"
+    context = {'job_data': get_local_places(near_string)['venues']}
+    
+    return render_to_response("member/member-action.html", context, RequestContext(request))
 
 
 

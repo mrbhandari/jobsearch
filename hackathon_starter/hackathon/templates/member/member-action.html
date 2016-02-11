@@ -2,25 +2,49 @@
 
 {% block head_title %}Action{% endblock %}
 
+{% load common_tags %}
+
+
 {% block content %}
 <div class="container">
+    <p class="bg-danger">
+        You cannot apply because your <strong>Discoverability Score</strong> is still less than 100%. <a href="{% url 'view_profile' %}">Increase it here.</a></strong>
+    </p>
+    <!--<h4>Job Matches</h4>-->
     
-    <h3>Job Matches</h3>
-    <div class="well">
-<p>You have no matches yet. Employers can find you. Your current ranking as employers search is <strong>low</strong> because your <strong>profile is incomplete</strong></p>
-    </div>
     
+    {% for i in job_data %}
+        {% if  i.categories.0.icon.prefix %}
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <img class="img-responsive center-block" src="{% replace_base_url i.categories.0.icon.prefix %}64{{ i.categories.0.icon.suffix }}">
+                <h4 class="text-center">{{ i.name }}</h4>
+                <!--{{ i.url }}-->
+                <p class="lead text-center">
+                    <!--{{ i.contact.formattedPhone }}-->
+                    <!--i.location.formattedAddress.0-->
+                    {{ i.categories.0.name }} |
+                    {{ i.location.city }}</p>
+                <p class="text-center">Active today</p>
+                <p class="text-center">{{ i.stats.checkinsCount | divide:"10" }} applicants last week</p>
+                
+                <br>
+                <button type="button" class="btn btn-primary btn-block disabled">I'm interested</button>
+                <br>
+                
+                <!--{{ i.stats.usersCount }}-->
+             </div>
+            </div>
     
-   <h3>Status</h3>
-          <div>
-      <p><img src="https://cdn4.iconfinder.com/data/icons/colicon/24/checkmark_done_complete-24.png">
-      Basic profile finished, employers can now find you
-      </p>
-      <p>
-        <img src="https://cdn4.iconfinder.com/data/icons/colicon/24/close_delete-24.png">
-        Standout by <a href="{% url 'view_profile' %}">telling them what you can do</a>
-      </p>
-    </div>
+            <br>
+        {% endif %}
+    {% endfor %}
+    
+    <br>
+    <p class="bg-danger">
+        You cannot apply because your discoverability score is still less than 100. <a href="{% url 'view_profile' %}">Increase it here.</a></strong>
+    </p>
+    <br>
           
           
 </div>
