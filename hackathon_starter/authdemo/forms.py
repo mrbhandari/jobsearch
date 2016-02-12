@@ -27,7 +27,7 @@ class DemoUserEditForm(forms.ModelForm):
     class Meta:
         model = DemoUser
         fields = ('first_name', 'last_name', 'display_name')
-        fields += ('zipcode', 'age', 'currently_employed', 'paid_job_before', 'education_level' )
+        fields += ( 'age', 'currently_employed', 'paid_job_before' )
         
             
     def signup(self, request, user):

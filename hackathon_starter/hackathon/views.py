@@ -60,6 +60,7 @@ from foursquare import Foursquare
 # Models
 from hackathon.models import Snippet #,Profile, InstagramProfile, TwitterProfile, MeetupToken, GithubProfile, LinkedinProfile, FacebookProfile, TumblrProfile, GoogleProfile, DropboxProfile, FoursquareProfile
 from hackathon.serializers import SnippetSerializer
+from authdemo.models import DemoUser as User
 #from hackathon.forms import UserForm
 
 
@@ -120,19 +121,45 @@ import foursquare
 
 def get_local_places(near):
     # Construct the client object
+    
     client = Foursquare(client_id='3UIUOF15EB15H55PGAKOJO3RZXWAEH0BUGU1AIRCSNNO3UBL', client_secret='2XCS3QA5DWG450NO5S33JDFCRFSMUYH2VWENHQWXKPAUAEDD')
     #optional parameters
-    return client.venues.search(params={'near': near})
+    try:
+        return client.venues.search(params={'near': near})
+    except:
+        pass
 
+@login_required
+def get_user_location(user):
+    #first try to get user's given location
+    #if this fails then try to get geoip
+    #if this fails default to "Toronto, Ontario"
+    pass
 
 @login_required
 def member_action(request):
-    geo_ip = get_geoip(request)
+    
+    #first try to get user's given location
     try:
-        near_string = geo_ip['city'] + ", " + geo_ip['region']
+        user  = User.objects.get(email=request.user)
+        near_string = user.get_user_address()
+        based_on = "(based on the address in your profile)"
+        job_data = get_local_places(near_string)['venues']
     except:
-        near_string = "Canada"
-    context = {'job_data': get_local_places(near_string)['venues']}
+        try:
+            #if this fails then try to get geoip
+            geo_ip = get_geoip(request)
+            near_string = geo_ip['city'] + ", " + geo_ip['region']
+            based_on = "(based on your current location)"
+            job_data = get_local_places(near_string)['venues']
+        except:
+            near_string = "Toronto, Ontario"
+            based_on = "(because we have no idea where you are or what you can do!)"
+            job_data = get_local_places(near_string)['venues']
+    
+    context = {'job_data': job_data,
+               'location': {'address': near_string, 'based_on': based_on}
+                }
     
     return render_to_response("member/member-action.html", context, RequestContext(request))
 

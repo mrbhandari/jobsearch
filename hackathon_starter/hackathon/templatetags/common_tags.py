@@ -1,6 +1,6 @@
 import json
 from django import template
-from myjobs.templatetags.common_tags import * 
+from myjobs.templatetags.common_tags import *
 register = template.Library()
 
 
@@ -11,6 +11,8 @@ def replace_base_url(value):
 @register.filter
 def divide(value, arg):
     return (int(value) / int(arg)) if int(arg)!=0 else 0
+
+
 
 @register.assignment_tag(takes_context=True)
 def gz(context):

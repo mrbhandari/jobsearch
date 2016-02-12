@@ -6,37 +6,54 @@
 
 
 {% block content %}
+  
 <div class="container">
-    <p class="bg-danger">
+    
+    <p class="alert alert-danger" role="alert">
         You cannot apply because your <strong>Discoverability Score</strong> is still less than 100%. <a href="{% url 'view_profile' %}">Increase it here.</a></strong>
     </p>
-    <!--<h4>Job Matches</h4>-->
+    
+    <h4>
+        Jobs near <strong>{{ location.address }}</strong>
+    <br>
+        <small>{{ location.based_on }} 
+        <br>
+        
+        
+    </h4>
+    <div class="btn-toolbar">
+        <a href="{% url 'view_profile' %}" role="button" type="button" class="btn btn-success btn-block">Update profile for better matches</a>
+    
+    </div>
+    <br>
     
     
     {% for i in job_data %}
         {% if  i.categories.0.icon.prefix %}
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <img class="img-responsive center-block" src="{% replace_base_url i.categories.0.icon.prefix %}64{{ i.categories.0.icon.suffix }}">
-                <h4 class="text-center">{{ i.name }}</h4>
-                <!--{{ i.url }}-->
-                <p class="lead text-center">
-                    <!--{{ i.contact.formattedPhone }}-->
-                    <!--i.location.formattedAddress.0-->
-                    {{ i.categories.0.name }} |
-                    {{ i.location.city }}</p>
-                <p class="text-center">Active today</p>
-                <p class="text-center">{{ i.stats.checkinsCount | divide:"10" }} applicants last week</p>
-                
+            {% if  i.location.city %}
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <img class="img-responsive center-block" src="{% replace_base_url i.categories.0.icon.prefix %}64{{ i.categories.0.icon.suffix }}">
+                    <h4 class="text-center">{{ i.name }}</h4>
+                    <!--{{ i.url }}-->
+                    <p class="lead text-center">
+                        <!--{{ i.contact.formattedPhone }}-->
+                        <!--i.location.formattedAddress.0-->
+                        {{ i.categories.0.name }} |
+                        {{ i.location.city }}</p>
+                    <p class="text-center">Active today</p>
+                    <p class="text-center">{{ i.stats.checkinsCount | divide:"10" }} applicants last week</p>
+                    
+                    <br>
+                    <button type="button" class="btn btn-primary btn-block disabled">I'm interested</button>
+                    <br>
+                    
+                    <!--{{ i.stats.usersCount }}-->
+                 </div>
+                </div>
+        
                 <br>
-                <button type="button" class="btn btn-primary btn-block disabled">I'm interested</button>
-                <br>
-                
-                <!--{{ i.stats.usersCount }}-->
-             </div>
-            </div>
-    
-            <br>
+            {% endif %}
         {% endif %}
     {% endfor %}
     

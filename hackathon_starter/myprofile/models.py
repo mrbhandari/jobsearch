@@ -322,7 +322,11 @@ class Address(ProfileUnits):
     label = models.CharField(max_length=60, blank=True,
                              verbose_name=_('Address Name'),
                              help_text='ie Home, Work, etc')
-
+    
+    @classmethod
+    def print_formatted_address(self):
+        return "FORMATTED ADDRESS"
+        
 
 
     @classmethod
@@ -413,12 +417,12 @@ class EmploymentHistory(ProfileUnits):
                                       verbose_name=_("Position Title"))
     organization_name = models.CharField(max_length=255, blank=True,
                                          verbose_name=_("Company"))
-    start_date = models.DateField(verbose_name=_("Start Date"))
+    start_date = models.DateField(verbose_name=_("Start Date"),  help_text = "e.g., 02/2003")
     current_indicator = models.BooleanField(default=False,
                                             verbose_name=_("I still work here"))
 
     # Optional fields
-    end_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True,  help_text = "e.g., 02/2003" )
     city_name = models.CharField(max_length=255, blank=True, null=True)
     country_sub_division_code = models.CharField(max_length=25, blank=True,
                                                  verbose_name=_("State/Region"))
@@ -524,13 +528,13 @@ class VolunteerHistory(ProfileUnits):
                                       verbose_name=_("Position Title"))
     organization_name = models.CharField(max_length=255,
                                          verbose_name=_("Organization"))
-    start_date = models.DateField(verbose_name=_("Start Date"))
+    start_date = models.DateField(verbose_name=_("Start Date"),  help_text = "e.g., 02/2003")
     current_indicator = models.BooleanField(default=False,
                                             verbose_name=_(
                                                 "I still volunteer here"))
 
     # Optional fields
-    end_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True,  help_text = "e.g., 02/2003")
     city_name = models.CharField(max_length=255, blank=True)
     country_sub_division_code = models.CharField(max_length=25, blank=True,
                                                  verbose_name=_("State/Region"))

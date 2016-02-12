@@ -26,6 +26,8 @@ from localflavor.us.models import USZipCodeField
 #job function
 from django.conf import settings
 
+import myprofile.models
+
 class MyUserManager(UserManager):
     """
     Custom User Model manager.
@@ -123,8 +125,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
                                            help_text=_('Checking this allows '
                                                        'employers to send '
                                                        'emails to you.'))
-    # Attributes - Mandatory
-    zipcode = models.CharField(_('Postal Code'), max_length=20, default='', blank=True, null=True, unique=False)
+    
     age = models.PositiveIntegerField(default=18,
                                           help_text='Required for some jobs.',
                                           )
@@ -135,20 +136,6 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
                                           verbose_name="I have had a paid job before.",
                                           )
     
-    #Education level
-    NO_HS = 'NO'
-    HIGHSCHOOL = 'HS'
-    COLLEGE = 'BA'
-    EDUCATION_LEVEL_CHOICES = (
-        (NO_HS, 'Less than highschool'),
-        (HIGHSCHOOL, 'Highschool completed'),
-        (COLLEGE, "Bachelor's degree"),
-    )
-    education_level = models.CharField(max_length=2,
-                                       verbose_name='Education Level (highest)',
-                                      choices=EDUCATION_LEVEL_CHOICES,
-                                      default=NO_HS)
-
 
     #currently_studying
     #hours_preferred
@@ -227,6 +214,25 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
         self.profile_completion = int(float(
             1.0 * num_complete / len(settings.PROFILE_COMPLETION_MODULES))*100)
         self.save()
+        
+    def get_user_address(self):
+        """
+        Gets the best guess of a users location based on information given
+        and the ip address of the user.
+        """
+        
+        address_pointer = self.profileunits_set.filter(
+                content_type__name="address").all()[0]
+        address_obj = myprofile.models.Address.objects.get(id=address_pointer.id)
+        city_name = address_obj.__getattribute__('city_name')
+        
+        state = address_obj.__getattribute__('country_sub_division_code')
+        country_code = address_obj.__getattribute__('country_code')
+        postal_code = address_obj.__getattribute__('postal_code')
+        return ' '.join([postal_code, city_name, state, country_code])
+        
+        
+        
     
     def add_primary_name(self, update=False, f_name="", l_name=""):
         """
