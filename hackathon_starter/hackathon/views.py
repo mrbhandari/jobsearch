@@ -124,8 +124,10 @@ def get_local_places(near):
     
     client = Foursquare(client_id='3UIUOF15EB15H55PGAKOJO3RZXWAEH0BUGU1AIRCSNNO3UBL', client_secret='2XCS3QA5DWG450NO5S33JDFCRFSMUYH2VWENHQWXKPAUAEDD')
     #optional parameters
+    categoryId = '4d4b7105d754a06375d81259,4bf58dd8d48988d1e6941735,4d4b7105d754a06378d81259,4d4b7105d754a06372d81259,4d4b7105d754a06374d81259,4d4b7105d754a06376d81259'
+    #missing arts and entertainment 4d4b7104d754a06370d81259 becuase it has historic sites
     try:
-        return client.venues.search(params={'near': near})
+        return client.venues.search(params={'near': near, 'categoryId': categoryId, 'limit': '50', 'radius': '25000'})
     except:
         pass
 
