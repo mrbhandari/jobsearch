@@ -53,74 +53,76 @@ $(document).ready(function() {
 });
 
 $(function() {
-    //$('#profile-save').on("click", function(e) {
-    //    e.preventDefault();
-    //    var form = $('#profile-unit-form');
-    //    console.log("ERROR")
-    //    var serialized_data = form.serialize();
-    //    // Page was likely requested via GET - all GET parameters
-    //    // should be passed along with POST request
-    //    var get_data = window.location.search;
-    //    if (get_data.length) {
-    //        get_data = '&' + get_data.substr(1);
-    //    }
-    //    serialized_data += get_data;
-    //
-    //    $.ajax({
-    //        type: 'POST',
-    //        url: 'profile/view/edit',
-    //        data: serialized_data,
-    //        success: function(data, status) {
-    //            console.log("SUCCESS")
-    //            // Replace the content with the result of the AJAX call
-    //            container = $('#profile-unit-form').parent().parent()
-    //            container.fadeOut(400, function () {
-    //                $(this).html(data).fadeIn(600);
-    //
-    //                // Add the new bindings
-    //                $('.suggestion').hover(function() {
-    //                    var text = $(this).data('msg');
-    //                    $('#description').stop(true, true);
-    //                    $('#description').hide().text(text).fadeIn();
-    //                    },
-    //                function() {
-    //                    $('#description').stop(true, true)
-    //                    .fadeOut(function() {
-    //                        $(this).html('&nbsp;');
-    //                    }).fadeIn();
-    //
-    //                });
-    //
-    //            });
-    //        },
-    //        error: function(jqXHR, textStatus, errorThrown) {
-    //            // form was a json-encoded list of errors and error messages
-    //            
-    //            var json = jQuery.parseJSON(jqXHR.responseText);
-    //
-    //            // remove color from labels of current errors
-    //            $('[class*=required]').parent().prev().removeClass('error-text');
-    //
-    //            // remove current errors
-    //            $('[class*=required]').children().unwrap();
-    //
-    //            if($.browser.msie){
-    //                $('[class*=msieError]').remove()
-    //            }
-    //
-    //            for (var index in json) {
-    //                var $error = $('[id$="-'+index+'"]');
-    //                var $labelOfError = $error.parent().prev();
-    //
-    //                // insert new errors after the relevant inputs
-    //                $error.wrap('<div class="required" />');
-    //                $error.attr("placeholder",json[index][0]);
-    //                $error.val('')
-    //                $labelOfError.addClass('error-text');
-    //            }
-    //        }
-    //    });
-    //});
+    $('#profile-save').on("click", function(e) {
+        e.preventDefault();
+        
+        var form = $('#profile-unit-form');
+        
+        var serialized_data = form.serialize();
+        // Page was likely requested via GET - all GET parameters
+        // should be passed along with POST request
+        var get_data = window.location.search;
+        if (get_data.length) {
+            get_data = '&' + get_data.substr(1);
+        }
+        serialized_data += get_data;
+        
+        console.log(serialized_data)
+        $.ajax({
+            type: 'POST',
+            url: '/profile/view/edit',
+            data: serialized_data,
+            success: function(data, status) {
+                console.log("SUCCESS")
+                // Replace the content with the result of the AJAX call
+                container = $('#profile-unit-form').parent().parent()
+                container.fadeOut(400, function () {
+                    $(this).html(data).fadeIn(600);
+        
+                    // Add the new bindings
+                    $('.suggestion').hover(function() {
+                        var text = $(this).data('msg');
+                        $('#description').stop(true, true);
+                        $('#description').hide().text(text).fadeIn();
+                        },
+                    function() {
+                        $('#description').stop(true, true)
+                        .fadeOut(function() {
+                            $(this).html('&nbsp;');
+                        }).fadeIn();
+        
+                    });
+        
+                });
+            },
+            //error: function(jqXHR, textStatus, errorThrown) {
+            //    // form was a json-encoded list of errors and error messages
+            //    
+            //    var json = jQuery.parseJSON(jqXHR.responseText);
+            //
+            //    // remove color from labels of current errors
+            //    $('[class*=required]').parent().prev().removeClass('error-text');
+            //
+            //    // remove current errors
+            //    $('[class*=required]').children().unwrap();
+            //
+            //    if($.browser.msie){
+            //        $('[class*=msieError]').remove()
+            //    }
+            //
+            //    for (var index in json) {
+            //        var $error = $('[id$="-'+index+'"]');
+            //        var $labelOfError = $error.parent().prev();
+            //
+            //        // insert new errors after the relevant inputs
+            //        $error.wrap('<div class="required" />');
+            //        $error.attr("placeholder",json[index][0]);
+            //        $error.val('')
+            //        $labelOfError.addClass('error-text');
+            //    }
+            //}
+        });
+    });
 
 
     $('#updateEmail').on("click", function(e) {

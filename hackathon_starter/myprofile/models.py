@@ -91,8 +91,11 @@ class ProfileUnits(models.Model):
         be used to access it.
         """
         classes = [Name, Summary, Address, Telephone, EmploymentHistory,
-                   Education, License, MilitaryService, SecondaryEmail,
-                   VolunteerHistory, Website]
+                   Education,
+                   #License, MilitaryService, SecondaryEmail,
+                   VolunteerHistory,
+                   #Website
+                   ]
 
         suggestions = chain(*[klass.get_suggestion(user) for klass in classes])
         if by_priority:

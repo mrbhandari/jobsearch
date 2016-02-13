@@ -1,7 +1,8 @@
 {% load model_fields %}
 
-<div id="moduleColumn" class="span8">
-    <h3>Thanks for updating your {{ model_name }}</h3>
+<div id="moduleColumn">
+    <img class="img-rounded center-block" src="https://cdn0.iconfinder.com/data/icons/seo-flat-long-shadow/512/Achievement-128.png">
+    <h3>Congrats! Adding your {{ model_name }} increased your score</h3>
     <p>
         Updating your {{ model_name }} will help employers locate you and increase your
         chances at getting noticed.  You can continue to improve your profile
@@ -9,23 +10,27 @@
     </p>
 
     <h4>Add these modules to improve your profile</h4>
-    {% for suggestion in suggestions %}
-        <a class="btn primary suggestion add-module-btn" 
-           href="{{ suggestion.url }}" 
-           data-msg="{{ suggestion.msg }}">
-            Add
-            <span>{{ suggestion.module }}</span>
-        </a>
-    {% endfor %}
-
-    <div id="description" style="min-height:40px;">&nbsp;</div>
-
-    <a class="btn-link" 
+    <div class="btn-toolbar">
+        {% for suggestion in suggestions %}
+            <a class="btn btn-primary btn-block" 
+               href="{{ suggestion.url }}"
+               role = "button"
+               data-msg="{{ suggestion.msg }}">
+                Add
+                <span>{{ suggestion.module }}</span>
+            </a>
+        {% endfor %}
+    
+    
+        <a class="btn btn-default btn-block" role="button" 
        href="{% url 'view_profile' %}">No thanks, Take me to my profile</a>
+    
+    </div>
 </div>
-<div class="span4" id="suggestions" style="clear: right;">
-    <div class="sidebar">
-        <h2 class="top">Updated {{ model_name|title }}</h2>
+<br>
+<div class="container" id="suggestions">
+    <div>
+        <h4>Your updated {{ model_name }}</h4>
         {% with module.item|process_field_types as fields %}
             {% for label, value, type in fields %}
                 {% if value == None or value == "" %}
