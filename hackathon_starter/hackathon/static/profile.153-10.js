@@ -94,33 +94,34 @@ $(function() {
                     });
         
                 });
+                window.scrollTo(x-coord, y-coord);
             },
-            //error: function(jqXHR, textStatus, errorThrown) {
-            //    // form was a json-encoded list of errors and error messages
-            //    
-            //    var json = jQuery.parseJSON(jqXHR.responseText);
-            //
-            //    // remove color from labels of current errors
-            //    $('[class*=required]').parent().prev().removeClass('error-text');
-            //
-            //    // remove current errors
-            //    $('[class*=required]').children().unwrap();
-            //
-            //    if($.browser.msie){
-            //        $('[class*=msieError]').remove()
-            //    }
-            //
-            //    for (var index in json) {
-            //        var $error = $('[id$="-'+index+'"]');
-            //        var $labelOfError = $error.parent().prev();
-            //
-            //        // insert new errors after the relevant inputs
-            //        $error.wrap('<div class="required" />');
-            //        $error.attr("placeholder",json[index][0]);
-            //        $error.val('')
-            //        $labelOfError.addClass('error-text');
-            //    }
-            //}
+            error: function(jqXHR, textStatus, errorThrown) {
+                // form was a json-encoded list of errors and error messages
+                
+                var json = jQuery.parseJSON(jqXHR.responseText);
+            
+                // remove color from labels of current errors
+                $('[class*=required]').parent().prev().removeClass('error-text');
+            
+                // remove current errors
+                $('[class*=required]').children().unwrap();
+            
+                if($.browser.msie){
+                    $('[class*=msieError]').remove()
+                }
+            
+                for (var index in json) {
+                    var $error = $('[id$="-'+index+'"]');
+                    var $labelOfError = $error.parent().prev();
+            
+                    // insert new errors after the relevant inputs
+                    $error.wrap('<div class="required" />');
+                    $error.attr("placeholder",json[index][0]);
+                    $error.val('')
+                    $labelOfError.addClass('error-text');
+                }
+            }
         });
     });
 
