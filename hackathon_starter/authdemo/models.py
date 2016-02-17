@@ -229,7 +229,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
         state = address_obj.__getattribute__('country_sub_division_code')
         country_code = address_obj.__getattribute__('country_code')
         postal_code = address_obj.__getattribute__('postal_code')
-        return ' '.join([postal_code, city_name, state, country_code])
+        return ' '.join([city_name, state, country_code])
         
         
         
