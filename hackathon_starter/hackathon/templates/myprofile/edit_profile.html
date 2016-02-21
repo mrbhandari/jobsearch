@@ -40,12 +40,10 @@
         </div>-->
     </div>{# /profileTitleRow #}
     
-    <div class="well">
-        <h4>FlexJobs Discoverability Score</h4>
-        <p>The higher your discoverability score the higher the chances of employers contacting you.</p>
+    <div class="well well-sm">
+        <h4>Your Discoverability Score</h4>
         
-        <p><strong>Your discoverability score: <span id="highlight">{{user.profile_completion |add:"10"}}% </span></p></strong>
-        
+
         <div class="progress">
             <div class="progress-bar progress-bar-{% completion_level user.profile_completion%}" role="progressbar" aria-valuenow="{{ user.profile_completion |add:"10"}}"
             aria-valuemin="0" aria-valuemax="100" style="width:{{ user.profile_completion |add:"10"}}%">
@@ -53,7 +51,32 @@
             </div>
         </div>
     
-        <div class="alert alert-info" role="alert">Tip: People with scores higher than 90% get an average of 3-5 matches per week.</div>
+        <div class="alert alert-info" role="alert">
+            {% if user.profile_completion < 50 %}
+            <h6>Your achievements</h6>
+            <p>
+                <img class="img-thumbnail" src="https://cdn2.iconfinder.com/data/icons/flat-game-ui-buttons-icons-1/512/17-20.png">
+                Employers can contact you.
+            </p>
+            <p>
+                <img class="img-thumbnail" src="https://cdn1.iconfinder.com/data/icons/mixed-long-shadow-2/512/lock-20.png">
+                Get to 60% and start seeing jobs.
+            </p>
+            {% else %}
+            <p>
+                <img class="img-thumbnail" src="https://cdn2.iconfinder.com/data/icons/flat-game-ui-buttons-icons-1/512/17-20.png">
+                Start exploring jobs nearby.
+                <a href="/member/action" class="btn btn-success btn-xs">Jobs</a>
+            </p>
+            <p>
+                <img class="img-thumbnail" src="https://cdn1.iconfinder.com/data/icons/mixed-long-shadow-2/512/lock-20.png">
+                Get to 100% to start applying.
+                
+                
+            </p>
+            {% endif %}
+            
+        </div>
         
         
     </div>
