@@ -128,6 +128,7 @@ def handle_form(request):
             
             instance = form_instance.save()
             if request.is_ajax():
+                request.user.update_profile_completion()
                 suggestions = ProfileUnits.suggestions(request.user)
                 return render_to_response('myprofile/suggestions.html',
                                           {'suggestions': suggestions[:3],

@@ -94,7 +94,8 @@ class ProfileUnits(models.Model):
                    Education,
                    #License, MilitaryService, SecondaryEmail,
                    VolunteerHistory,
-                   #Website
+                   #Website,
+                   EndorsementInvitation,
                    ]
 
         suggestions = chain(*[klass.get_suggestion(user) for klass in classes])
@@ -631,6 +632,25 @@ class EndorsementInvitation(ProfileUnits):
             self.invitee_email = self.invitee.email
 
         super(EndorsementInvitation, self).save(*args, **kwargs)
+        
+    @classmethod
+    def get_suggestion(cls, user):
+        """Get a list of all suggestions for a user to add a summary to their
+        profile.
+
+        :Inputs:
+        user = User for which to get suggestions
+
+        :Outputs:
+        suggestion - A dictionary object which should conform to the format
+                     indicated in ProfileUnits.suggestions().
+        """
+        if not cls.objects.filter(user=user).exists():
+            return [{'msg': "Would you like to boost your reputation to employers?",
+                     'url': reverse('handle_form') + '?module=EndorsementInvitation&id=new',
+                     'priority': 5,
+                     'module': 'Endorsements'}]
+        return []
         
     
 

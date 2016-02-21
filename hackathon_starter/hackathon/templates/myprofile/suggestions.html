@@ -1,15 +1,21 @@
+{% load common_tags %}
 {% load model_fields %}
 
 <div id="moduleColumn">
     <img class="img-rounded center-block" src="https://cdn0.iconfinder.com/data/icons/seo-flat-long-shadow/512/Achievement-128.png">
-    <h3>Congrats! Adding your {{ model_name }} increased your score</h3>
+    <h3>Congrats! <small>Adding your {{ model_name }} increased your Discoverability Score to {{user.profile_completion |add:"10"}}%</small></h3>
     <p>
-        Updating your {{ model_name }} will help employers locate you and increase your
-        chances at getting noticed.  You can continue to improve your profile
-        with the options to the below.
+    
+        
+        <div class="progress">
+            <div class="progress-bar progress-bar-{% completion_level user.profile_completion%}" role="progressbar" aria-valuenow="{{ user.profile_completion |add:"10"}}"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{ user.profile_completion |add:"10"}}%">
+              {{ user.profile_completion |add:"10"}}%
+            </div>
+        </div>
     </p>
 
-    <h4>Add these modules to improve your profile</h4>
+    <h4>Keep increasing your score</h4>
     <div class="btn-toolbar">
         {% for suggestion in suggestions %}
             <a class="btn btn-primary btn-block" 
