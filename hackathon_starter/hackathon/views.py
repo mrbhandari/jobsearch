@@ -101,10 +101,12 @@ def landing_index(request):
     geo_ip = get_geoip(request)
     location = " local employers"
     try:
-        location += " in " + geo_ip['city']
-    except KeyError, e:
+        if geo_ip['city'] != '':
+            location += " in " + geo_ip['city']
+        else:
+            print "city is blank"
+    except:
         print "no city found"
-    #str(random.randint(100,999))
     headline_text = "to 600+" + location
     print headline_text
     context = {'headline_text': headline_text}

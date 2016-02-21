@@ -6,12 +6,17 @@
 
 
 {% block content %}
-  
+
+
+        
+            
+            
+            
 <div class="container">
     
-    <p class="alert alert-danger" role="alert">
+<!--    <p class="alert alert-danger" role="alert">
         You cannot apply because your <strong>Discoverability Score</strong> is still less than 100%. <a href="{% url 'view_profile' %}">Increase it here.</a></strong>
-    </p>
+    </p>-->
     
     <h4>
         Jobs near <strong>{{ location.address }}</strong>
@@ -21,6 +26,12 @@
         
         
     </h4>
+    <div class="progress">
+            <div class="progress-bar progress-bar-{% completion_level user.profile_completion%}" role="progressbar" aria-valuenow="{{ user.profile_completion |add:"10"}}"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{ user.profile_completion |add:"10"}}%">
+              {{ user.profile_completion |add:"10"}}%
+            </div>
+    </div>
     <div class="btn-toolbar">
         <a href="{% url 'view_profile' %}" role="button" type="button" class="btn btn-success btn-block">Update profile for better matches</a>
     
@@ -45,7 +56,9 @@
                     <p class="text-center">{{ i.stats.checkinsCount | divide:"10" }} applicants last week</p>
                     
                     <br>
-                    <button type="button" class="btn btn-primary btn-block disabled">I'm interested</button>
+                    <button id="interested" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary btn-block">
+                        I'm interested
+                    </button>
                     <br>
                     
                     <!--{{ i.stats.usersCount }}-->
@@ -63,7 +76,68 @@
     </p>
     <br>
           
-          
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+        
+        <h4 class="modal-title" id="myModalLabel">
+            {% if user.profile_completion < 100 %}
+            We cannot send your profile until you increase your Discoverability Score to 100%.
+            {% else %}
+            We've sent your profile.
+            {% endif %}
+        </h4>
+      </div>
+      <div class="modal-body">
+            {% if user.profile_completion < 100 %}
+            <img class="img-rounded center-block" src="https://cdn4.iconfinder.com/data/icons/ultimate-design-package/60/warning-128.png">
+            {% else %}
+            <img class="img-rounded center-block" src="https://cdn0.iconfinder.com/data/icons/mobile-functions-colored-outlined-pixel-perfect/64/mobile-03-128.png">
+            {% endif %}
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+            {% if user.profile_completion < 100 %}
+            Close
+            {% else %}
+            Keep applying
+        {% endif %}
+        
+        
+        
+        </button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
 </div>
+
+
 {% endblock %}
 
+
+{% block app_js %}
+    <script>
+  
+  
+    
+    
+    $('.btn-primary').click(function() {
+        this.disabled=true;
+        
+        
+        $('#myModal').modal('show')
+        
+        return false;
+    })
+    
+</script>
+{% endblock %}    
