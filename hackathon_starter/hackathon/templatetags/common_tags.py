@@ -6,7 +6,27 @@ register = template.Library()
 
 @register.simple_tag
 def replace_base_url(value):
-    return value.replace('https://ss3.4sqi.net/img/categories_v2/', 'https://foursquare.com/img/categories/')
+    return_value = value.replace('https://ss3.4sqi.net/img/categories_v2/', 'https://foursquare.com/img/categories/')
+    return_value += "64.png"
+    replacement_images = {
+        'https://foursquare.com/img/categories/shops/mall_64.png': 'https://cdn1.iconfinder.com/data/icons/sales-and-shopping/32/bag_mall_web_ecommerce-64.png',
+'https://foursquare.com/img/categories/parks_outdoors/plaza_64.png': 'https://cdn4.iconfinder.com/data/icons/unigrid-flat-buildings/90/008_092_kids_park_slides-64.png',
+'https://foursquare.com/img/categories/education/communitycollege_64.png': 'https://cdn2.iconfinder.com/data/icons/educatix-circular/128/education_school_college-06-64.png',
+'https://foursquare.com/img/categories/shops/departmentstore_64.png': 'https://cdn4.iconfinder.com/data/icons/buildings-vol-2-1/256/82-64.png',
+'https://foursquare.com/img/categories/building/government_monument_64.png': 'https://cdn2.iconfinder.com/data/icons/jetflat-buildings/90/008_007_government_administration_official_building-64.png',
+'https://foursquare.com/img/categories/education/other_64.png': 'https://cdn1.iconfinder.com/data/icons/education-colored-icons-vol-3/128/113-64.png',
+        'https://foursquare.com/img/categories/shops/market_64.png': 'https://cdn3.iconfinder.com/data/icons/yellow-commerce/100/.svg-14-64.png',
+'https://foursquare.com/img/categories/food/mediterranean_64.png': 'https://cdn3.iconfinder.com/data/icons/fruits-and-veggies-1/512/olive_meditteranean_food_oil_plant-64.png',
+'https://foursquare.com/img/categories/education/academicbuilding_64.png': 'https://cdn3.iconfinder.com/data/icons/building-set-1/512/School-64.png',
+'https://foursquare.com/img/categories/shops/conveniencestore_64': 'https://cdn2.iconfinder.com/data/icons/buildings-6/88/05-64.png',
+'https://foursquare.com/img/categories/shops/food_gourmet_64.png': 'https://cdn2.iconfinder.com/data/icons/food-ink/512/salami-128.png',
+    }
+    try:
+        print "trying stuff"
+        return replacement_images[return_value]
+    except KeyError:
+        return return_value
+        
 
 @register.filter
 def divide(value, arg):
