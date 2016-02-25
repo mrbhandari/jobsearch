@@ -15,13 +15,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="{% url 'user_home' %}" class="navbar-brand"><img style="max-width:80px; margin-top: -7px;  margin-bottom: 7px;" src="https://www.flexjobs.com/employer-blog/wp-content/uploads/2015/07/fj-logo-150211.png"></a>
+          <a href="{% url 'user_home' %}" class="navbar-brand"><img style="max-width:80px; margin-top: -7px;  margin-bottom: 7px;" src="{% static "img/logo.png" %}"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'view_profile' %}">My Profile</a></li> <!--user_home-->
             <li><a href="{% url 'user_action' %}">My Job Matches</a></li>
-            <li class="dropdown">
+<!--            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <strong> {{ user.display_name }}</strong> <b class="caret"></b>
               </a>
@@ -34,7 +34,7 @@
                 <li class="divider"></li>
                 <li><a href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i> Sign Out</a></li>
               </ul>
-            </li>
+            </li>-->
             <li>{% if user.profile.avatar_url %}<img alt="" style="width:50px; height:50px" src="{{user.profile.avatar_url}}">{% endif %}</li>
 
           </ul>
